@@ -1,0 +1,58 @@
+/* a
+* @Author: Alexander
+* @Date:   2015-12-04 13:56:04
+* @Last Modified by:   Alexander
+* @Last Modified time: 2015-12-14 20:31:13
+*/
+
+.side-nav .collapsible-body li.active,
+.side-nav.fixed .collapsible-body li.active {
+	background-color: #E53935;
+}
+
+.mapped {
+	font-family: Century Gothic;
+	color: teal;
+	font-style: italic;
+	font-size: 30px;
+	background-color: lightseagreen;
+	border: 1px solid black;
+}
+
+.matrix {
+	margin-bottom: 20px;
+}
+
+.matrix td {
+	height: 76px;
+	width: 76px;
+}
+
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+	border-bottom: 1px solid #BD1717;
+	box-shadow: 0 1px 0 0 #BD1717
+}
+
+.input-field label.active {
+	color: #BD1717 !important;
+}
