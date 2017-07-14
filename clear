@@ -1,0 +1,33 @@
+[33mcommit 3e7db3bbd3d18347992529cf9b881ed3cc2bd3f2[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Joven Novo <novo.joven@gmail.com>
+Date:   Thu Jul 13 22:25:25 2017 +0800
+
+    database conneciton
+    
+    database connection
+
+[1mdiff --git a/db_connection.php b/db_connection.php[m
+[1mindex 31a7527..6bba5cd 100644[m
+[1m--- a/db_connection.php[m
+[1m+++ b/db_connection.php[m
+[36m@@ -1 +1,19 @@[m
+[31m-database connection[m
+[32m+[m[32m<?php[m
+[32m+[m[32m$servername = "localhost";[m
+[32m+[m[32m$user = "root";[m
+[32m+[m[32m$pass = "";[m
+[32m+[m
+[32m+[m[32mtry {[m
+[32m+[m[32m    $dbConnection = new PDO("mysql:host=$servername;dbname=flockers", $user, $pass);[m
+[32m+[m[32m    // set the PDO error mode to exception[m
+[32m+[m[32m    $dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);[m
+[32m+[m[32m    throw new Exception ("could not find database...");[m
+[32m+[m[41m   [m
+[32m+[m[32m}[m
+[32m+[m[32mcatch(PDOException $e)[m
+[32m+[m[32m{[m
+[32m+[m[32m    echo "Connection failed: " . $e->getMessage();[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m[32m?>[m
