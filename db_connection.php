@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $user = "root";
-$pass = "";
+$pass = 'ambunganz071587';
 
 try {
     $dbConnection = new PDO("mysql:host=$servername;dbname=flockers", $user, $pass);

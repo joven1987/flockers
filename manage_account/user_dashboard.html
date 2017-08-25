@@ -3,8 +3,168 @@
 <head >
     <meta charset="UTF-8" >
     <title >User Dashboard</title >
-</head >
+    <link rel="stylesheet" href="../frameworks/bootstrap/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="../frameworks/font-awesome-4.7.0/css/font-awesome.css" >
+    <link rel="stylesheet" href="../frameworks/bootstrap-4.0.0/css/bootstrap.css" />
+    <style >
+
+        ul {
+            width: 100%;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            /*overflow: hidden;*/
+            background-color: #e0ded9;
+            float: right;
+            }
+
+        li {
+            float: left;
+            }
+
+        li a {
+            width: 100%;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 20px 22px;
+            text-decoration: none;
+            font-size: 20px;
+            }
+
+        li a i {
+            font-size: 20px !important;
+            }
+
+        li a:hover {
+            background-color: #111;
+            }
+
+        li a:hover i {
+            color: white;
+            }
+
+        * {
+            box-sizing: border-box;
+            }
+
+        #mySidenav {
+            width: 0%;
+            }
+
+        .sidenav {
+            height: 100%;
+            /*width: 0;*/
+            position: fixed;
+            z-index: 99;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            /*transition: 0.5s;*/
+            }
+
+        .sidenav a {
+            padding: 10px 0 10px 0;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+            text-align: center !important;
+            }
+
+        .sidenav a:hover, .offcanvas a:focus {
+            color: #f1f1f1;
+            }
+
+        .fa {
+            font-size: 35px;
+            }
+
+        @media screen and (max-height: 450px) {
+            .sidenav { padding-top: 15px; }
+
+            .sidenav a { font-size: 18px; }
+            }
+
+        #menu-icon:hover {
+            cursor: pointer;
+            }
+
+        .setActiveTop {
+            margin-left: 10% !important;
+            width: 90% !important;
+            transition: width .2s;
+            }
+
+        .setActiveSide {
+            width: 10% !important;
+            transition: width .2s !important;
+            }
+
+
+
+    </style >
 <body >
 
+
+
+<div id="mySidenav" class="sidenav" >
+    <a href="#" ><i class="fa fa-user-circle-o" style="font-size: 100px; color: white;" ></i >Joven</a >
+    <a href="#" ><i class="fa fa-vcard-o" style="margin-top: 20px;" ></i ></a >
+    <a href="#" ><i class="fa fa-calendar-plus-o" ></i ></a ><span class="tooltip" >Create Event</span >
+    <a href="#" ><i class="fa fa-envelope-o" ></i ></a >
+    <a href="#" ><i class="fa fa-user" ></i ></a >
+    <a href="#" ><i class="fa fa-user" ></i ></a >
+    <a href="#" ><i class="fa fa-user" ></i ></a >
+    <a href="#" ><i class="fa fa-user" ></i ></a >
+    <a href="#" ><i class="fa fa-user" ></i ></a >
+</div >
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <ul >
+            <li id="menu-icon" ><a ><i class="fa fa-reorder" ></i ></a ></li >
+            <li ><a class="active" href="#home" >Home</a ></li >
+            <li ><a href="#news" >News</a ></li >
+            <li ><a href="#contact" >Contact</a ></li >
+            <li ><a href="#about" >About</a ></li >
+        </ul >
+    </div>
+    <div class="row" >
+        <div class="col-md-10" style="background-color: #b5fff4; position: relative;" >event-body</div >
+        <div class="col-md-2" style="background-color: #00aac1;" >right side nav</div >
+    </div >
+</div >
 </body >
+
+<script src="../frameworks/bootstrap/jquery/jquery-1.11.3.min.js" ></script >
+<script src="../frameworks/bootstrap/bootstrap/js/bootstrap.js" ></script >
+<script >
+    $(function () {
+        $('#menu-icon').click(function () {
+            $('#mySidenav').toggleClass('setActiveSide');
+            $('ul').toggleClass('setActiveTop');
+            $('.col-md-10').addClass('col-md-9');
+            $('.col-md-9').css({"margin-left": "10%"});
+            $('.col-md-10').removeClass('col-md-10');
+
+            $('.col-md-2').addClass('col-md-1');
+
+
+
+        });
+
+
+        $('a').hover(function () {
+            $(this).closest('.tooltip').show();
+        });
+
+
+    });
+
+</script >
 </html >
