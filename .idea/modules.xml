@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../dashboardTheme/.idea/dashboard.iml" filepath="$PROJECT_DIR$/../../dashboardTheme/.idea/dashboard.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/flockers.iml" filepath="$PROJECT_DIR$/.idea/flockers.iml" />
     </modules>
   </component>
