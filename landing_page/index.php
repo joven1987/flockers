@@ -1,4 +1,5 @@
-    <!DOCTYPE html>
+
+   <!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="utf-8">
@@ -26,7 +27,7 @@
         <!-- Extras -->
         <link rel="stylesheet" type="text/css" href="assets/extras/animate.css">
         <link rel="stylesheet" type="text/css" href="assets/extras/lightbox.css">
-		  <link rel="stylesheet" type="text/css" href="assets/extras/shop-homepage.css">
+	
 
 
         <!-- jQuery Load -->
@@ -38,12 +39,13 @@
 	<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet"> 
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
 	
 	
 
       </head>
 
-    <body data-spy="scroll" data-offset="20" data-target="#navbar">
+    <body data-spy="scroll" data-offset="20" data-target="#navbar" >
     <!-- Nav Menu Section -->
     <div class="logo-menu">
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation" data-spy="affix" data-offset-top="50">
@@ -66,14 +68,14 @@ left: -27%;
         </div>
 
         <div class="collapse navbar-collapse" id="navbar">
-                            <ul class="nav navbar-nav col-md-7 col-lg-7 pull-right" id="navstyle">
-                            <li class="active"><a href="#hero-area"></i> Home</a></li>
-                            <li id="navnav"><a href="#services">Services</a></li>
+                            <ul class="nav navbar-nav col-md-7 col-lg-7 pull-right" id="navstyle"> 
+                            <li id="navnav"><a href="#hero-area"></i> Home</a></li>
+                            <li id="navnav"><a href="#services">Events</a></li>
                             <li  id="navnav"><a href="#portfolio"> Categories</a></li>
                             <li  id="navnav"><a href="#clients"> Pricing</a></li>
                             <li  id="navnav"><a href="#about"> About</a></li>
                             <li  id="navnav"><a href="#contact">Contact</a></li>
-							<li id="navbg"><a id="nav-font"  data-toggle="modal" data-target="#product_view">CREATE EVENT</a></li>
+							<li id="navbg"><button type="button" id="create" class="btn btn-secondary" data-toggle="modal" data-target="#login">CREATE EVENTS</button></li>
                             </ul>
         </div>
       </div>
@@ -91,8 +93,8 @@ left: -27%;
 
 
 
-<div class="modal fade product_view" id="product_view" >
-    <div class="modal-dialog">
+<div class="modal fade product_view" id="login" style="background-color: rgba(0, 0, 0, 0.5);">
+    <div class="modal-dialog" style="max-width: 800px; width: 100%; margin: 6% auto;">
         <div class="modal-content">
            
             <div class="modal-body">
@@ -101,19 +103,54 @@ left: -27%;
 			
                 <div class="row" >
                    
-                    <div class="col-md-6 product_content" style="padding-top: 6%;">
-                        <h4 style="text-align: center; color: #0072bc;">SIGN IN TO FLOCKERS</h4>
-                       
+                    <div class="col-md-6 product_content" style="padding-top: 4%;">
+				
+				
+				
+					  <img id="profile-img" class="profile-img-card" src="images/icon/avatar.png" />
+					   <h4 class="col-md-12" style="text-align: center; color: #0072bc; font-weight: 20px; font-family: 'Raleway', sans-serif;">Sign in to your account</h4>
+							
        
-<form class="col-md-12" style="padding-top: 5%;">
-  <div class="form-group col-md-12">
-    <input type="text" class="form-control" id="emailinput" placeholder="Email" >
+<form class="col-md-12" style="padding-top: 3%;" id="textcolor" role="form" action="login.php" method="post" >
+  <div class="form-group col-md-12" >
+  <div class="inner-addon right-addon">
+	
+	<i class="glyphicon glyphicon-envelope"></i>
+    <input type="text" class="form-control" name="username" placeholder="Username" >
+	
   </div>
-  <div class="form-group col-md-12">
-    <input type="text" class="form-control" id="passwordinput" placeholder="Password" >
   </div>
-  	
+  <div class="form-group col-md-12" style="margin-bottom: 3px;">
+  <div class="inner-addon right-addon">
+	
+	<i class="glyphicon glyphicon-lock"></i>
+    <input type="password" class="form-control"  name="password" placeholder="Password" >
+  </div>
+  </div>
+  
+  	<a style=" color: #0072bc; font-weight: 20px; font-family: 'Raleway', sans-serif; font-family: 10px; text-transform: capitalize;" class="btn btn-link pull-right">Forgot Password?</a>
+
+	
+	<div class="row col-md-12 col-sm-12 text-center" style="padding-top: 5%;" >
+					<button type="submit" id="btnlogin" class="btn btn-primary" name="login" >LOGIN</button>
+					<button type="button" id="btnreg" class="btn btn-primary"  data-toggle="modal" data-target="#register" >SIGN UP</button>
+					
+	</div>
+	
 </form>
+
+
+	
+	
+	
+	
+	
+	<h4 class="col-md-12" style="text-align: center; color: #0072bc; font-family: 'Raleway', sans-serif; font-size: 13px; padding-top: 13%; "><b>Flockers 1.0</b> All rights Reserved 2017 - Team FSociety</h4>
+	
+                        
+                      
+
+
 	   
 	  
 	   
@@ -125,17 +162,51 @@ left: -27%;
 					
 					 <div class="col-md-6 product_img" style="padding-left: 0;padding-right: 0;">
 					 
-                        <img src="images/login.jpg" class="img-responsive"></img>
+                        <img src="images/login.jpg" class="img-responsive" style=" position:relative;"></img>
 											
 											
-												<img src="images/icon/logo.png" style="max-height: 45px;
-														max-width: 230px;
+											
+										  <h4 id="logintext"><b>Make Your Dreams Come True</b></h4>
+										  
+										    <h4 class="col-md-12" id="logintext1">Meet your favorite artists, sport teams and parties. Find events and interests near your location and share it with friends.</h4>
+
+												<img src="images/icon/logo.png" style="
+														width: 60%;
 														opacity: 1;
 														position: absolute;
-														top:8px;">
-											</img>
+														top:16%;
+														left: 21%;
+														">
+												</img>
+												
+													
+													
+												<div class="row col-md-12" style="opacity: 1;  position: absolute; top:65%;"> 
+												
+												
+											 
+												
+													<div class="col-md-4 col-sm-12" style="text-align: center;">
+													<img   src="assets/img/portfolio/categories/icons/fb.png" alt="Image" style="max-width:50%; cursor: pointer; ">
+													</div>
+													
+													<div class="col-md-4 col-sm-12" style="text-align: center;">
+													<img   src="assets/img/portfolio/categories/icons/twitter.png" alt="Image" style="max-width:50%; cursor: pointer;">
+													</div>
+													
+													<div class="col-md-4 col-sm-12" style="text-align: center;">
+													<img   src="assets/img/portfolio/categories/icons/instagram.png" alt="Image" style="max-width:50%; cursor: pointer;">
+													</div>
+												</div>
+													
+													
+											 
 											
 											
+											
+									
+                    
+
 										
                     </div>
                 </div>
@@ -145,6 +216,164 @@ left: -27%;
 </div>
 
 
+
+
+
+
+
+<div class="modal fade product_view" id="register"  >
+    <div class="modal-dialog" style="max-width: 950px; width: 100%; margin: 3% auto;">
+        <div class="modal-content">
+           
+            <div class="modal-body">
+			
+			
+			
+                <div class="row" >
+           
+					
+					 <div class="col-md-6 product_img" style="padding-left: 0;padding-right: 0; ">
+					 
+                        <img src="images/register.jpg" class="img-responsive" style=" position:relative;"></img>
+											
+		
+											
+										  <h4 id="logintext"><b>Hello, Welcome to Flockers!</b></h4>
+										  
+										    <h4 class="col-md-12" id="logintext1">Meet your favorite artists, sport teams and parties. Find events and interests near your location and share it with friends.</h4>
+
+												<img src="images/icon/logo.png" style="
+														width: 60%;
+														opacity: 1;
+														position: absolute;
+														top:16%;
+														left: 21%;
+														">
+												</img>
+												
+													
+													
+												<div class="row col-md-12" style="opacity: 1;  position: absolute; top:65%;"> 
+												
+												
+											 
+												
+													<div class="col-md-4 col-sm-12" style="text-align: center;">
+													<img   src="assets/img/portfolio/categories/icons/fb.png" alt="Image" style="max-width:40%; cursor: pointer; ">
+													</div>
+													
+													<div class="col-md-4 col-sm-12" style="text-align: center;">
+													<img   src="assets/img/portfolio/categories/icons/twitter.png" alt="Image" style="max-width:40%; cursor: pointer;">
+													</div>
+													
+													<div class="col-md-4 col-sm-12" style="text-align: center;">
+													<img   src="assets/img/portfolio/categories/icons/instagram.png" alt="Image" style="max-width:40%; cursor: pointer;">
+													</div>
+												</div>
+										
+                    </div>
+					
+					
+					
+					        
+                    <div class="col-md-6 product_content" style="padding-top: 1%;">
+				
+
+					   <h4 class="col-md-12" style="text-align: center; color: #0072bc; font-weight: 20px; font-family: 'Raleway', sans-serif;">Hi there, Let's start here</h4>
+							
+       
+<form class="col-md-12" style="padding-top: 1%;" id="textcolor" role="form" action="register.php" method="post">
+
+  
+  
+  <div class="inner-addon right-addon col-xs-6" style="width: 50%; padding-right: 5.5px; margin-bottom: 10px;">	
+	<i class="glyphicon glyphicon-user"></i>
+    <input required type="text" class="form-control" name="first_name" placeholder="Firstname" >
+  </div>
+  
+  <div class="inner-addon right-addon col-xs-6" style="width: 50%; padding-left: 5.5px; margin-bottom: 10px;">	
+	<i class="glyphicon glyphicon-user" style="right: 10px;"></i>
+    <input required type="text" class="form-control" name="last_name" placeholder="Lastname" >
+  </div>
+  
+  
+  <div class="form-group col-md-12" >
+  <div class="inner-addon right-addon">
+	<i class="glyphicon glyphicon-phone"></i>
+    <input type="text" class="form-control" name="mobile_no" placeholder="Phone" >
+  </div>
+  </div>
+  
+  <div class="form-group col-md-12" >
+  <div class="inner-addon right-addon">
+	<i class="glyphicon glyphicon-map-marker"></i>
+    <input required type="text" class="form-control" name="address" placeholder="Address" >
+  </div>
+  </div>
+  
+  <div class="form-group col-md-12" >
+  <div class="inner-addon right-addon">
+	<i class="glyphicon glyphicon-envelope"></i>
+    <input required type="email" class="form-control" name="email_address" placeholder="Email" >
+  </div>
+  </div>
+  
+  <div class="form-group col-md-12" >
+  <div class="inner-addon right-addon">
+	<i class="	glyphicon glyphicon-credit-card"></i>
+    <input required type="email" class="form-control" name="paypal_account" placeholder="Paypal" >
+  </div>
+  </div>
+  
+  <div class="form-group col-md-12" >
+  <div class="inner-addon right-addon">
+	<i class="glyphicon glyphicon-user"></i>
+    <input required type="text" class="form-control" name="username" placeholder="Username" >
+  </div>
+  </div>
+  
+  <div class="form-group col-md-12" >
+  <div class="inner-addon right-addon">
+	<i class="glyphicon glyphicon-lock"></i>
+    <input required type="password" class="form-control" name="password" placeholder="Password" >
+  </div>
+  </div>
+  
+  <div class="form-group col-md-12" >
+  <div class="inner-addon right-addon">
+	<i class="glyphicon glyphicon-lock"></i>
+    <input required type="password" class="form-control" name="cpassword" placeholder="Repeat Passowrd" >
+  </div>
+  </div>
+  
+
+
+	<div class="row col-md-12 col-sm-12 text-center" style="padding-top: 1%;" >
+			<button type="submit" id="btnlogin" class="btn btn-primary" name="register" >REGISTER</button>
+			<button type="button" id="btnreg" class="btn btn-primary"  data-toggle="modal" data-target="#login" >LOGIN</button>
+				
+					
+	</div>
+	
+</form>
+
+
+	
+	
+	
+	<h4 class="col-md-12" style="text-align: center; color: #0072bc; font-weight: 20px; font-family: 'Raleway', sans-serif; font-size: 12px; padding-top: 1%; "><b>Flockers 1.0</b> All rights Reserved 2017 - Team FSociety</h4>
+	
+	
+	
+                       
+                    </div>
+		
+					
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -184,53 +413,109 @@ style="
 >
 <div class="container">
     <div class="row" id="sec1" style=" padding: 80px 0px;">
-<div class="col-md-12" style="top: 10%;top: 17px;">
-        <h1 class="title" ><img src="images/icon/logo2.png" style="max-height: 75px;
-max-width: 275px;
-opacity: 1;
-
-
-"></img></h1>
+<div class="col-md-12" style="top: 5px;" id="searchcolor">
+        <h1 class="title" ><img src="images/icon/logo2.png" style="width: 20%; opacity: 1; "></img></h1>
         <h2 class="subtitle">"Find, Discover and Organize Meetup and Events" </h2>
+		
+		<!---
+		 <h2 id="subtitle2">EXPLORE THE FUN</h2>
+		 <h2 id="subtitle3">Discover events around you. And not only :) </h2>--->
 
-		       
-					
-                            <div class="input-group col-md-12 col-lg-8" style="padding-bottom: 4%; margin-left: 16.5%;">
-                                <input type="text" class="  search-query form-control" placeholder="SARCH EVENTS HERE"  style="font-family: century gothic; font-weight: bold;background-color: transparent; border:solid 2.5px white;border-radius: 0;height: 50px; border-right: none; width: 102%; color: white; outline: none; box-shadow: none; "/>
-                                <span class="input-group-btn" >
-                                    <button class="btn btn-danger" type="button" style="height: 50px;width: 55px;   border:solid 2.5px white;  border-radius: 0;height: 50px; border-left: none; background-color: white; color: #F05551;">
-                                        <span class=" glyphicon glyphicon-search"></span>
-                                    </button>
-                                </span>
-                            </div>
-					
-  
 	
 		
-		<div class="container">
-  <div class="row text-center">
-    <div class="col-md-6 col-sm-6 col-lg-4">
-      <figure>
-        <img src="assets/img/hero/1.png" alt="">
-        <figcaption style="font-family: century gothic; font-style: italic;">The quick brown fox jumps over the Lazy dog. The quick brown fox jumps over the Lazy dog. The quick brown fox jumps over the Lazy dog. The quick brown fox jumps over the Lazy dog. </figcaption>
-      </figure>
-    </div>
-      <div class="col-md-6 col-sm-6 col-lg-4">
-      <figure>
-        <img src="assets/img/hero/2.png" alt="">
-      <figcaption style="font-family: century gothic; font-style: italic;">The quick brown fox jumps over the Lazy dog. The quick brown fox jumps over the Lazy dog. The quick brown fox jumps over the Lazy dog. The quick brown fox jumps over the Lazy dog. </figcaption>
-      </figure>
-    </div>
-      <div class="col-md-6 col-sm-6 col-lg-4">
-      <figure>
-        <img src="assets/img/hero/3.png" alt="">
-       <figcaption style="font-family: century gothic; font-style: italic;">The quick brown fox jumps over the Lazy dog. The quick brown fox jumps over the Lazy dog. The quick brown fox jumps over the Lazy dog. The quick brown fox jumps over the Lazy dog. </figcaption>
-      </figure>
-    </div>
- 
+<div class="row" style="padding-top: 2%;">
+  <div class="col-md-3" style="padding-left:0px; padding-right:0px;">
+  
+  <div style=" width: 90%; text-align: center; padding-bottom: 10%;">
+   <i class="fa fa-calendar" aria-hidden="true" style="   font-size:25px;"></i> 
   </div>
-</div>
 
+	<input type="text" 
+	onfocus="(this.type='date')"
+	placeholder="When" 
+	style=" display: block;
+    width: 90%;
+    height: 45px;
+    padding: 6px 10px;
+    font-size: 15px;
+    color: white;
+    background-color: transparent;
+	border: 2.3px solid white;
+	font-family: century gothic;
+	font-weight: bold;"
+	/>
+  </div>
+  
+ <div class="col-md-3" style="padding-left:0px; padding-right:0px;">
+ 
+  <div style=" width: 90%; text-align: center; padding-bottom: 10%;">
+ <i class="fa fa-tags" aria-hidden="true" style=" font-size:25px;"></i>
+  </div>
+ 
+	<input type="text" 
+	placeholder="What" 
+	style=" display: block;
+    width: 90%;
+    height: 45px;
+    padding: 6px 10px;
+    font-size: 15px;
+    color: white;
+    background-color: transparent;
+	border: 2.3px solid white;
+	font-family: century gothic;
+	font-weight: bold;"
+	/>
+  </div>
+  
+  <div class="col-md-3" style="padding-left:0px; padding-right:0px;">
+  
+   <div style=" width: 90%; text-align: center; padding-bottom: 10%;">
+  <i class="fa fa-map-marker" aria-hidden="true" style=" font-size:25px;"></i>
+  </div>
+  
+	<input type="text" 
+	placeholder="Where" 
+	style=" display: block;
+    width: 90%;
+    height: 45px;
+    padding: 6px 10px;
+    font-size: 15px;
+    color: white;
+    background-color: transparent;
+	border: 2.3px solid white;
+	font-family: century gothic;
+	font-weight: bold;"
+	/>
+  </div>
+  
+  
+  <div class=" col-md-3"  style="padding-left:0px; padding-right:0px;" >
+  
+   <div style=" width: 100%; text-align: center; padding-bottom: 10%;">
+  <i class="fa fa-rocket"  style=" font-size:25px;"></i>
+  </div>
+  
+  
+  <button type="button" id="letstart" class="btn btn-primary" style="
+	background: white;
+   border: 2.3px solid white;
+    color: #0072bc;
+	 height: 45px;
+	 font-family: century gothic;
+	font-weight: bold;
+	border-radius: 3px;
+	font-size: 15px;
+	letter-spacing: 2px;
+    width: 100%;">
+	Let's Start</button>
+  </div>
+  
+  
+</div>
+		
+
+	
+</div>
        
 
 </div>
@@ -310,7 +595,7 @@ opacity: 1;
 						
 						
                 		<div class="col-md-3" style="text-align: center;"><img  src="assets/img/portfolio/categories/icons/notify.png" alt="Image" style="max-width:50%;">
-							<h4 id="icontext"> <b>4. Notified and get updates</b></h4>
+							<h4 id="icontext"> <b>4. Get Updates</b></h4>
 							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
 						</div>
                 	</div>
@@ -393,7 +678,20 @@ opacity: 1;
                             </div>
                             <div class="ratings" >
 								 <div class="pull-right"  style="padding-right: 19px; ">
-                                <button type="button" id="join" ><i class="fa fa-plus" aria-hidden="true" ></i></button>
+                                <button type="button" id="join" style="background-color: transparent;
+    border: 2px solid #0072bc;
+    color: #0072bc;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 130%;
+    border-radius: 30px;
+    font-family: century gothic;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 13px;
+    outline: none;">
+	
+	<i class="fa fa-plus" aria-hidden="true" ></i></button>
 								</div>
                                 <p style="color: #0072bc; padding-top: 7px; padding-left: 10px;">
                                     <span class="glyphicon glyphicon-star"></span>
@@ -445,7 +743,18 @@ opacity: 1;
                             </div>
                             <div class="ratings">
                                <div class="pull-right"  style="padding-right: 19px; ">
-                                <button type="button" id="join" ><i class="fa fa-plus" aria-hidden="true" ></i></button>
+                                <button type="button" id="join" style="background-color: transparent;
+    border: 2px solid #0072bc;
+    color: #0072bc;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 130%;
+    border-radius: 30px;
+    font-family: century gothic;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 13px;
+    outline: none;" ><i class="fa fa-plus" aria-hidden="true" ></i></button>
 								</div>
                                 <p style="color: #0072bc; padding-top: 7px; padding-left: 10px;">
                                     <span class="glyphicon glyphicon-star"></span>
@@ -492,7 +801,18 @@ opacity: 1;
                             </div>
                             <div class="ratings">
 								<div class="pull-right"  style="padding-right: 19px; ">
-                                <button type="button" id="join" ><i class="fa fa-plus" aria-hidden="true" ></i></button>
+                                <button type="button" id="join" style="background-color: transparent;
+    border: 2px solid #0072bc;
+    color: #0072bc;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 130%;
+    border-radius: 30px;
+    font-family: century gothic;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 13px;
+    outline: none;"><i class="fa fa-plus" aria-hidden="true" ></i></button>
 								</div>
                                 <p style="color: #0072bc; padding-top: 7px; padding-left: 10px;">
                                    <span class="glyphicon glyphicon-star"></span>
@@ -543,7 +863,18 @@ opacity: 1;
                             </div>
                             <div class="ratings">
                                  <div class="pull-right"  style="padding-right: 19px; ">
-                                <button type="button" id="join" ><i class="fa fa-plus" aria-hidden="true" ></i></button>
+                                <button type="button" id="join" style="background-color: transparent;
+    border: 2px solid #0072bc;
+    color: #0072bc;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 130%;
+    border-radius: 30px;
+    font-family: century gothic;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 13px;
+    outline: none;"><i class="fa fa-plus" aria-hidden="true" ></i></button>
 								</div>
                                 <p style="color: #0072bc; padding-top: 7px; padding-left: 10px;">
                                    <span class="glyphicon glyphicon-star"></span>
@@ -593,7 +924,18 @@ opacity: 1;
                             </div>
                             <div class="ratings">
 								<div class="pull-right"  style="padding-right: 19px; ">
-                                <button type="button" id="join" ><i class="fa fa-plus" aria-hidden="true" ></i></button>
+                                <button type="button" id="join" style="background-color: transparent;
+    border: 2px solid #0072bc;
+    color: #0072bc;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 130%;
+    border-radius: 30px;
+    font-family: century gothic;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 13px;
+    outline: none;"><i class="fa fa-plus" aria-hidden="true" ></i></button>
 								</div>
                                 <p style="color: #0072bc; padding-top: 7px; padding-left: 10px;">
                                     <span class="glyphicon glyphicon-star"></span>
@@ -643,7 +985,18 @@ opacity: 1;
                             </div>
                             <div class="ratings">
                                 <div class="pull-right"  style="padding-right: 19px; ">
-                                <button type="button" id="join" ><i class="fa fa-plus" aria-hidden="true" ></i></button>
+                                <button type="button" id="join" style="background-color: transparent;
+    border: 2px solid #0072bc;
+    color: #0072bc;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 130%;
+    border-radius: 30px;
+    font-family: century gothic;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 13px;
+    outline: none;"><i class="fa fa-plus" aria-hidden="true" ></i></button>
 								</div>
                                 <p style="color: #0072bc; padding-top: 7px; padding-left: 10px;">
                                     <span class="glyphicon glyphicon-star"></span>
@@ -694,7 +1047,18 @@ opacity: 1;
                             </div>
                             <div class="ratings">
 								<div class="pull-right"  style="padding-right: 19px; ">
-                                <button type="button" id="join" ><i class="fa fa-plus" aria-hidden="true" ></i></button>
+                                <button type="button" id="join" style="background-color: transparent;
+    border: 2px solid #0072bc;
+    color: #0072bc;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 130%;
+    border-radius: 30px;
+    font-family: century gothic;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 13px;
+    outline: none;"><i class="fa fa-plus" aria-hidden="true" ></i></button>
 								</div>
                                 <p style="color: #0072bc; padding-top: 7px; padding-left: 10px;">
                                     <span class="glyphicon glyphicon-star"></span>
@@ -744,7 +1108,18 @@ opacity: 1;
                             </div>
                             <div class="ratings">
                                <div class="pull-right"  style="padding-right: 19px; ">
-                                <button type="button" id="join" ><i class="fa fa-plus" aria-hidden="true" ></i></button>
+                                <button type="button" id="join" style="background-color: transparent;
+    border: 2px solid #0072bc;
+    color: #0072bc;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 130%;
+    border-radius: 30px;
+    font-family: century gothic;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 13px;
+    outline: none;"><i class="fa fa-plus" aria-hidden="true" ></i></button>
 								</div>
                                 <p style="color: #0072bc; padding-top: 7px; padding-left: 10px;">
                                     <span class="glyphicon glyphicon-star"></span>
@@ -773,7 +1148,7 @@ opacity: 1;
 
 <div style="text-align: center; padding-bottom: 40px;">
   
-  <button type="button"  id="seemore">DISCOVER MORE EVENTS</button>
+  <button type="button" style="outline:none;" id="seemore">DISCOVER MORE EVENTS</button>
      
 </div>
 
@@ -1017,7 +1392,7 @@ opacity: 1;
 	
 	
 	<div style="text-align: center; padding-bottom: 45px; ">
-  <button type="button" id="show"  data-toggle="collapse" data-target="#showmore">SHOW MORE</button>
+  <button  type="button" id="show" style="outline: none;" data-toggle="collapse" data-target="#showmore">SHOW MORE</button>
      
 </div>
 
@@ -1032,6 +1407,9 @@ opacity: 1;
 
 <!-- Client Section -->
     <section id="clients">
+	
+	
+	
     <div class="container">
     
 	
@@ -1108,7 +1486,7 @@ opacity: 1;
 
 				<div class="cd-pricing-body">
 					<ul class="cd-pricing-features">
-						<li><em>100+</em> Memory</li>
+						<li><em>1000</em> Participants</li>
 						<li><em>20</em> Organizers</li>
 						<li><em>20</em> Events</li>
 						<li><em>1</em> Year Expiration</li>
@@ -1151,22 +1529,147 @@ opacity: 1;
 
 
 
-<section id="about">
-    <div class="container">
-    <div class="row">
-    <h1 class="title">About us</h1>
-    <h2 class="subtitle">Lorem Ipsum is simply dummy text</h2>
+<section id="about" style="height: 113vh; padding-top: 1%;
 
-    <div class="col-md-8 col-sm-12">
-    <p>
-    A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
-    </p>
-    </div>
+background: linear-gradient(to top, #0072bc, #3ad2d1);"
 
-    <img class="col-md-4 col-md-4 col-sm-12 col-xs-12" src="assets/img/about/graph.png" alt="">
 
-    </div>
-    </div>
+>
+  
+  
+  <div class="container" >
+                    <div class="row">
+                    
+
+					
+  
+  		
+		 <div class="col-md-12" style="text-align: center;">
+			<h2 style="text-align: center;  font-weight: 700; text-transform: uppercase; font-size: 40px;  ">MEET OUR TEAM</h2>
+						<p style="text-align: center;  font-size: 23px;  font-family: 'Raleway', sans-serif; padding-bottom: 22px; ">A perfect blend of creativity and technical wizardy!</p>
+		 </div>	
+		 
+		 
+                        <div class="col-md-4 col-sm-4">
+                            <div class="team-member">
+                                <div class="team-img"   >
+                                    <img src="images/theteam/van.png" alt="team member" class="img-responsive" style="width: 60%; margin-left: auto; margin-right: auto; display: block;">
+                                </div>
+                                <div class="team-hover" style="  border: 0px solid rgba(0, 0, 0, 0.1);width: 60%; margin-left: auto; margin-right: auto; display: block; border-radius: 125px;">
+                                    <div class="s-link"  style=" bottom: 50%;">
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-title">
+                                <h5 style="font-weight: bold;  ">JOVEN NOVO</h5>
+                                <span >Programmer</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="team-member">
+                                <div class="team-img"   >
+                                    <img src="images/theteam/van.png" alt="team member" class="img-responsive" style="width: 60%; margin-left: auto; margin-right: auto; display: block;">
+                                </div>
+                                <div class="team-hover" style="  border: 0px solid rgba(0, 0, 0, 0.1);width: 60%; margin-left: auto; margin-right: auto; display: block; border-radius: 125px;">
+                                    <div class="s-link"  style=" bottom: 50%;">
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-title">
+                                <h5 style="font-weight: bold; ">JERIC JOSEPH CHIONG</h5>
+                                <span >System Analyst</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="team-member">
+                                <div class="team-img"   >
+                                    <img src="images/theteam/van.png" alt="team member" class="img-responsive" style="width: 60%; margin-left: auto; margin-right: auto; display: block;">
+                                </div>
+                                <div class="team-hover" style="  border: 0px solid rgba(0, 0, 0, 0.1);width: 60%; margin-left: auto; margin-right: auto; display: block; border-radius: 125px;">
+                                    <div class="s-link"  style=" bottom: 50%;">
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-title">
+                                <h5 style="font-weight: bold;  ">CHRISTIAN VAN AZEN</h5>
+                                <span >Project Manager</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+  
+  
+   <div class="container" >
+                    <div class="row">
+                    
+
+                        <div class="col-md-4 col-sm-4 col-md-offset-2">
+                            <div class="team-member">
+                                <div class="team-img"   >
+                                    <img src="images/theteam/van.png" alt="team member" class="img-responsive" style="width: 60%; margin-left: auto; margin-right: auto; display: block;">
+                                </div>
+                                <div class="team-hover" style="  border: 0px solid rgba(0, 0, 0, 0.1);width: 60%; margin-left: auto; margin-right: auto; display: block; border-radius: 125px;">
+                                    <div class="s-link"  style=" bottom: 50%;">
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-title">
+                                <h5 style="font-weight: bold;  ">JOHN MIGUEL ABAÑO</h5>
+                                <span >UI/UX Designer</span>
+                            </div>
+                        </div>
+                         <div class="col-md-4 col-sm-4">
+                            <div class="team-member">
+                                <div class="team-img"   >
+                                    <img src="images/theteam/van.png" alt="team member" class="img-responsive" style="width: 60%; margin-left: auto; margin-right: auto; display: block;">
+                                </div>
+                                <div class="team-hover" style="  border: 0px solid rgba(0, 0, 0, 0.1);width: 60%; margin-left: auto; margin-right: auto; display: block; border-radius: 125px;">
+                                    <div class="s-link"  style=" bottom: 50%;">
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-title">
+                                <h5 style="font-weight: bold; ">JOHNSKIE MIÑOZA</h5>
+                                <span >Documentation</span>
+                            </div>
+                        </div>
+						
+                       
+
+                    </div>
+
+                </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
     </section>
 
 
@@ -1175,105 +1678,174 @@ opacity: 1;
 <!-- About Section End -->
 
 
+<div id="map"></div>
+    <script>
+      function initMap() {
+        var uluru = {lat: 10.3251540, lng: 123.9537480};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANi-e-bnWFOAd9HtT_6Podg12042Pf2yA&callback=initMap">
+    </script>
 
 <!-- Conatct Section -->
-    <section id="contact">
-    <div class="container text-center">
-    <div class="row">
-    <h1 class="title">Contact us</h1>
+    <section id="contact"   style="
 
-    <h2 class="subtitle">Lorem Ipsum is simply dummy text</h2>
+ background-color: #34ADFF;
+  background-image: -webkit-linear-gradient(270deg, white 50%, #0072bc 50%);
+  width: 100%;
+  height: 105vh;">
+   
+
+<div class="container">
+  <div class="row" id="pad">
+    <div class="col-md-6 col-md-offset-1" id="cmnt" >
+     <label style="color: #0072bc; padding-bottom: 1%; font-size: 20px;">GET IN TOUCH</label>
+	 <p style="  font-size: 15px;  font-family: 'Raleway', sans-serif;  text-align: justify; padding-bottom: 22px; color: #0072bc;">We are here to answer any questions you may have about our Flcokers experiences. Raech out to us and  we'll respond as soon as we can.</p>
+  
+	 <div class="icons">
+	 <h5>
+	 <i class="fa fa-envelope" aria-hidden="true" style="color: #0072bc; font-size: 17px;"></i>
+	  <text style="  font-size: 15px;  font-family: 'Raleway', sans-serif;   padding-bottom: 22px; color: #0072bc; padding-left: 2%;">customsupport@flockersweb.com</text>
+	  </h5>
+	  <h5>
+	 <i class="fa fa-mobile" aria-hidden="true" style="color: #0072bc; font-size: 23px;"></i>
+	  <text style="  font-size: 15px;  font-family: 'Raleway', sans-serif;   padding-bottom: 22px; color: #0072bc; padding-left: 3%;">09876543210</text>
+	  </h5>
+	    <h5>
+	<i class="fa fa-map-marker" aria-hidden="true" style="color: #0072bc; font-size: 20px;"></i>
+	  <text style="  font-size: 15px;  font-family: 'Raleway', sans-serif;   padding-bottom: 22px; color: #0072bc; padding-left: 3%;">University of Cebu - LM</text>
+	  </h5>
+	 </div>
 
 
-    <form role="form" class="contact-form" method="post">
-    <div class="col-md-6 wow fadeInLeft" data-wow-delay=".5s">
-    <div class="form-group">
-    <div class="controls">
-    <input type="text" class="form-control" placeholder="Name" name="name">
-    </div>
-    </div>
-    <div class="form-group">
-    <div class="controls">
-    <input type="email" class="form-control email" placeholder="Email" name="email">
-    </div>
-    </div>
-    <div class="form-group">
-    <div class="controls">
-    <input type="text" class="form-control requiredField" placeholder="Subject" name="subject">
-    </div>
-    </div>
 
-    <div class="form-group">
-
-    <div class="controls">
-    <textarea rows="7" class="form-control" placeholder="Message" name="message"></textarea>
-    </div>
-    </div>
-    <button type="submit" id="submit" class="btn btn-lg btn-common">Send</button><div id="success" style="color:#34495e;"></div>
-
-    </div>
-    </form>
-
-    <div class="col-md-6 wow fadeInRight">
-    <div class="social-links">
-    <a class="social" href="#" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
-    <a class="social" href="#" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
-    <a class="social" href="#" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a>
-    <a class="social" href="#" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a>
-	</div>
-<div class="contact-info">
-    <p><i class="fa fa-map-marker"></i> Seattle, WA 00000, USA</p>
-     <p><i class="fa fa-envelope"></i> info@yourwebsite.com</p>
-</div>
-
-    <p>
-    A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit.<br>
-    </p>
+  </div>
+	
+	
+	
+	
+	
+	
+    <div class="col-md-6 col-md-offset-2" id="box">
+     <form class="col-md-12" style="padding-top: 8%;">
+	 
+	 <label style="color: #0072bc; padding-bottom: 3%; font-size: 16px;">SAY SOMETHING</label>
+  <div class="form-group"  style="padding-bottom: 1%;">
+  
+ 
+    <input type="text" class="form-control" id="msg1" placeholder="Your name...">
+  </div>
+  <div class="form-group" style="padding-bottom: 1%;">
+  
+    <input type="text" class="form-control" id="msg1" placeholder="Your Email...">
+  </div>
+  
+   <div class="form-group" style="padding-bottom: 1%;">
     
+    <textarea class="form-control" id="msg1" rows="5" placeholder="Your Message"></textarea>
+  </div>
+  
+  <button type="button" class="btn btn-primary" id="send">SEND</button>
+</form>
     </div>
+  </div>
+ </div>
 
-    </div>
-    </div>
+   
+<div class="container">
+  <div class="row" style="padding-top: 1%;">
+  
+   <div class="col-md-4" id="bb">
+   <img src="images/icon/logo.png" style="max-height: 45px; padding-bottom: 3%;
+max-width: 190px;
+opacity: 1;"></img>
+	 <p style="  font-size: 15px;  font-family: 'Raleway', sans-serif;  text-align: justify; padding-bottom: 22px; color: white;">Flockers is a software as aservice that allows users and organizers to create and join events. Flockers can be used by people who want to spent their time doing the things they love.</p>
+   
+   
+   </div>
+     <div class="col-md-4" id="bb1" >
+	   <label style="color: white; padding-bottom: .8%; font-size: 20px;">ABOUT US</label>
+	 <p style="  font-size: 15px;  font-family: 'Raleway', sans-serif;  text-align: justify; padding-bottom: 22px; color: white;">Flockers created to let people engage in their own interest in a new level. Flockers has features that allow users and organizers both share their experiences. </p>
+	 
+	 </div>
+	 
+	
+	 <div class="row">
+	   <div class="col-md-4" id="bb">
+	   <div class="col-md-4" style="padding-top: 15%;">
+	    <img src="images/icon/social/fb.png" style=" padding-bottom: 3%; width: 35%; opacity: 1;"></img>
+	   </div>
+	   
+	   <div class="col-md-4" style="padding-top: 15%;">
+	    <img src="images/icon/social/blog.png" style=" padding-bottom: 3%; width: 35%; opacity: 1;"></img>
+	   </div>
+	   
+	   <div class="col-md-4" style="padding-top: 15%;">
+	    <img src="images/icon/social/gp.png" style=" padding-bottom: 3%; width: 35%; opacity: 1;"></img>
+	   </div>
+	   
+	   </div>
+	
+	   
+	   
+	   
+	   </div>
+
+  
+  </div>
+  </div>
+
+  <div class="container">
+  <div class="row" >
+  
+  <div class="col-md-2" id="foot"> <a href="#hero-area"><label style="color: white;  font-size: 15px;">HOME</label></a></div>
+   <div class="col-md-2" id="foot"> <label style="color: white;  font-size: 15px;">EVENTS</label></div>
+    <div class="col-md-2" id="foot"> <label style="color: white;  font-size: 15px;">CATEGORIES</label></div>
+	 <div class="col-md-2" id="foot"> <label style="color: white;  font-size: 15px;">PRICING</label></div>
+	  <div class="col-md-2" id="foot"> <label style="color: white;  font-size: 15px;">ABOUT</label></div>
+	   <div class="col-md-2" id="foot"> <label style="color: white;  font-size: 15px;">CONTACT</label></div>
+
+  
+  </div>
+  </div>
+  
+  
+  
     </section>
 
 <!-- Conatct Section End-->
 
 
-    <div id="copyright">
-    <div class="container">
-    <div class="col-md-10"><p>© Corporal 2014 All right reserved. Design & Developed by <a href="http://graygrids.com">GrayGrids</a></p></div>
-    <div class="col-md-2">
-        <span class="to-top pull-right"><a href="#hero-area"><i class="fa fa-angle-up fa-2x"></i></a></span>
-        </div>
-    </div>
-    </div>
-<!-- Copyright Section End-->
+   
+
 
         <!-- Bootstrap JS -->
         <script src="assets/js/bootstrap.min.js">
 		
-		
-		
-		$(document).ready(function() {
-    $('#Carousel').carousel({
-       interval: 13000
-});
-    })
-		
-		
-		
+					$(document).ready(function() {
+					$('#Carousel').carousel({
+					interval: 13000
+					});
+					})
 		
 		</script>
+		
 
-            <!-- Smooth Scroll -->
-                    <!-- Smooth Scroll -->
+ 
         <script src="assets/js/smooth-scroll.js"></script>
         <script src="assets/js/lightbox.min.js"></script>
-
-        <!-- All JS plugin Triggers -->
         <script src="assets/js/main.js"></script>
-<script src="js/jquery-1.7.1.min.js"></script>
-<script src="js/bootstrap.js"></script>
+		<script src="js/jquery-1.7.1.min.js"></script>
+		<script src="js/bootstrap.js"></script>
 
 
     </body>

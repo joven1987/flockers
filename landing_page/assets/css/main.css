@@ -77,13 +77,13 @@ a:hover {
 }
 .subtitle {
   text-align: center;
-  font-weight: bold;
+ 
   padding-bottom: 15px;
   position: relative;
   color:white;
   top: -25px;
   font-style: italic;
-  font-family: century gothic;
+  font-family: 'Raleway', sans-serif;
     -webkit-animation-name: fadeInLeft;
   animation-name: fadeInLeft;
   -webkit-animation-duration: 2s;
@@ -116,7 +116,7 @@ a:hover {
 
 }
 .navbar li {
-  color: #d1d1d1;
+  color: white;
 }
 .navbar-default {
   border: none;
@@ -127,25 +127,25 @@ a:hover {
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
   background: none;
-  color: #0072bc;
+  color: white;
 }
 .navbar-default .navbar-nav li a{
 	color: white;
 }
 .navbar-default .navbar-nav li a:hover {
-  color: #0072bc;
+  color: white;
 }
 .navbar-default .navbar-nav > .active,
 .navbar-default .navbar-nav li:hover {
-  background: red;
+
   padding-bottom: 5px;
   
 }
 
 
+
 .navbar-default .navbar-brand {
   font-size: 25px;
-  color: #fff;
   font-weight: 100;
 }
 .navbar-default .navbar-brand:hover {
@@ -262,25 +262,25 @@ a:hover {
 #about {
   background: #34495e;
   color: #fff;
+  
+ 
 }
 #about p {
   line-height: 30px;
   font-size: 17px;
 }
-#contact {
-  background: #f1f1f1;
-}
+
 #contact ::-webkit-input-placeholder {
-  color: #ecf0f1;
+  color: #0072bc;
 }
 #contact :-moz-placeholder {
-  color: #ecf0f1;
+  color: #0072bc;
 }
 #contact ::-moz-placeholder {
-  color: #ecf0f1;
+  color: #0072bc;
 }
 #contact :-ms-input-placeholder {
-  color: #ecf0f1;
+  color: #0072bc;
 }
 #contact .social i {
   color: #fff;
@@ -372,7 +372,7 @@ a:focus {
 
 
 .navbar-default .navbar-nav > .active, .navbar-default .navbar-nav li:hover {
-    background: white;
+    background: transparent;
     padding-bottom: 0px;
 	padding-top: .5%;
 padding-bottom: .5%;
@@ -386,7 +386,7 @@ padding-bottom: .5%;
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     background: none;
-    color: #0072bc;
+    
 }
 
 
@@ -406,18 +406,6 @@ padding-bottom: .5%;
 }
 
 
-input[type="text"]::-webkit-input-placeholder {
-color: white !important;
-}
- 
-input[type="text"]:-moz-placeholder { /* Firefox 18- */
-color: white !important;  
-font-family: century gothic;
-}
- 
-input[type="text"]::-moz-placeholder {  /* Firefox 19+ */
-color: white !important;  
-}
 
 
 
@@ -579,26 +567,27 @@ border: none;
 font-family: 'Oswald', sans-serif; font-size: 20px;
 color: white;
 
-
 }
 
 
 
+/*
 
 #join{
-	background-color: #0c1f28;
-border: none;
-color: white;
-padding-top: 8px;
-padding-bottom: 8px;
-width: 130%;
-border-radius: 3px;
-font-family: century gothic;
-font-weight: bold;
-letter-spacing: 1px;
-font-size: 13px;
+	    background-color: transparent;
+    border: 2px solid #0072bc;
+    color: #0072bc;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 130%;
+    border-radius: 30px;
+    font-family: century gothic;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 13px;
+    outline: none;
 
-}
+} */
 
 
 
@@ -682,10 +671,10 @@ color:  #0072bc;
 
 #navbg{
 	background-color: transparent;
-	padding-top: .5%;
-padding-bottom: .5%;
-cursor: pointer;
-color: white;
+	padding-top: 1.7%;
+	cursor: pointer;
+
+	
 }
 
 
@@ -838,7 +827,7 @@ body.modal-open .login-container{
 
 
 
-       .product_view .modal-dialog{max-width: 800px; width: 100%;}
+
       
 
 		
@@ -868,12 +857,7 @@ body.modal-open .login-container{
 }
 
 
-.modal-dialog {
-    width: 600px;
-    margin: 7% auto;
-	
-  
-}
+
 
 
 .row {
@@ -883,29 +867,391 @@ body.modal-open .login-container{
 
 
 
-#emailinput{
-	box-shadow: none;
-	box-shadow: none;
-border-radius: 6px;
-padding-top: 22px;
-padding-bottom: 22px;
-border-color: #0072bc;
-border: 1.5px solid #0072bc;
-color: #0072bc;
+
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 45px;
+    padding: 6px 10px;
+    font-size: 15px;
+    line-height: 1.42857143;
+    color: #0072bc;
+    background-color: transparent;
+	border-radius: 6px;
+	border: 1.4px solid #0072bc;
+	font-family: century gothic;
+	
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+#formvan {
+	margin-bottom: 10px;
+}
+
+.form-control:focus {
+	border-color: #0072bc;
+    box-shadow: none;
+}
+
+
+#textcolor ::-webkit-input-placeholder {
+  color: #0072bc;
+}
+#textcolor :-moz-placeholder {
+  color: #0072bc;
+}
+#textcolor ::-moz-placeholder {
+  color: #0072bc;
+}
+#textcolor :-ms-input-placeholder {
+  color: #0072bc;
+}
+
+
+#logintext{
+	left: 0;
+    position:absolute;
+    text-align:center;
+    top: 30%;
+    width: 100%;
+	color: white; 
+	font-size: 22px; 
+	padding-bottom: 12px;
 
 }
 
-#passwordinput{
-	box-shadow: none;
-	box-shadow: none;
-border-radius: 6px;
-padding-top: 22px;
-padding-bottom: 22px;
-border-color: #0072bc;
-border: 1.5px solid #0072bc;
-color: #0072bc;
+#logintext1{
+	left: 0;
+    position:absolute;
+    text-align:center;
+    top: 40%;
+    width: 100%;
+	color: white; 
+	font-weight: 20px;
+	padding-bottom: 12px;
+	font-family: 'Raleway', sans-serif;
+	
+
 }
 
 
+
+
+.inner-addon {
+  position: relative;
+
+}
+
+
+.inner-addon .glyphicon {
+  position: absolute;
+ padding: 15px;
+  pointer-events: none;
+}
+
+.right-addon .glyphicon {   right: 0px; color: #0072bc;}
+.right-addon input { padding-right: 30px; }
+
+
+
+
+
+.profile-img-card {
+    width: 118px;
+    height: 118px;
+    margin: 0 auto 10px;
+    display: block;
+   
+    
+}
+
+
+
+
+
+div.navButtons {
+    border: 1px solid blue;
+    text-align: center;
+}
+
+
+
+
+
+
+
+#btnlogin {
+    background: #0072bc;
+      border: solid 1.45px #0072bc;
+    color: white;
+    width: 37%;
+	padding-top: 3%;
+	padding-bottom: 3%;
+	margin-right: 3px;
+	border-radius: 6px;
+
+}
+
+
+#btnlogin:focus {outline:0;}
+#btnregister:focus {outline:0;}
+
+
+#btnreg {
+    background: transparent;
+    border: solid 1.45px #0072bc;
+       color: #0072bc;
+    width: 37%;
+	padding-top: 3%;
+	padding-bottom: 3%;
+	margin-left: 3px;
+	border-radius: 6px;
+
+}
+
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+  outline:none;
+  outline: none;
+  
+}
+
+
+
+
+#searchcolor ::-webkit-input-placeholder {
+  color: white;
+}
+#searchcolor :-moz-placeholder {
+  color: white;
+}
+#searchcolor ::-moz-placeholder {
+  color: white;
+}
+#searchcolor :-ms-input-placeholder {
+  color: white;
+}
+
+
+
+#letstart:hover{
+	-webkit-transform: scale(1.04);
+    -ms-transform: scale(1.04);
+    transform: scale(1.04);
+	background-color: transparent;
+
+  
+   
+}
+
+
+#subtitle2 {
+  text-align: center;
+  font-weight: 900;
+  font-size: 35px;
+  letter-spacing: 9px;
+  position: relative;
+  color:white;
+  top: -25px;
+ 
+  font-family: century gothic;
+   
+ 
+}
+
+#subtitle3 {
+  text-align: center;
+  position: relative;
+  color:white;
+  top: -30px;
+  font-size: 27px;
+  font-family: 'Raleway', sans-serif;
+ 
+}
+
+
+#create{
+	background-color: white;
+	color: #0072bc;
+	border-radius: 30px;
+	font-weight: bold;
+}
+
+
+
+  #map {
+        width: 100%;
+        height: 500px;
+        
+      }
+ 
+  #cmnt {
+      height: 400px; 
+	  width: 30%;
+	  background-color: transparent;
+            margin-top: -15px;
+      } 
+	  
+	  #box {
+      height: 420px; 
+	    width:35%;
+	  background-color: white;
+      -webkit-box-shadow: 0px 20px 120px -24px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 20px 120px -24px rgba(0,0,0,0.75);
+	box-shadow: 0px 20px 120px -24px rgba(0,0,0,0.75);
+
+      } 
+	  
+	    #bb {
+      height: 175px; 
+	   
+	  background-color: transparent;
+    
+
+      } 
+	  
+	     #bb1 {
+      height: 175px; 
+	   padding-top: .5%;
+	  background-color: transparent;
+    
+
+      } 
+	  
+	   
+	    
+	
+#pad{
+	padding-top: 5%;
+}
+ 
+ 
+ #msg1{
+	 background-color: white;
+	 border: 1.2px solid #0072bc;
+	 border-radius: 0;
+	
+ }
+
+ #send{
+	 background-color: #0072bc;  
+    color: white;
+    width: 100%;
+	padding-top: 4%;
+	padding-bottom: 4%;
+	
+ }
+
+ 
+ #foot{
+	 
+	 text-align: center;
+	 height: 25px;
+	 background-color:transparent;
+	 
+ }
+ 
+ 
+
+.text-center {
+    text-align: center;
+}
+
+
+.half-txt {
+    width: 60%;
+    margin: 0 auto;
+    display: inline-block;
+    line-height: 25px;
+    color: #7e7e7e;
+}
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+
+
+
+.team-member, .team-member .team-img {
+    position: relative;
+	
+}
+.team-member {
+    overflow: hidden;
+}
+.team-member, .team-member .team-img {
+    position: relative;
+}
+
+.team-hover{
+	position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+
+.team-member:hover .team-hover, .team-member:hover .team-hover .desk, .team-member:hover .team-hover .s-link {
+    opacity: 1;
+}
+
+.desk, .desk h4, .team-hover .s-link a {
+    text-align: center;
+    color: white;
+}
+
+.team-member:hover .team-hover, .team-member:hover .team-hover .desk, .team-member:hover .team-hover .s-link {
+    opacity: 1;
+}
+.team-hover .s-link {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    opacity: 0;
+    text-align: center;
+    -webkit-transform: translateY(45%);
+    -ms-transform: translateY(45%);
+    transform: translateY(45%);
+    -webkit-transition: all 0.3s 0.2s;
+    transition: all 0.3s 0.2s;
+    font-size: 35px;
+}
+.desk, .desk h4, .team-hover .s-link a {
+    text-align: center;
+    color: #222;
+}
+.team-member .s-link a {
+    margin: 0 10px;
+    color: white;
+    font-size: 16px;
+}
+.team-title {
+    position: static;
+    padding: 20px 0;
+    display: inline-block;
+    letter-spacing: 2px;
+    width: 100%;
+	text-align: center;
+}
+.team-title h5 {
+    margin-bottom: 0px;
+    display: block;
+    text-transform: uppercase;
+}
 
 
