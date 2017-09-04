@@ -52,17 +52,16 @@
 
                         <div class="row x_title" >
                             <div class="col-md-4" >
-                                <h3 >Organize an Events...</h3 >
+                                <h3 >Organize an Event</h3 >
                             </div >
                             <div class="col-md-8">
-                                Steps:
-                                    <a href="#"><button class="btn-stepsNav" data-Id="step1" type="button">1</button></a >
-                                    <a href="#"><button class="btn-stepsNav" data-Id="step2" type="button">2</button></a >
-                                    <a href="#"><button class="btn-stepsNav" data-Id="step3" type="button">3</button></a >
-                                    <a href="#"><button class="btn-stepsNav" data-Id="step4" type="button">4</button></a >
-                                    <a href="#"><button class="btn-stepsNav" data-Id="step5" type="button">5</button></a >
-                                    <a href="#"><button class="btn-stepsNav" data-Id="step6" type="button">6</button></a >
-
+                                Step: <button class="btn-stepsNav" data-Id="step1" type="button">
+                                <?php
+                                    $step = isset($_GET['step']) ? $_GET['step'] : 1;
+                                    echo $step;
+                                ?>
+                                    <input type="hidden" id="get_step" value="<?php echo $step;?>">
+                                </button>
                             </div>
                         </div >
                         <div class="row x_title" >
@@ -70,8 +69,8 @@
                                 <div id="create-event-placeholder" >
                                     <!--step 1-->
                                     <div class="container">
-                                        <div class="row">
-                                            <section class="step-section active-section" id="step1" data-Id="step1">
+                                        <div class="row" id="step1">
+                                            <section class="step-section active-section" id="" data-Id="step1">
                                                 <div id="location_holder" style="position: relative;">
                                                     <h4 >Where do you want to meet with other flockers?<br />
                                                         <i >
@@ -86,12 +85,45 @@
 
                                                 </div >
                                             </section>
-                                            <section class="step-section" id="step2"></section >
-                                            <section class="step-section" id="step3"></section >
-                                            <section class="step-section" id="step4"></section >
-                                            <section class="step-section" id="step5"></section >
-                                            <section class="step-section" id="step6"></section >
+                                        </div><br>
+                                        <div class="row" id="step2">
+                                            <section class="step-section active-section" id="" data-Id="step2">
+                                                <div id="location_holder" style="position: relative;">
+                                                    <h4 >What your meetup would be about ?<br />
+
+                                                    </h4 >
+                                                </div >
+                                            </section>
                                         </div>
+                                        <div class="row" id="step3">
+                                            <section class="step-section active-section" id="" data-Id="step3">
+                                                <div id="location_holder" style="position: relative;">
+                                                    <h4 >Provide short description of your meet up.<br />
+
+                                                    </h4 >
+                                                </div >
+                                            </section>
+                                        </div>
+                                        <div class="row" id="step4">
+                                            <section class="step-section active-section" id="" data-Id="step5">
+                                                <div id="location_holder" style="position: relative;">
+                                                    <h4 >Choose your plan ... <br />
+
+                                                    </h4 >
+                                                </div >
+                                            </section>
+                                        </div>
+                                        <div class="row" id="step5">
+                                            <section class="step-section active-section" id="" data-Id="step5">
+                                                <div id="location_holder" style="position: relative;">
+                                                    <h4 >Terms and agreement<br />
+
+                                                    </h4 >
+                                                </div >
+                                            </section>
+                                        </div>
+                                        <a class="btn btn-info" style="<?php echo $step>=5 ? 'display:none': 'float: right'; ?>"  href="createevents.php?step=<?php echo $step+1?>"> Next</a>
+                                        <a class="btn btn-info" style="<?php echo $step<=1 ? 'display:none': 'float: left'; ?>"  href="createevents.php?step=<?php echo $step-1?>"> Previous</a>
                                     </div>
                                 </div >
                             </div >
@@ -274,8 +306,41 @@
 
         });
 //    });
+</script >
+<script >
 
+    $(document).ready(function () {
+        var step = document.getElementById('get_step').value;
+       if(step == 1){
+           document.getElementById('step2').style="display:none";
+           document.getElementById('step3').style="display:none";
+           document.getElementById('step4').style="display:none";
+           document.getElementById('step5').style="display:none";
+       } else if(step == 2) {
+           document.getElementById('step1').style="display:none";
+           document.getElementById('step3').style="display:none";
+           document.getElementById('step4').style="display:none";
+           document.getElementById('step5').style="display:none";
+       }else if(step==3) {
 
+           document.getElementById('step1').style="display:none";
+           document.getElementById('step2').style="display:none";
+           document.getElementById('step4').style="display:none";
+           document.getElementById('step5').style="display:none";
+       }else if(step==4) {
+
+           document.getElementById('step1').style="display:none";
+           document.getElementById('step2').style="display:none";
+           document.getElementById('step3').style="display:none";
+           document.getElementById('step5').style="display:none";
+       }else if(step==5) {
+
+           document.getElementById('step1').style="display:none";
+           document.getElementById('step2').style="display:none";
+           document.getElementById('step3').style="display:none";
+           document.getElementById('step4').style="display:none";
+       }
+    });
 
 </script >
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKsHRoSGi4ufnKBFUUPepgP8AUcWxxis8&libraries=places&callback=initAutoComplete" async defer ></script >

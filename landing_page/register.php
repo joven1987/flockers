@@ -1,6 +1,6 @@
     <?php
 
-include_once('./db_connection/connection_PDO.php');
+include_once('../db_connection.php');
 
     if(isset($_POST['register'])){
 
@@ -32,7 +32,7 @@ include_once('./db_connection/connection_PDO.php');
 				`mobile_no`,`address`,`email_address`,`paypal_account`,`date_registered`)
 				VALUES(:username, :password, :first_name, :last_name, :mobile_no, :address, :email_address, :paypal_account, :date_registered)");
             $query->bindParam(':username',$username);
-            $query->bindParam(':password',$password);
+            $query->bindParam(':password',password_hash($password, PASSWORD_DEFAULT));
             $query->bindParam(':first_name',$first_name);
             $query->bindParam(':last_name',$last_name);
             $query->bindParam(':mobile_no',$mobile_no);
