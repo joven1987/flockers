@@ -18,6 +18,9 @@
     <!-- iCheck -->
     <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet" >
 
+    <!-- Switchery -->
+    <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+
     <!-- bootstrap-progressbar -->
     <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" >
     <!-- JQVMap -->
@@ -50,7 +53,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12" >
                     <div class="dashboard_graph" >
 
-                        <div class="row x_title" >
+                       <!-- <div class="row x_title" >
                             <div class="col-md-4" >
                                 <h3 >Organize an Event</h3 >
                             </div >
@@ -67,7 +70,7 @@
                         <div class="row x_title" >
                             <div class="col-md-12 col-sm-12 col-xs-12" >
                                 <div id="create-event-placeholder" >
-                                    <!--step 1-->
+                                    step 1
                                     <div class="container">
                                         <div class="row" id="step1">
                                             <section class="step-section active-section" id="" data-Id="step1">
@@ -90,8 +93,8 @@
                                             <section class="step-section active-section" id="" data-Id="step2">
                                                 <div id="location_holder" style="position: relative;">
                                                     <h4 >What your meetup would be about ?<br />
-
                                                     </h4 >
+
                                                 </div >
                                             </section>
                                         </div>
@@ -126,11 +129,151 @@
                                         <a class="btn btn-info" style="<?php echo $step<=1 ? 'display:none': 'float: left'; ?>"  href="createevents.php?step=<?php echo $step-1?>"> Previous</a>
                                     </div>
                                 </div >
-                            </div >
+                            </div >-->
+                                    <!--<div class="page-title">
+                                        <div class="title_left">
+                                            <h3>Form Wizards</h3>
+                                        </div>
+
+                                        <div class="title_right">
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" placeholder="Search for...">
+                                                    <span class="input-group-btn">
+                              <button class="btn btn-default" type="button">Go!</button>
+                          </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>-->
+                                    <div class="clearfix"></div>
+
+                                    <div class="row">
+                                        <form action="../paypal/payments.php" method="post" target="_blank">
+                                            <input type="hidden" name="cmd" value="_xclick" />
+                                            <input type="hidden" name="no_note" value="1" />
+                                            <input type="hidden" name="lc" value="PHP" />
+                                            <input type="hidden" name="currency_code" value="GBP" />
+                                            <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest" />
+                                            <input type="hidden" name="first_name" value="Customer's First Name"  />
+                                            <input type="hidden" name="last_name" value="Customer's Last Name"  />
+                                            <input type="hidden" name="payer_email" value="customer@example.com"  />
+                                            <input type="hidden" name="item_number" value="123456" />
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="x_panel">
+                                                <div class="x_title">
+                                                    <h2>Create your event</h2>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="x_content">
+
+
+                                                    <!-- Smart Wizard -->
+                                                    <div id="wizard" class="form_wizard wizard_horizontal">
+                                                        <ul class="wizard_steps">
+                                                            <li>
+                                                                <a href="#step-1">
+                                                                    <span class="step_no">1</span>
+                                                                    <span class="step_descr">
+
+                                              <small>Choose a venue</small>
+                                          </span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#step-2">
+                                                                    <span class="step_no">2</span>
+                                                                    <span class="step_descr">
+                                              <small>Meetup topic</small>
+                                          </span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#step-3">
+                                                                    <span class="step_no">3</span>
+                                                                    <span class="step_descr">
+                                              <small>Meetup description</small>
+                                          </span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#step-4">
+                                                                    <span class="step_no">4</span>
+                                                                    <span class="step_descr">
+                                              Step 4<br />
+                                              <small>Step 4 description</small>
+                                          </span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                        <div id="step-1">
+<!--                                                            <form class="form-horizontal form-label-left">-->
+                                                            <div id="location_holder" style="position: relative;">
+                                                                <h4 >Where do you want to meet with other flockers?<br />
+                                                                    <i >
+                                                                        <small id="place_holder" ></small >&nbsp;&nbsp;
+                                                                        <small style="text-decoration: underline; cursor: pointer; color: blue;"
+                                                                               id="change_location" >change
+                                                                        </small >
+                                                                    </i >
+                                                                </h4 >
+                                                            </div >
+                                                            <div id="map_holder" style="width: 100%; height: 300px;" >
+
+                                                            </div >
+<!--                                                            </form>-->
+
+                                                        </div>
+                                                        <div id="step-2">
+                                                            <h2 class="StepTitle">Step 2 Content</h2>
+                                                            <p >
+                                                                What would be your event be about?
+                                                                <input type="text" placeholder="Search for a topic"/>
+                                                            </p>
+                                                            <p id="topic_list"style="width: 100%; height: 300px;">
+                                                                List of topics here
+                                                            </p>
+                                                        </div>
+                                                        <div id="step-3">
+                                                            <h2 class="StepTitle">Step 3 Content</h2>
+                                                            <p>
+                                                                What will be your event will be?
+                                                                <input type="text" placeholder="Name your event"/>
+                                                            </p>
+                                                            <p>
+                                                                Describe who should join, and what your meetup will do.
+                                                            </p>
+                                                            <p style="width: 100%; height: 300px;">
+                                                                <textarea name="event_description" id="event_description" cols="30"
+                                                                          rows="10" ></textarea >
+                                                            </p>
+                                                        </div>
+                                                        <div id="step-4">
+                                                            <h2 class="StepTitle">Terms and condition</h2>
+                                                            <p>Terms and conditions
+                                                            </p>
+                                                            <p style="width: 100%; height: 300px;">
+                                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                                                                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                            </p>
+                                                            <p>
+
+                                                            </p>
+                                                            <div class="">
+                                                                <label>
+                                                                    <input type="checkbox" class="js-switch" checked /> Checked
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <!-- End SmartWizard Content -->
                             <div class="clearfix" ></div >
+
                         </div >
                     </div >
                 </div >
+            </form >
 
             </div >
             <br />
@@ -191,10 +334,23 @@
 <script src="../vendors/moment/min/moment.min.js" ></script >
 <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js" ></script >
 
+<!-- Switchery -->
+<script src="../vendors/switchery/dist/switchery.min.js"></script>
+
+<!-- jQuery Smart Wizard -->
+<script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+
 <!-- Custom Theme Scripts -->
 <script src="../build/js/custom.min.js" ></script >
 
 <script >
+//$('div.actionBar .buttonNext').on('click', function () {
+//    if(('.content').css('display')=='block'){
+//        alert('content ID');
+//    }
+//    console.log('content ID');
+//});
+
 
 //    $(document).ready(function () {
 // search new place for event up
@@ -307,7 +463,7 @@
         });
 //    });
 </script >
-<script >
+<!--<script >
 
     $(document).ready(function () {
         var step = document.getElementById('get_step').value;
@@ -342,7 +498,7 @@
        }
     });
 
-</script >
+</script >-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKsHRoSGi4ufnKBFUUPepgP8AUcWxxis8&libraries=places&callback=initAutoComplete" async defer ></script >
 
 

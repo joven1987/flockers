@@ -1855,6 +1855,7 @@ Switchery.prototype.bindClick = function() {
 
 Switchery.prototype.markAsSwitched = function() {
   this.element.setAttribute('data-switchery', true);
+  alert("switched");
 };
 
 /**
