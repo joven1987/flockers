@@ -1854,7 +1854,7 @@ Switchery.prototype.bindClick = function() {
  */
 
 Switchery.prototype.markAsSwitched = function() {
-  this.element.setAttribute('data-switchery', true);
+  this.element.setAttribute('dataswitchery', true);
   alert("switched");
 };
 
@@ -1865,7 +1865,7 @@ Switchery.prototype.markAsSwitched = function() {
  */
 
 Switchery.prototype.markedAsSwitched = function() {
-  return this.element.getAttribute('data-switchery');
+  return this.element.getAttribute('dataswitchery');
 };
 
 /**

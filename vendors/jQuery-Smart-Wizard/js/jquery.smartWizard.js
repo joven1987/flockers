@@ -21,9 +21,9 @@ function SmartWizard(target, options) {
     this.elmStepContainer = $('<div></div>').addClass("stepContainer");
     this.loader = $('<div>Loading</div>').addClass("loader");
     this.buttons = {
-        next : $('<a>'+options.labelNext+'</a>').attr("href","#").addClass("buttonNext"),
-        previous : $('<a>'+options.labelPrevious+'</a>').attr("href","#").addClass("buttonPrevious"),
-        finish  : $('<button>'+options.labelFinish+'</button>').attr({type:"submit"}).addClass("buttonFinish")
+        next : $('<a>'+options.labelNext+'</a>').attr({href:"#", id:"next"}).addClass("buttonNext"),
+        previous : $('<a>'+options.labelPrevious+'</a>').attr({href:"#", id: "previous"}).addClass("buttonPrevious"),
+        finish  : $('<button>'+options.labelFinish+'</button>').attr({type:"submit", id: "payment"}).addClass("buttonFinish")
     };
 
     /*
@@ -285,7 +285,7 @@ function SmartWizard(target, options) {
         }
         // Finish Button
         if (! $this.steps.hasClass('disabled') || $this.options.enableFinishButton){
-            $($this.buttons.finish).removeClass("buttonDisabled");
+             // $($this.buttons.finish).removeClass("buttonDisabled");
             if ($this.options.hideButtonsOnDisabled) {
                 $($this.buttons.finish).show();
             }

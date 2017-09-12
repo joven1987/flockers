@@ -4,9 +4,9 @@ $user = "root";
 $pass = 'ambunganz071587';
 
 try {
-    $dbConnection = new PDO("mysql:host=$servername;dbname=flockers", $user, $pass);
+    $db = new PDO("mysql:host=$servername;dbname=flockers", $user, $pass);
     // set the PDO error mode to exception
-    $dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
    
 }

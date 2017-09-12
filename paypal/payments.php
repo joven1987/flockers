@@ -2,21 +2,36 @@
 require '../db_connection.php';
 
 // PayPal settings
+
 $paypal_email = 'buyer_facilitator@gmail.com';
 $return_url = 'http://localhost/flockers_final_final/flockers/paypal/payment-successful.html';
 $cancel_url = 'http://localhost/flockers_final_final/flockers/paypal/payment-cancelled.html';
-$notify_url = 'http://domain.com/payments.php';
+$notify_url = 'http://localhost/flockers_final_final/flockers/paypal/payments.php';
 
 $item_name = 'Test Item';
-$item_amount = 10.00;
+$item_amount = $_REQUEST['subscribe'];
 
 // Include Functions
 include("functions.php");
 
 // Check if paypal request or response
 if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])){
+
+	if (isset($_REQUEST['subscribe'])) {
+		$city = $_REQUEST['city'];
+		$cityLat = $_REQUEST['cityLat'];
+		$cityLng = $_REQUEST['cityLng'];
+		$topics = $_REQUEST['topics'];
+		$event_name= $_REQUEST['event_name'];
+		$event_desc = $_REQUEST['event_desc'];
+		$admission = $_REQUEST['admission'];
+		$amount= $_REQUEST['subscribe'];
+
+
+	}
+
+
 	$querystring = '';
-	echo '<script>console.log("Payment Success");</script>';
 	// Firstly Append paypal account to querystring
 	$querystring .= "?business=".urlencode($paypal_email)."&";
 	
@@ -44,10 +59,8 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])){
 	header('location:https://www.sandbox.paypal.com/cgi-bin/webscr'.$querystring);
 	exit();
 } else {
-    echo '<script>console.log("Payment Success");</script>';
-	
-	// Response from Paypal
 
+	// Response from Paypal
 	// read the post from PayPal system and add 'cmd'
 	$req = 'cmd=_notify-validate';
 	foreach ($_POST as $key => $value) {
