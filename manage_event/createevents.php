@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" >
 
     <title >Flockers</title >
+    <!--ckeditor-->
+    <script src="../ckeditor/ckeditor.js"></script>
+    <link rel="../ckeditor/samples/stylesheet" href="sample.css">
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" >
@@ -91,9 +94,9 @@
                                                                     <span class="step_descr">
 
                                         <!--Get the address name and the latitude and longitude of the venue-->
-                                            <input type="text" id="city" name="city" />
-                                            <input type="text" id="cityLat" name="cityLat" />
-                                            <input type="text" id="cityLng" name="cityLng" />
+                                            <input type="hidden" id="city" name="city" />
+                                            <input type="hidden" id="cityLat" name="cityLat" />
+                                            <input type="hidden" id="cityLng" name="cityLng" />
 
                                               <small>Choose a venue</small>
                                           </span>
@@ -179,10 +182,16 @@
                                                             <p>
                                                                 Describe who should join, and what your meetup will do.
                                                             </p>
-                                                            <p style="width: 100%; height: 300px;">
+                                                            <!--wysywg-->
+                                                            <!--<p style="width: 100%; height: 300px;">
                                                                 <textarea name="event_desc" id="event_desc" cols="30"
                                                                           rows="10" ></textarea >
-                                                            </p>
+                                                            </p>-->
+                                                            <textarea  name="event_desc" id="event_desc" class="validate[required]" rows="5" placeholder="Event Description"></textarea>
+                                                            <script >
+                                                                CKEDITOR.replace( 'event_desc' );
+                                                            </script >
+                                                            <!--wysywg-->
                                                         </div>
                                                         <div id="step-4">
                                                             <!--<h2 class="StepTitle">Step 4 Content</h2>-->
@@ -307,6 +316,10 @@
 <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js" ></script >
 <!-- iCheck -->
 <script src="../vendors/iCheck/icheck.min.js" ></script >
+<!-- bootstrap-wysiwyg -->
+<script src="../vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+<script src="../vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+<script src="../vendors/google-code-prettify/src/prettify.js"></script>
 <!-- Skycons -->
 <script src="../vendors/skycons/skycons.js" ></script >
 <!-- Flot -->
