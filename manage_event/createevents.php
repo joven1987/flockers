@@ -32,7 +32,14 @@
     <link href="../build/css/custom.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../src/style.css" />
 
+
 </head >
+<style >
+    #step-1, #step-2, #step-3, #step-4, #step-5,#step-6 {
+        width: 100% !important;
+        height: 300px !important;
+        }
+</style >
 
 <body class="nav-md" >
 <div class="container body" >
@@ -84,9 +91,9 @@
                                                                     <span class="step_descr">
 
                                         <!--Get the address name and the latitude and longitude of the venue-->
-                                            <input type="hidden" id="city" name="city" />
-                                            <input type="hidden" id="cityLat" name="cityLat" />
-                                            <input type="hidden" id="cityLng" name="cityLng" />
+                                            <input type="text" id="city" name="city" />
+                                            <input type="text" id="cityLat" name="cityLat" />
+                                            <input type="text" id="cityLng" name="cityLng" />
 
                                               <small>Choose a venue</small>
                                           </span>
@@ -133,6 +140,8 @@
                                                                 </a>
                                                             </li>
                                                         </ul>
+                                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                                            <div class="x_panel">
                                                         <div id="step-1">
 <!--                                                            <form class="form-horizontal form-label-left">-->
                                                             <div id="location_holder" style="position: relative;">
@@ -210,37 +219,48 @@
                                                             <div class="row">
                                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                                     <div class="x_panel">
-                                                                        <sup>₱</sup>300.00<sub>/month</sub>
-<!--                                                                        <div class="radio">-->
-<!--                                                                            <label>-->
-                                                                              <input type="radio" class="" onclick="display_subscr(this.value)" name="amount" value="300"> Select
-<!--                                                                            </label>-->
-<!--                                                                          </div>-->
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4 col-sm-4 col-xs-12">
-                                                                    <div class="x_panel">
                                                                         <sup>₱</sup>500.00<sub>/month</sub>
-<!--                                                                        <div class="radio">-->
-<!--                                                                            <label>-->
-                                                                              <input type="radio" class="" checked onclick="display_subscr(this.value)" name="amount" value="500"> Select
-<!--                                                                            </label>-->
-<!--                                                                          </div>-->
+                                                                        <p>
+                                                                            How many months you want your event to be advertised by the system?
+                                                                        </p>
+                                                                        <select name="subscribe" id="subscribe" onchange="payment_preview(this.value)" required>
+                                                                            <option value="1" >1 month</option >
+                                                                            <option value="2" >2 months</option >
+                                                                            <option value="3" >3 months</option >
+                                                                            <option value="4" >4 months</option >
+                                                                            <option value="5" >5 months</option >
+                                                                            <option value="6" >6 months</option >
+                                                                            <option value="7" >7 months</option >
+                                                                            <option value="8" >8 months</option >
+                                                                            <option value="9" >9 months</option >
+                                                                            <option value="10" >10 months</option >
+                                                                            <option value="11" >11 months</option >
+                                                                            <option value="12" >12 months</option >
+                                                                        </select >
+                                                                        <script >
+                                                                            function payment_preview(val) {
+                                                                                var prev ="₱ " + (val * 500);
+                                                                                document.getElementById('preview').innerHTML = prev;
+
+                                                                            }
+                                                                        </script >
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                                                <div class="col-md-8 col-sm-8 col-xs-12">
                                                                     <div class="x_panel">
-                                                                        <sup>₱</sup>1000.00<sub>/month</sub>
-<!--                                                                        <div class="radio">-->
-<!--                                                                            <label>-->
-                                                                              <input type="radio" class="" onclick="display_subscr(this.value)" name="amount" value="1000"> Select
-<!--                                                                            </label>-->
-<!--                                                                          </div>-->
+                                                                        <div id="preview"></div>
+                                                                        <button type="submit" name="checkout" class="btn btn-lg btn-dark">Check Out</button >
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-12 col-sm-12 col-xs-12"><div class="x_panel" id="subscribe_content"></div> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                                            <div class="x_panel">
+                                                                preview details
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <!-- End SmartWizard Content -->
                             <div class="clearfix" ></div >
@@ -333,7 +353,7 @@
     function admission_type(val) {
         var app = "";
         if(val == '2' && $('#admission_fee').length == 0) {
-            app = "<input type='number' name='admission_fee' id='admission_fee' />";
+            app = "<input type='number' name='admission_fee' id='admission_fee' required/>";
             $('#prem').append(app);
         }else if(val == '1') {
             $('#admission_fee').remove();
@@ -349,7 +369,7 @@
                     var insert = '';
                     var i = 0;
                     while (i < data.length) {
-                        insert += "<div class=''><label><input name='topics[]' type='checkbox' class='js-switch' id='terms_agreement' value='" + data[i]["main_category_id"] + "'/>" + data[i]['main_category_name'] + "</label></div>";
+                        insert += "<div class=''><label><input name='topics[]' type='checkbox' class='js-switch' id='terms_agreement' value='" + data[i]["id"] + "'/>" + data[i]['interest_name'] + "</label></div>";
                         i++;
                     }
                     document.getElementById('topic_list').innerHTML = insert;
@@ -361,6 +381,7 @@
     }
 
 $(document).ready(function () {
+
     $('#payment').remove();
     $('#next, #previous').on('click', function () {
         var selected = $('#wizard ul li a.selected').attr('rel');
@@ -382,7 +403,9 @@ $(document).ready(function () {
                    });
                    checked = false;
                 }
+        }
 
+        if (selected) {
 
         }
     });
@@ -415,14 +438,12 @@ $(document).ready(function () {
                 document.getElementById('city').value = place.name;
                 document.getElementById('cityLat').value = place.geometry.location.lat();
                 document.getElementById('cityLng').value = place.geometry.location.lng();
-
-
             });
         }
 
         jQuery("#change_location").click(function () {
             jQuery("#location_holder h4 i").css({display: "none"});
-            jQuery("#location_holder h4").append("<input type='search' autocomplete='on' onfocus='searchPlace();' runat='server' size='50' style='width: 50%;' id='search_new_place' name='venue' autofocus/>");
+            jQuery("#location_holder h4").append("<input type='search' autocomplete='on' onfocus='searchPlace()' runat='server' size='50' style='width: 50%;' id='search_new_place' name='venue' autofocus/>");
         });
 
 
@@ -516,42 +537,7 @@ $(document).ready(function () {
         });
 //    });
 </script >
-<!--<script >
 
-    $(document).ready(function () {
-        var step = document.getElementById('get_step').value;
-       if(step == 1){
-           document.getElementById('step2').style="display:none";
-           document.getElementById('step3').style="display:none";
-           document.getElementById('step4').style="display:none";
-           document.getElementById('step5').style="display:none";
-       } else if(step == 2) {
-           document.getElementById('step1').style="display:none";
-           document.getElementById('step3').style="display:none";
-           document.getElementById('step4').style="display:none";
-           document.getElementById('step5').style="display:none";
-       }else if(step==3) {
-
-           document.getElementById('step1').style="display:none";
-           document.getElementById('step2').style="display:none";
-           document.getElementById('step4').style="display:none";
-           document.getElementById('step5').style="display:none";
-       }else if(step==4) {
-
-           document.getElementById('step1').style="display:none";
-           document.getElementById('step2').style="display:none";
-           document.getElementById('step3').style="display:none";
-           document.getElementById('step5').style="display:none";
-       }else if(step==5) {
-
-           document.getElementById('step1').style="display:none";
-           document.getElementById('step2').style="display:none";
-           document.getElementById('step3').style="display:none";
-           document.getElementById('step4').style="display:none";
-       }
-    });
-
-</script >-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKsHRoSGi4ufnKBFUUPepgP8AUcWxxis8&libraries=places&callback=initAutoComplete" async defer ></script >
 
 

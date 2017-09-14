@@ -1,12 +1,14 @@
 <?php
-// functions.php
+require '../db_connection.php';
 function check_txnid($tnxid){
 	global $link;
 	return true;
 	$valid_txnid = true;
 	//get result set
-	$sql = mysql_query("SELECT * FROM `payments` WHERE txnid = '$tnxid'", $link);
-	if ($row = mysql_fetch_array($sql)) {
+	$sql = $db->prepare("SELECT * FROM `payments` WHERE txnid=?");
+	$sql->bindParam(1, $link);
+	$sql->execute();
+	if ($row = $sql->rowCount() > 0) {
 		$valid_txnid = false;
 	}
 	return $valid_txnid;

@@ -16,6 +16,9 @@ if (isset($_REQUEST['subscribe'])) {
     echo $cityLat.'<br>';
     echo $cityLng.'<br>';
 //    print_r($topics);
-    echo $amount = $_REQUEST['subscribe'];
+//    echo $amount = $_REQUEST['subscribe'];
+    $topics = implode(",", $_REQUEST['topics']);
+    echo $topics;
 }
+
 ?>

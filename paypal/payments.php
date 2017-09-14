@@ -8,25 +8,51 @@ $return_url = 'http://localhost/flockers_final_final/flockers/paypal/payment-suc
 $cancel_url = 'http://localhost/flockers_final_final/flockers/paypal/payment-cancelled.html';
 $notify_url = 'http://localhost/flockers_final_final/flockers/paypal/payments.php';
 
-$item_name = 'Test Item';
-$item_amount = $_REQUEST['subscribe'];
+/*$item_name = 'Test Item';
+$item_amount = $_REQUEST['subscribe'];*/
 
 // Include Functions
 include("functions.php");
 
 // Check if paypal request or response
 if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])){
-
-	if (isset($_REQUEST['subscribe'])) {
+	if (isset($_REQUEST['checkout'])) {
+		$admin_user_id = 15;
+		$date_posted = date("Y-m-d h:i:s");
+		$event_id = uniqid();
 		$city = $_REQUEST['city'];
 		$cityLat = $_REQUEST['cityLat'];
 		$cityLng = $_REQUEST['cityLng'];
-		$topics = $_REQUEST['topics'];
+		$topics = implode(",",$_REQUEST['topics']);
 		$event_name= $_REQUEST['event_name'];
 		$event_desc = $_REQUEST['event_desc'];
-		$admission = $_REQUEST['admission'];
-		$amount= $_REQUEST['subscribe'];
+		$admission = $_REQUEST['admission_fee'];
+		$amount= ($_REQUEST['subscribe'] * 500);
+		$adver_status = 0;
+		$payment_status = 0;
 
+		$item_name = $event_id;
+		$item_amount = $amount;
+
+
+		$insert_event = $db->prepare("INSERT INTO `event` (`event_id`, `event_admin_user_id`,`interest_id`,`event_title`, `event_desc`, `reg_fee`, `payment_status`, `adver_status`) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+		$insert_event->bindParam(1, $event_id);
+		$insert_event->bindParam(2, $admin_user_id);
+		$insert_event->bindParam(3, $topics);
+		$insert_event->bindParam(4, $event_name);
+		$insert_event->bindParam(5, $event_desc);
+		$insert_event->bindParam(6, $admission);
+		$insert_event->bindParam(7, $payment_status);
+		$insert_event->bindParam(8, $adver_status);
+		$insert_event->execute();
+		if($insert_event->rowCount() == 1) {
+			$inser_venue = $db->prepare("INSERT INTO `venue`(`event_id`, `address`, `latitude`, `longitude`) VALUES(?, ?, ?, ?)");
+			$inser_venue->bindParam(1, $event_id);
+			$inser_venue->bindParam(2, $city);
+			$inser_venue->bindParam(3, $cityLat);
+			$inser_venue->bindParam(4, $cityLng);
+			$inser_venue->execute();
+		}
 
 	}
 
@@ -60,6 +86,7 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])){
 	exit();
 } else {
 
+
 	// Response from Paypal
 	// read the post from PayPal system and add 'cmd'
 	$req = 'cmd=_notify-validate';
@@ -79,6 +106,7 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])){
 	$data['receiver_email'] 	= $_POST['receiver_email'];
 	$data['payer_email'] 		= $_POST['payer_email'];
 	$data['custom'] 			= $_POST['custom'];
+
 		
 	// post back to PayPal system to validate
 	$header = "POST /cgi-bin/webscr HTTP/1.0\r\n";
@@ -88,7 +116,7 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])){
 	$fp = fsockopen ('ssl://www.sandbox.paypal.com', 443, $errno, $errstr, 30);
 	
 	if (!$fp) {
-		// HTTP ERROR
+		var_dump($fp);
 		
 	} else {
 		fputs($fp, $header . $req);
@@ -101,9 +129,9 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])){
 						
 				// Validate payment (Check unique txnid & correct price)
 				$valid_txnid = check_txnid($data['txn_id']);
-				$valid_price = check_price($data['payment_amount'], $data['item_number']);
+//				$valid_price = check_price($data['payment_amount'], $data['item_number']);
 				// PAYMENT VALIDATED & VERIFIED!
-				if ($valid_txnid && $valid_price) {
+				if ($valid_txnid) {
 					
 					$orderid = updatePayments($data);
 					
