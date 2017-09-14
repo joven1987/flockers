@@ -2,10 +2,10 @@
 require '../db_connection.php';
 
 // PayPal settings
-
+$get_e_id = uniqid();
 $paypal_email = 'buyer_facilitator@gmail.com';
-$return_url = 'http://localhost/flockers_final_final/flockers/paypal/payment-successful.html';
-$cancel_url = 'http://localhost/flockers_final_final/flockers/paypal/payment-cancelled.html';
+$return_url = 'http://localhost/flockers_final_final/flockers/paypal/payment-successful.php?event_id='.$get_e_id;
+$cancel_url = 'http://localhost/flockers_final_final/flockers/paypal/payment-cancelled.php';
 $notify_url = 'http://localhost/flockers_final_final/flockers/paypal/payments.php';
 
 /*$item_name = 'Test Item';
@@ -14,12 +14,17 @@ $item_amount = $_REQUEST['subscribe'];*/
 // Include Functions
 include("functions.php");
 
+function expiry_date($event_duration) {
+	$duration = date("Y-m-d h:i:s", time() + ($event_duration * 2592000));
+	return $duration;
+}
+
 // Check if paypal request or response
 if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])){
 	if (isset($_REQUEST['checkout'])) {
 		$admin_user_id = 15;
 		$date_posted = date("Y-m-d h:i:s");
-		$event_id = uniqid();
+		$event_id = $get_e_id;
 		$city = $_REQUEST['city'];
 		$cityLat = $_REQUEST['cityLat'];
 		$cityLng = $_REQUEST['cityLng'];
@@ -28,24 +33,35 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])){
 		$event_desc = $_REQUEST['event_desc'];
 		$admission = $_REQUEST['admission_fee'];
 		$amount= ($_REQUEST['subscribe'] * 500);
-		$adver_status = 0;
+		$event_duration = $_REQUEST['subscribe'];
+
+		$trans_date = date("Y-m-d h:i:s");
+        $expiry_date = expiry_date($event_duration);
 		$payment_status = 0;
+		$adver_status = 0;
 
 		$item_name = $event_id;
 		$item_amount = $amount;
 
+		$insert_trans = $db->prepare("INSERT INTO `create_event_trans`(`event_id`, `subscription_duration`, `total_amount_paid`, `trans_date`, `expiry_date`, `payment_status`, `adver_status`) VALUES(?, ?, ?, ?, ?, ?, ?)");
+		$insert_trans->bindParam(1, $event_id);
+		$insert_trans->bindParam(2, $event_duration);
+		$insert_trans->bindParam(3, $amount);
+		$insert_trans->bindParam(4, $trans_date);
+		$insert_trans->bindParam(5, $expiry_date);
+		$insert_trans->bindParam(6, $payment_status);
+		$insert_trans->bindParam(7, $adver_status);
+		$insert_trans->execute();
 
-		$insert_event = $db->prepare("INSERT INTO `event` (`event_id`, `event_admin_user_id`,`interest_id`,`event_title`, `event_desc`, `reg_fee`, `payment_status`, `adver_status`) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+		$insert_event = $db->prepare("INSERT INTO `event` (`event_id`, `event_admin_user_id`,`interest_id`,`event_title`, `event_desc`, `reg_fee`) VALUES(?, ?, ?, ?, ?, ?)");
 		$insert_event->bindParam(1, $event_id);
 		$insert_event->bindParam(2, $admin_user_id);
 		$insert_event->bindParam(3, $topics);
 		$insert_event->bindParam(4, $event_name);
 		$insert_event->bindParam(5, $event_desc);
 		$insert_event->bindParam(6, $admission);
-		$insert_event->bindParam(7, $payment_status);
-		$insert_event->bindParam(8, $adver_status);
 		$insert_event->execute();
-		if($insert_event->rowCount() == 1) {
+		if($insert_event->rowCount() == 1 && $insert_trans->rowCount() == 1) {
 			$inser_venue = $db->prepare("INSERT INTO `venue`(`event_id`, `address`, `latitude`, `longitude`) VALUES(?, ?, ?, ?)");
 			$inser_venue->bindParam(1, $event_id);
 			$inser_venue->bindParam(2, $city);
@@ -79,7 +95,7 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])){
 	$querystring .= "notify_url=".urlencode($notify_url);
 	
 	// Append querystring with custom field
-	//$querystring .= "&custom=".USERID;
+	$querystring .= "&custom=".$event_id;
 	
 	// Redirect to paypal IPN
 	header('location:https://www.sandbox.paypal.com/cgi-bin/webscr'.$querystring);
