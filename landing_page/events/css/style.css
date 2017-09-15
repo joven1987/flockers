@@ -1,0 +1,429 @@
+
+
+body {
+    background-color: #F8F8FA;
+}
+
+/*
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+    }
+}*/
+
+.portfolio-item {
+    margin-bottom: 30px;
+}
+
+.pagination {
+    margin-bottom: 30px;
+}
+
+#map {
+        width: 100%;
+        height: 450px;
+		position: absolute;
+        
+      }
+
+
+#topmeetup {
+        width: 100%;
+        height: 430px;
+		background-image:url('images/img/tech1.jpg');    
+		background-repeat: no-repeat;		
+		background-position: center;
+		position: absolute;
+ 
+      }
+	  
+	  
+.title{
+	
+	text-align: left;
+}
+	  
+.navbar{
+
+	background: #0072bc;
+}
+
+.create{
+	background-color: transparent;
+	color:white;
+	border-radius: 30px;
+	border: 2px solid white;
+	font-weight: bold;
+	outline: none;
+	font-family: century gothic;
+	font-size: 15px;
+	cursor: pointer;
+	box-shadow: none;
+}
+
+.create:hover{
+	background-color: white;
+	color: #0072bc;
+	outline: none;
+	border-color: white;
+	box-shadow: none;
+}
+
+.create.launch{
+	border: none;
+	outline: none;
+}
+
+
+.search{
+	height: 170px;
+	border-radius: 5px;
+	background: linear-gradient( rgba(0, 0, 0, 0.4) 0%, #0072bc 40%);
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	
+}
+
+.searchbar{
+	height: 45px;
+	border: transparent;
+	min-width: 340px;
+	
+
+	
+}
+
+
+.find{
+	height: 53px;
+	border: 2px solid white;
+	background-color: transparent;
+	cursor: pointer;
+	color: white;
+	font-family: century gothic;
+	
+	
+	
+}
+
+.find:hover{
+	height: 53px;
+	border: 2px solid white;
+	background-color: white;
+	cursor: pointer;
+	color: #0072bc;
+	
+	
+}
+
+
+
+#textcolor ::-webkit-input-placeholder {
+  color: #0072bc;
+}
+#textcolor :-moz-placeholder {
+  color: #0072bc;
+}
+#textcolor ::-moz-placeholder {
+  color: #0072bc;
+}
+#textcolor :-ms-input-placeholder {
+  color: #0072bc;
+}
+
+
+
+
+
+
+.btn-primary.active, .btn-primary:active, .show>.btn-primary.dropdown-toggle {
+    background-color: white;
+    background-image: none;
+    border: none;
+	outline: none;
+	box-shadow: none;
+	
+}
+
+
+
+
+
+
+
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: none;
+    border-radius: 0px;
+	 box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.card-img-top {
+    width: 100%;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.card-body {
+   background-color: white;
+   height: 230px;
+
+}
+
+.ptitle{
+	color: #0072bc;
+}
+
+
+.card-title {
+    color: #0072bc;
+    font-size: 15px;
+    font-family: 'Raleway', sans-serif;
+	
+	padding-bottom: 0px;
+   
+}
+
+
+text.eventd{
+	color: #0072bc; 
+	font-size: 13px; 
+	padding-left: 5px;
+	font-family: 'Raleway', sans-serif;
+}
+
+
+.searchtitle{
+	text-align: center; 
+	color: white; 
+	font-weight: 200;
+	font-size: 40px;
+	font-family: 'Raleway', sans-serif;
+	 
+}
+
+.btn-primary{
+	letter-spacing: 3px;
+	height: 50px;
+	min-width: 250px;
+	background-color: transparent;
+	border: none;
+	color: white;
+	border: transparent;
+	outline: none;
+	box-shadow: none;
+	cursor: pointer;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
+	
+}
+
+.btn-primary:hover{
+	letter-spacing: 3px;
+	height: 50px;
+	min-width: 250px;
+	background-color: transparent;
+	border: none;
+	color: white;
+	border-radius: 0px;
+
+	
+}
+
+.btn-primary.focus, .btn-primary:focus {
+    box-shadow:none;
+}
+
+.btn-primary.active, .btn-primary:active, .show>.btn-primary.dropdown-toggle {
+    background-color: transparent;
+    background-image: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.dropdown-menu{
+	left: 14px;
+	min-width: 250px;
+	border: none;
+	border-radius: 3px;
+	background-color: white;
+		box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
+
+
+}
+
+
+.drp{
+	padding-bottom: 20px;
+}
+
+.con{
+	background-color: transparent;
+	border: 1px solid #0072bc;
+	color: #0072bc; 
+	font-size: 13px;
+	border-radius: 20px;
+	cursor: pointer;
+	font-family: 'Raleway', sans-serif;
+}
+
+.con:hover{
+	background-color: #0072bc;
+	border: 1px solid #0072bc;
+	color:white;
+	
+}
+
+.tags{
+	padding-top: 10px;
+}
+
+
+
+.viewmore{
+	background-color: #0072bc;
+	border: 1px solid #0072bc;
+	color: white; 
+	font-size: 14px;
+	border-radius: 3px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	cursor: pointer;
+	font-family: 'Raleway', sans-serif;
+	width: 80px;
+	margin-top: -3px;
+}
+
+
+
+.aleft{
+	padding-top: 5px; 
+	padding-bottom: 5px;
+		padding-left: 12px;
+}
+
+.hover{
+	padding-top: 5px; 
+	padding-bottom: 5px; 
+	
+}
+
+.navsearch{
+	min-width: 200px;
+	
+}
+.topfind{
+	padding-left: 185px;
+	
+	
+	
+}
+
+.topfind ::-webkit-input-placeholder {
+  color: white;
+}
+.topfind :-moz-placeholder {
+  color: white;
+}
+.topfind ::-moz-placeholder {
+  color: white;
+}
+.topfind :-ms-input-placeholder {
+  color: white;
+}
+
+
+#topsearch{
+	width: 310px;
+	background-color: transparent;
+	border-left: 2px solid white;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
+	font-size: 20px;
+	color:white;
+	border-radius: 0px;
+	border-bottom: transparent;
+	border-right:transparent;
+	border-top: transparent;
+	
+	
+	
+	
+}
+
+
+.ft1{
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
+	font-size: 15px;
+	color:white;
+}
+
+.ft4{
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
+	font-size: 15px;
+	color:white;
+	padding-left: 5px;
+	
+}
+
+
+.foot{
+	background-color:#0072bc;
+	height: 265px;	
+}
+
+.ftfont{
+	font-family: 'Raleway', sans-serif;
+	font-weight: 700;
+	font-size: 17px;
+	color:white;
+	padding-left: 30px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	
+}
+
+.ftfont2{
+	font-family: 'Raleway', sans-serif;
+	font-weight: 700;
+	font-size: 17px;
+	color:white;
+	
+	
+}
+
+
+.flab{
+	
+	font-family: 'Raleway', sans-serif;
+	font-weight: 500;
+	font-size: 16px;
+	color: white;
+}
+
+
+
+.navbar-dark .navbar-nav .nav-link {
+    font-family: 'Raleway', sans-serif;
+	color: white;
+	font-weight: 300;
+}
+
+
+
+/*MODAL*/
+
+
