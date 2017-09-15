@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 04, 2017 at 11:12 PM
+-- Generation Time: Sep 16, 2017 at 12:38 AM
 -- Server version: 10.1.8-MariaDB
 -- PHP Version: 5.6.14
 
@@ -23,27 +23,41 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `evaluation`
+-- Table structure for table `create_event_trans`
 --
 
-CREATE TABLE `evaluation` (
-  `event_id` tinyint(4) NOT NULL,
-  `joiner_user_id` int(5) NOT NULL,
-  `question_id` tinyint(4) NOT NULL,
-  `rate` tinyint(1) NOT NULL
+CREATE TABLE `create_event_trans` (
+  `id` int(11) NOT NULL,
+  `event_id` varchar(20) NOT NULL,
+  `subscription_duration` int(11) NOT NULL,
+  `total_amount_paid` int(11) NOT NULL,
+  `trans_date` datetime NOT NULL,
+  `expiry_date` datetime NOT NULL,
+  `payment_status` int(11) NOT NULL,
+  `adver_status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `create_event_trans`
+--
+
+INSERT INTO `create_event_trans` (`id`, `event_id`, `subscription_duration`, `total_amount_paid`, `trans_date`, `expiry_date`, `payment_status`, `adver_status`) VALUES
+(1, '59badcbce2878', 8, 4000, '2017-09-15 04:14:15', '2018-05-13 04:14:15', 1, 1),
+(2, '59bb98f818f04', 1, 500, '2017-09-15 05:11:43', '2017-10-15 05:11:43', 1, 1),
+(3, '59bb9a8bdb256', 2, 1000, '2017-09-15 05:18:15', '2017-11-14 05:18:15', 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `evaluation_question`
+-- Table structure for table `evaluation`
 --
 
-CREATE TABLE `evaluation_question` (
-  `question_id` tinyint(4) NOT NULL,
-  `question_description` text NOT NULL,
-  `designer_user_id` int(5) NOT NULL,
-  `date_created` datetime NOT NULL
+CREATE TABLE `evaluation` (
+  `id` int(11) NOT NULL,
+  `event_id` varchar(20) NOT NULL,
+  `participant_user_id` int(5) NOT NULL,
+  `question` text NOT NULL,
+  `rate` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -53,59 +67,69 @@ CREATE TABLE `evaluation_question` (
 --
 
 CREATE TABLE `event` (
-  `event_id` tinyint(4) NOT NULL,
-  `event_organizer_user_id` int(5) NOT NULL,
-  `event_sub_category_id` tinyint(4) NOT NULL,
-  `cover_photo_link` varchar(50) NOT NULL,
-  `event_title` varchar(30) NOT NULL,
-  `event_description` text NOT NULL,
-  `event_date_posted` datetime NOT NULL,
-  `event_date` datetime NOT NULL,
-  `total_no_of_joiners` tinyint(4) NOT NULL,
-  `max_no_of_joiners` tinyint(4) NOT NULL,
-  `reg_amount` int(5) NOT NULL,
-  `event_status` tinyint(1) NOT NULL
+  `id` int(11) NOT NULL,
+  `event_id` varchar(20) NOT NULL,
+  `event_admin_user_id` int(5) NOT NULL,
+  `interest_id` varchar(50) NOT NULL,
+  `cover_photo_link` text,
+  `event_title` text NOT NULL,
+  `event_desc` text NOT NULL,
+  `event_date` datetime DEFAULT NULL,
+  `max_no_participants` int(11) DEFAULT NULL,
+  `reg_fee` int(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`id`, `event_id`, `event_admin_user_id`, `interest_id`, `cover_photo_link`, `event_title`, `event_desc`, `event_date`, `max_no_participants`, `reg_fee`) VALUES
+(1, '59badcbce2878', 15, '1,2,10,11', NULL, 'Lorem Ipsum', '<p><strong>Lorem Ipsum</strong><span style="color:rgb(0, 0, 0); font-family:open sans,arial,sans-serif; font-size:14px">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</span></p>\r\n', '2017-09-29 14:23:17', 4352, 500),
+(2, '59bb98f818f04', 15, '2,3,4,5,9,10', NULL, 'WATCHING PBA', '<p>PBA LIVE</p>\r\n', '2017-10-15 13:00:00', 500, NULL),
+(3, '59bb9a8bdb256', 15, '2,8,13,15', NULL, 'Workshop', '<p>This is a <u><strong>workshop</strong></u> event</p>\r\n', '2017-11-15 08:05:00', 569, 500);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_payment_trans_admin`
+--
+
+CREATE TABLE `event_payment_trans_admin` (
+  `id` int(11) NOT NULL,
+  `admin_user_id` int(5) NOT NULL,
+  `event_id` varchar(20) NOT NULL,
+  `amount_per_month` int(11) NOT NULL,
+  `no_of_months` int(11) NOT NULL,
+  `total_amount_paid` int(11) NOT NULL,
+  `trans_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `event_joiner`
+-- Table structure for table `event_photos`
 --
 
-CREATE TABLE `event_joiner` (
-  `event_id` tinyint(4) NOT NULL,
-  `user_id` int(5) NOT NULL,
-  `date_joined` datetime NOT NULL
+CREATE TABLE `event_photos` (
+  `id` int(11) NOT NULL,
+  `event_id` varchar(20) NOT NULL,
+  `photo_link` text NOT NULL,
+  `photo_desc` text NOT NULL,
+  `date_upload` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `event_photo`
+-- Table structure for table `event_reg_trans`
 --
 
-CREATE TABLE `event_photo` (
-  `event_id` tinyint(4) NOT NULL,
-  `photo_link` varchar(64) NOT NULL,
-  `photo_description` varchar(64) NOT NULL,
-  `place_taken` varchar(32) NOT NULL,
-  `date_taken` datetime NOT NULL,
-  `date_uploaded` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `event_reg_transaction`
---
-
-CREATE TABLE `event_reg_transaction` (
+CREATE TABLE `event_reg_trans` (
   `trans_id` int(11) NOT NULL,
-  `event_id` tinyint(4) NOT NULL,
+  `event_id` varchar(20) NOT NULL,
   `trans_date` datetime NOT NULL,
-  `user_id` int(5) NOT NULL,
-  `ticket_id` varchar(11) NOT NULL
+  `initiator_user_id` int(5) NOT NULL,
+  `order_slip_id` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -115,12 +139,11 @@ CREATE TABLE `event_reg_transaction` (
 --
 
 CREATE TABLE `group_flockers` (
-  `group_id` tinyint(3) NOT NULL,
-  `organizer_user_id` int(5) NOT NULL,
-  `group_name` varchar(16) NOT NULL,
-  `group_description` varchar(255) NOT NULL,
-  `date_created` datetime NOT NULL,
-  `total_no_of_members` tinyint(5) NOT NULL
+  `id` int(11) NOT NULL,
+  `admin_user_id` int(5) NOT NULL,
+  `group_name` text NOT NULL,
+  `group_description` text NOT NULL,
+  `date_created` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -130,7 +153,8 @@ CREATE TABLE `group_flockers` (
 --
 
 CREATE TABLE `group_member` (
-  `group_id` tinyint(3) NOT NULL,
+  `id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
   `user_id` int(5) NOT NULL,
   `date_joined` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -142,38 +166,76 @@ CREATE TABLE `group_member` (
 --
 
 CREATE TABLE `group_message` (
-  `message_id` int(6) NOT NULL,
-  `group_id` tinyint(3) NOT NULL,
+  `id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
   `sender_user_id` int(5) NOT NULL,
-  `message` varchar(255) NOT NULL,
+  `message` text NOT NULL,
   `date_sent` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `main_category`
+-- Table structure for table `interest`
 --
 
-CREATE TABLE `main_category` (
-  `main_category_id` tinyint(3) NOT NULL,
-  `main_category_name` varchar(16) NOT NULL
+CREATE TABLE `interest` (
+  `id` tinyint(3) NOT NULL,
+  `interest_name` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `main_category`
+-- Dumping data for table `interest`
 --
 
-INSERT INTO `main_category` (`main_category_id`, `main_category_name`) VALUES
-(1, 'E-Sports'),
-(2, 'Give a Hand'),
-(3, 'Sampel1'),
-(4, 'Sampel2'),
-(5, 'Sampe3'),
-(6, 'Sampel4'),
-(7, 'Sampel5'),
-(8, 'Sampel6'),
-(9, 'Sampel7');
+INSERT INTO `interest` (`id`, `interest_name`) VALUES
+(1, 'Adventures and Outdoors'),
+(2, 'Technology'),
+(3, 'Health and Wellness'),
+(4, 'Photography'),
+(5, 'Music'),
+(6, 'Food and Drinks'),
+(7, 'Dance'),
+(8, 'Fashion and Beauty'),
+(9, 'Sports'),
+(10, 'eSports'),
+(11, 'Career and Business'),
+(12, 'Pets'),
+(13, 'Learning'),
+(14, 'Film'),
+(15, 'Language and Culture'),
+(16, 'Social'),
+(17, 'LGBTQ'),
+(18, 'Arts');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_slips`
+--
+
+CREATE TABLE `order_slips` (
+  `id` int(11) NOT NULL,
+  `order_slips_id` varchar(20) NOT NULL,
+  `participant_user_id` int(5) NOT NULL,
+  `institution_type` text NOT NULL,
+  `name_of_institution` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `id` int(6) NOT NULL,
+  `txnid` varchar(20) NOT NULL,
+  `payment_amount` decimal(7,2) NOT NULL,
+  `payment_status` varchar(25) NOT NULL,
+  `itemid` varchar(25) NOT NULL,
+  `createdtime` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -182,69 +244,12 @@ INSERT INTO `main_category` (`main_category_id`, `main_category_name`) VALUES
 --
 
 CREATE TABLE `personal_message` (
-  `message_id` int(6) NOT NULL,
+  `id` int(11) NOT NULL,
   `from_user_id` int(5) NOT NULL,
   `to_user_id` int(5) NOT NULL,
   `date_sent` datetime NOT NULL,
-  `message` varchar(255) NOT NULL
+  `message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `profile_photo`
---
-
-CREATE TABLE `profile_photo` (
-  `user_id` int(5) NOT NULL,
-  `photo_link` varchar(64) NOT NULL,
-  `date_uploaded` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sub_category`
---
-
-CREATE TABLE `sub_category` (
-  `sub_category_id` tinyint(3) NOT NULL,
-  `main_category_id` tinyint(3) NOT NULL,
-  `sub_category_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `sub_category`
---
-
-INSERT INTO `sub_category` (`sub_category_id`, `main_category_id`, `sub_category_name`) VALUES
-(1, 1, 'Defence of the Ancient (DOTA)'),
-(2, 1, 'Counter Strike'),
-(3, 1, 'Ran Online Ph'),
-(4, 1, 'Cross Fire'),
-(5, 2, 'Charity Event'),
-(6, 2, 'Fun Run'),
-(7, 3, 'sub_sample_1_3'),
-(8, 3, 'sub_sample_1_3'),
-(9, 3, 'sub_sample_1_3'),
-(10, 4, 'sub_sample_4_2_4'),
-(11, 4, 'sub_sample_4_2_4'),
-(12, 4, 'sub_sample_4_2_4'),
-(13, 5, 'sub_sample_5_3_5'),
-(14, 5, 'sub_sample_5_3_5'),
-(15, 5, 'sub_sample_5_3_5'),
-(16, 6, 'sub_sample_6_4_6'),
-(17, 6, 'sub_sample_6_4_6'),
-(18, 6, 'sub_sample_6_4_6'),
-(19, 7, 'sub_sample_7_5_7'),
-(20, 7, 'sub_sample_7_5_7'),
-(21, 7, 'sub_sample_7_5_7'),
-(22, 8, 'sub_sample_8_6_8'),
-(23, 8, 'sub_sample_8_6_8'),
-(24, 8, 'sub_sample_8_6_8'),
-(25, 9, 'sub_sample_9_7_9'),
-(26, 9, 'sub_sample_9_7_9'),
-(27, 9, 'sub_sample_9_7_9');
 
 -- --------------------------------------------------------
 
@@ -253,41 +258,30 @@ INSERT INTO `sub_category` (`sub_category_id`, `main_category_id`, `sub_category
 --
 
 CREATE TABLE `users` (
-  `user_id` int(5) NOT NULL,
-  `username` varchar(16) NOT NULL,
-  `password` varchar(16) NOT NULL,
+  `id` int(5) NOT NULL,
+  `email_add` text NOT NULL,
+  `password` text NOT NULL,
   `first_name` varchar(32) NOT NULL,
   `middle_name` varchar(32) NOT NULL,
   `last_name` varchar(16) NOT NULL,
   `mobile_no` varchar(13) NOT NULL,
-  `address` varchar(50) NOT NULL,
-  `email_address` varchar(50) NOT NULL,
-  `paypal_account` varchar(50) NOT NULL,
-  `date_registered` datetime NOT NULL
+  `address` text NOT NULL,
+  `paypal` text NOT NULL,
+  `date_registered` datetime NOT NULL,
+  `interests_id` tinyint(3) NOT NULL,
+  `pp_link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `password`, `first_name`, `middle_name`, `last_name`, `mobile_no`, `address`, `email_address`, `paypal_account`, `date_registered`) VALUES
-(1, 'joven', 'novo', 'joven', 'gutib', 'novo', '+639052317568', 'New Paradise, Pajo, Lapu-lapu City', 'jovennovo2015@gmail.com', 'jovennovo2017@gmail.com', '0000-00-00 00:00:00'),
-(2, 'jm', 'abano', 'jm', 'bonsit', 'abano', '+639233429111', 'Lapu-lapu City', 'jm@gmail.com', 'jmabano@gmail.com', '0000-00-00 00:00:00'),
-(3, 'joven1873', 'joven', 'novo', 'novo', 'novo', '0983984834', 'LLC', 'gangstoprn_15@yahoo.com', 'gangstoprn_15@yahoo.com', '2017-06-28 00:00:00'),
-(4, 'jeric', 'mercado', 'jeric joseph', '', 'mercado', '+639050176969', 'LLC', 'jeric@mercado.com', 'pal@paypal.com', '2017-09-02 00:00:00'),
-(5, 'joven', '$2y$10$PezZZk9Ek', 'jm', '', 'abano', '+639050176969', 'LLC', 'jeric@mercado.com', 'pal@paypal.com', '2017-09-02 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_interest`
---
-
-CREATE TABLE `user_interest` (
-  `interest_id` int(5) NOT NULL,
-  `user_id` int(5) NOT NULL,
-  `sub_category_id` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `users` (`id`, `email_add`, `password`, `first_name`, `middle_name`, `last_name`, `mobile_no`, `address`, `paypal`, `date_registered`, `interests_id`, `pp_link`) VALUES
+(1, 'jovennovo2015@gmail.com', 'novo', 'joven', 'gutib', 'novo', '+639052317568', 'New Paradise, Pajo, Lapu-lapu City', 'jovennovo2017@gmail.com', '0000-00-00 00:00:00', 0, ''),
+(2, 'jm@gmail.com', 'abano', 'jm', 'bonsit', 'abano', '+639233429111', 'Lapu-lapu City', 'jmabano@gmail.com', '0000-00-00 00:00:00', 0, ''),
+(3, 'gangstoprn_15@yahoo.com', 'joven', 'novo', 'novo', 'novo', '0983984834', 'LLC', 'gangstoprn_15@yahoo.com', '2017-06-28 00:00:00', 0, ''),
+(4, 'jeric@mercado.com', 'mercado', 'jeric joseph', '', 'mercado', '+639050176969', 'LLC', 'pal@paypal.com', '2017-09-02 00:00:00', 0, ''),
+(5, 'jeric@mercado.com', '$2y$10$PezZZk9Ek', 'jm', '', 'abano', '+639050176969', 'LLC', 'pal@paypal.com', '2017-09-02 00:00:00', 0, '');
 
 -- --------------------------------------------------------
 
@@ -296,55 +290,118 @@ CREATE TABLE `user_interest` (
 --
 
 CREATE TABLE `venue` (
-  `venue_id` tinyint(4) NOT NULL,
-  `event_id` tinyint(4) NOT NULL,
-  `address_name` varchar(50) NOT NULL,
+  `id` tinyint(4) NOT NULL,
+  `event_id` varchar(20) NOT NULL,
+  `address` text NOT NULL,
   `latitude` float NOT NULL,
   `longitude` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `venue`
+--
+
+INSERT INTO `venue` (`id`, `event_id`, `address`, `latitude`, `longitude`) VALUES
+(1, '59badcbce2878', 'Mactan-Cebu International Airport', 10.3107, 123.98),
+(2, '59bb98f818f04', 'Lapu-Lapu Airport Road', 10.3195, 123.98),
+(3, '59bb9a8bdb256', 'IEC Convention Center Cebu (IC3)', 10.3212, 123.909);
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `create_event_trans`
+--
+ALTER TABLE `create_event_trans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `evaluation`
+--
+ALTER TABLE `evaluation`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `event`
 --
 ALTER TABLE `event`
-  ADD PRIMARY KEY (`event_id`),
-  ADD KEY `event_organizer_user_id` (`event_organizer_user_id`),
-  ADD KEY `event_sub_category_id` (`event_sub_category_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `event_id` (`event_id`),
+  ADD KEY `event_organizer_user_id` (`event_admin_user_id`),
+  ADD KEY `event_sub_category_id` (`interest_id`);
 
 --
--- Indexes for table `main_category`
+-- Indexes for table `event_payment_trans_admin`
 --
-ALTER TABLE `main_category`
-  ADD PRIMARY KEY (`main_category_id`);
+ALTER TABLE `event_payment_trans_admin`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `sub_category`
+-- Indexes for table `event_photos`
 --
-ALTER TABLE `sub_category`
-  ADD PRIMARY KEY (`sub_category_id`),
-  ADD KEY `main_category_id` (`main_category_id`);
+ALTER TABLE `event_photos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `event_reg_trans`
+--
+ALTER TABLE `event_reg_trans`
+  ADD PRIMARY KEY (`trans_id`);
+
+--
+-- Indexes for table `group_flockers`
+--
+ALTER TABLE `group_flockers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `group_member`
+--
+ALTER TABLE `group_member`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `group_message`
+--
+ALTER TABLE `group_message`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `interest`
+--
+ALTER TABLE `interest`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_slips`
+--
+ALTER TABLE `order_slips`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `personal_message`
+--
+ALTER TABLE `personal_message`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- Indexes for table `user_interest`
---
-ALTER TABLE `user_interest`
-  ADD PRIMARY KEY (`interest_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `venue`
 --
 ALTER TABLE `venue`
-  ADD PRIMARY KEY (`venue_id`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `event_id` (`event_id`);
 
 --
@@ -352,47 +409,80 @@ ALTER TABLE `venue`
 --
 
 --
--- AUTO_INCREMENT for table `main_category`
+-- AUTO_INCREMENT for table `create_event_trans`
 --
-ALTER TABLE `main_category`
-  MODIFY `main_category_id` tinyint(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+ALTER TABLE `create_event_trans`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `sub_category`
+-- AUTO_INCREMENT for table `evaluation`
 --
-ALTER TABLE `sub_category`
-  MODIFY `sub_category_id` tinyint(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+ALTER TABLE `evaluation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `event`
+--
+ALTER TABLE `event`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `event_payment_trans_admin`
+--
+ALTER TABLE `event_payment_trans_admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `event_photos`
+--
+ALTER TABLE `event_photos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `event_reg_trans`
+--
+ALTER TABLE `event_reg_trans`
+  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `group_flockers`
+--
+ALTER TABLE `group_flockers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `group_member`
+--
+ALTER TABLE `group_member`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `group_message`
+--
+ALTER TABLE `group_message`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `interest`
+--
+ALTER TABLE `interest`
+  MODIFY `id` tinyint(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT for table `order_slips`
+--
+ALTER TABLE `order_slips`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `personal_message`
+--
+ALTER TABLE `personal_message`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT for table `user_interest`
---
-ALTER TABLE `user_interest`
-  MODIFY `interest_id` int(5) NOT NULL AUTO_INCREMENT;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `event`
---
-ALTER TABLE `event`
-  ADD CONSTRAINT `event_ibfk_1` FOREIGN KEY (`event_organizer_user_id`) REFERENCES `users` (`user_id`);
-
---
--- Constraints for table `sub_category`
---
-ALTER TABLE `sub_category`
-  ADD CONSTRAINT `sub_category_ibfk_1` FOREIGN KEY (`main_category_id`) REFERENCES `main_category` (`main_category_id`);
-
---
--- Constraints for table `venue`
+-- AUTO_INCREMENT for table `venue`
 --
 ALTER TABLE `venue`
-  ADD CONSTRAINT `venue_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`);
-
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
