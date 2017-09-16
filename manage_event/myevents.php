@@ -24,6 +24,11 @@
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
 </head>
+<style >
+    .fa {
+        font-size: 15px !important;
+        }
+</style >
 
 <body class="nav-md">
 <?php
@@ -97,7 +102,7 @@ if (isset($_REQUEST['event_id'], $_REQUEST['amount'])) {
                     </div>
                 </div>
                         <div class="row">
-                            <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="col-md-4 col-sm-12 col-xs-12">
                                 <div class="x_panel">
 <!--                                    <form action="event_update.php" method="post">-->
                                         <input type="hidden" name="event_id" id="event_id" value="<?php echo $_REQUEST['event_id'];?>" >
@@ -110,13 +115,65 @@ if (isset($_REQUEST['event_id'], $_REQUEST['amount'])) {
                                             <div class="clearfix"></div>
                                         <div class="widget_summary">
                                             <div class="w_left w_25">
-                                                <span><i class="fa fa-clock-o" style="font-size: 30px;"></i></span>
+                                                <span><i class="fa fa-calendar" style="font-size: 30px;"></i></span>
                                             </div>
                                             <div class="w_center w_55">
-                                                <input name="event_date" id="event_date_input" type="datetime-local" />
+                                                <input name="event_date" id="event_date_input" type="date" />
                                             </div>
                                             <div class="w_right w_55">
-                                                <button id="event_date" class="btn btn-xs" onclick="save_data(this.id)"><i class="fa fa-check" style="font-size: 20px;"></i></button>
+                                                <button id="event_date" class="btn btn-xs" onclick="save_data(this.id)"><i class="fa fa-floppy-o" style="font-size: 20px;"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div><br>
+                                        <div class="widget_summary">
+                                            <div class="w_left w_25">
+                                                <span><i class="fa fa-hourglass-start" style="font-size: 30px;"></i></span>
+                                            </div>
+                                            <div class="w_center w_55">
+                                                <input type="time" name="time_start" style="float: left;" title="time event start"/>
+                                            </div>
+                                            <div class="w_right w_55">
+                                                <button id="time_start" class="btn btn-xs" onclick="save_data(this.id)"><i class="fa fa-floppy-o" style="font-size: 20px;"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div><br>
+                                        <div class="widget_summary">
+                                            <div class="w_left w_25">
+                                                <span><i class="fa fa-hourglass-end" style="font-size: 30px;"></i></span>
+                                            </div>
+                                            <div class="w_center w_55">
+                                                <input type="time" name="time_end" style="float: left;" title="time event end"/>
+                                            </div>
+                                            <div class="w_right w_55">
+                                                <button id="time_end" class="btn btn-xs" onclick="save_data(this.id)"><i class="fa fa-floppy-o" style="font-size: 20px;"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div><br>
+                                        <h2>Admission fee</h2>
+                                        <div class="clearfix"></div>
+                                        <div class="widget_summary">
+                                            <div class="w_left w_25">
+                                                <span><i class="fa fa-money" style="font-size: 30px;"></i></span>
+                                            </div>
+                                            <div class="w_center w_55">
+                                                <input type="number" name="set_admission_fee" style="float: left;" title="admission fee"/>
+                                            </div>
+                                            <div class="w_right w_55">
+                                                <button id="set_admission_fee" class="btn btn-xs" onclick="save_data(this.id)"><i class="fa fa-floppy-o" style="font-size: 20px;"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div><br>
+                                        <h2>Interests</h2>
+                                        <div class="clearfix"></div>
+                                        <div class="widget_summary">
+                                            <div class="w_left w_25">
+                                                <span><i class="fa fa-comments-o" style="font-size: 30px;"></i></span>
+                                            </div>
+                                            <div class="w_center w_55">
+                                                <p id="display_interest"></p>
+                                            </div>
+                                            <div class="w_right w_55">
+                                                <button id="interest" class="btn btn-xs" onclick="save_data(this.id)"><i class="fa fa-plus-square" style="font-size: 20px;"></i></button>
                                             </div>
                                         </div>
                                         <div class="clearfix"></div><br>
@@ -130,7 +187,7 @@ if (isset($_REQUEST['event_id'], $_REQUEST['amount'])) {
                                                 <input type="number" name="no_participants" placeholder="Max no. of flockers to participate    "/>
                                             </div>
                                             <div class="w_right w_55">
-                                                <button id="no_participants" class="btn btn-xs" onclick="save_data(this.id)"><i class="fa fa-check" style="font-size: 20px;"></i></button>
+                                                <button id="no_participants" class="btn btn-xs" onclick="save_data(this.id)"><i class="fa fa-floppy-o" style="font-size: 20px;"></i></button>
                                             </div>
                                         </div>
                                         <div class="clearfix"></div><br>
@@ -176,23 +233,29 @@ if (isset($_REQUEST['event_id'], $_REQUEST['amount'])) {
                                                     <?php echo date("F d, Y", strtotime($event_data->event_date)); ?>
                                                 </p>
                                             </div>
-                                            <div class="w_right w_20">
-                                                <span><i class="fa fa-edit" style="font-size: 30px; cursor: pointer;"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="clearfix"></div><br>
+                                        <div class="widget_summary">
+                                            <div class="w_left w_25">
+                                                <span><i class="fa fa-hourglass-start" style="font-size: 30px;"></i></span>
+                                            </div>
+                                            <div class="w_center w_55">
+                                                <p id="display_time_start">
+                                                    <?php echo "Starts at: " . date("h:i:s A", strtotime($event_data->event_start_time)); ?>
+                                                </p>
                                             </div>
                                             <div class="clearfix"></div>
                                         </div>
                                         <div class="clearfix"></div><br>
                                         <div class="widget_summary">
                                             <div class="w_left w_25">
-                                                <span><i class="fa fa-clock-o" style="font-size: 30px;"></i></span>
+                                                <span><i class="fa fa-hourglass-end" style="font-size: 30px;"></i></span>
                                             </div>
                                             <div class="w_center w_55">
-                                                <p id="display_time">
-                                                    <?php echo date("h:i:s A", strtotime($event_data->event_date)); ?>
+                                                <p id="display_time_end">
+                                                    <?php echo "Ends at: " . date("h:i:s A", strtotime($event_data->event_end_time)); ?>
                                                 </p>
-                                            </div>
-                                            <div class="w_right w_20">
-                                                <span><i class="fa fa-edit" style="font-size: 30px; cursor: pointer;"></i></span>
                                             </div>
                                             <div class="clearfix"></div>
                                         </div>
@@ -202,12 +265,9 @@ if (isset($_REQUEST['event_id'], $_REQUEST['amount'])) {
                                                 <span><i class="fa fa-money" style="font-size: 30px;"></i></span>
                                             </div>
                                             <div class="w_center w_55">
-                                                <p>
+                                                <p id="display_set_admission_fee">
                                                     <?php echo '₱ '.number_format($event_data->reg_fee).'.00'; ?>
                                                 </p>
-                                            </div>
-                                            <div class="w_right w_20">
-                                                <span><i class="fa fa-edit" style="font-size: 30px; cursor: pointer;"></i></span>
                                             </div>
                                             <div class="clearfix"></div>
                                         </div>
@@ -220,10 +280,8 @@ if (isset($_REQUEST['event_id'], $_REQUEST['amount'])) {
                                                 <p>
                                                     <?php $interest_name = get_interest_data($event_data->interest_id, $db); ?>
                                                     <?php print_r($interest_name); ?>
+                                                    <input type="hidden" name="interest_id" value="<?php echo $event_data->interest_id;?>" />
                                                 </p>
-                                            </div>
-                                            <div class="w_right w_20">
-                                                <span><i class="fa fa-edit" style="font-size: 30px; cursor: pointer;"></i></span>
                                             </div>
                                             <div class="clearfix"></div>
                                         </div>
@@ -236,9 +294,6 @@ if (isset($_REQUEST['event_id'], $_REQUEST['amount'])) {
                                                 <p id="display_no_participants">
                                                     <?php echo $event_data->max_no_participants==NULL ? 'No limit of participants': number_format($event_data->max_no_participants).' persons'; ?>
                                                 </p>
-                                            </div>
-                                            <div class="w_right w_20">
-                                                <span><i class="fa fa-edit" style="font-size: 30px; cursor: pointer;"></i></span>
                                             </div>
                                             <div class="clearfix"></div>
                                         </div>
@@ -302,25 +357,13 @@ if (isset($_REQUEST['event_id'], $_REQUEST['amount'])) {
 
 <!-- Custom Theme Scripts -->
 <script src="../build/js/custom.min.js"></script>
-    <script >
-        var d =   new Date();
-        var da = '';
-        function pad(n) {return n<10 ? '0'+n : n}
-            da  =  d.getUTCFullYear()+'-';
-            da += pad(d.getUTCMonth()+ 1)+'-';
-            da += pad(d.getUTCDate()+1)+'T';
-            da += pad(d.getUTCHours()-16)+':';
-            da += pad(d.getUTCMinutes())+':';
-            da += pad(d.getUTCSeconds());
-        $("#event_date_input").attr('min', da);
-    </script >
 <script >
 
         function save_data(id) {
+            var event_id = $('[name="event_id"]').val();
             if(id == 'event_date') {
                 var event_date = $('[name="event_date"]').val();
                 if (event_date != '') {
-                    var event_id = $('[name="event_id"]').val();
                     var xmlhttp = new XMLHttpRequest();
                     xmlhttp.onreadystatechange = function () {
                         if(this.readyState == 4 && this.status == 200) {
@@ -332,18 +375,6 @@ if (isset($_REQUEST['event_id'], $_REQUEST['amount'])) {
                             };
                             xmlhttp2.open("GET" , "event_update.php?autoDisplayDate=true&&event_id="+event_id, true);
                             xmlhttp2.send();
-
-                            xmlhttp3 = new XMLHttpRequest();
-                            xmlhttp3.onreadystatechange = function () {
-                                if (this.readyState == 4 && this.status == 200) {
-                                    document.getElementById("display_time").innerHTML = this.responseText;
-                                }
-                            };
-                            xmlhttp3.open("GET" , "event_update.php?autoDisplayTime=true&&event_id="+event_id, true);
-                            xmlhttp3.send();
-
-
-
                         }
                     };
                     xmlhttp.open("GET", "event_update.php?event_id="+event_id+"&&event_date="+event_date, true);
@@ -353,14 +384,12 @@ if (isset($_REQUEST['event_id'], $_REQUEST['amount'])) {
             }else if (id == 'no_participants') {
                 var no_participants = $('[name="no_participants"]').val();
                 if (no_participants != '') {
-                    var event_id = $('[name="event_id"]').val();
                     var xmlhttp = new XMLHttpRequest();
                     xmlhttp.onreadystatechange = function () {
                         if(this.readyState == 4 && this.status == 200) {
                             xmlhttp2 = new XMLHttpRequest();
                             xmlhttp2.onreadystatechange = function () {
                                 if (this.readyState == 4 && this.status == 200) {
-                                    /*$('#display_no_participants').css({backgroundColor:"green", transition:"background-color: 2s ease-in"});*/
                                     document.getElementById("display_no_participants").innerHTML = this.responseText;
                                 }
                             };
@@ -371,7 +400,78 @@ if (isset($_REQUEST['event_id'], $_REQUEST['amount'])) {
                     xmlhttp.open("GET", "event_update.php?event_id="+event_id+"&&no_participants="+no_participants, true);
                     xmlhttp.send();
                 }
+            } else if (id == 'time_start') {
+                var time_start = $('[name="time_start"]').val();
+                if (time_start != '') {
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function () {
+                        if(this.readyState == 4 && this.status == 200) {
+                            xmlhttp2 = new XMLHttpRequest();
+                            xmlhttp2.onreadystatechange = function () {
+                                if (this.readyState == 4 && this.status == 200) {
+                                    document.getElementById("display_time_start").innerHTML = this.responseText;
+                                }
+                            };
+                            xmlhttp2.open("GET" , "event_update.php?autoDisplayTimeStart=true&&event_id="+event_id, true);
+                            xmlhttp2.send();
+                        }
+                    };
+                    xmlhttp.open("GET", "event_update.php?event_id="+event_id+"&&time_start="+time_start, true);
+                    xmlhttp.send();
+                }
+            }else if (id == 'time_end') {
+                var time_end = $('[name="time_end"]').val();
+                if (time_end != '') {
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function () {
+                        if(this.readyState == 4 && this.status == 200) {
+                            xmlhttp2 = new XMLHttpRequest();
+                            xmlhttp2.onreadystatechange = function () {
+                                if (this.readyState == 4 && this.status == 200) {
+                                    document.getElementById("display_time_end").innerHTML  = this.responseText;
+                                }
+                            };
+                            xmlhttp2.open("GET" , "event_update.php?autoDisplayTimeEnd=true&&event_id="+event_id, true);
+                            xmlhttp2.send();
+                        }
+                    };
+                    xmlhttp.open("GET", "event_update.php?event_id="+event_id+"&&time_end="+time_end, true);
+                    xmlhttp.send();
+                }
+            }else if (id == 'set_admission_fee') {
+                var set_admission_fee = $('[name="set_admission_fee"]').val();
+                if (set_admission_fee != '') {
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function () {
+                        if(this.readyState == 4 && this.status == 200) {
+                            xmlhttp2 = new XMLHttpRequest();
+                            xmlhttp2.onreadystatechange = function () {
+                                if (this.readyState == 4 && this.status == 200) {
+                                    document.getElementById("display_set_admission_fee").innerHTML  = this.responseText;
+                                }
+                            };
+                            xmlhttp2.open("GET" , "event_update.php?autoDisplayAdmissionFee=true&&event_id="+event_id, true);
+                            xmlhttp2.send();
+                        }
+                    };
+                    xmlhttp.open("GET", "event_update.php?event_id="+event_id+"&&set_admission_fee="+set_admission_fee, true);
+                    xmlhttp.send();
+                }
+            } else if (id == 'interest') {
+                var interest_id = $('[name="interest_id"]').val();
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function () {
+                        if(this.readyState == 4 && this.status == 200) {
+                            $('#display_interest').html(this.responseText);
+                        }
+                    };
+                    xmlhttp.open("GET", "event_update.php?event_id="+event_id+"&&interest_id="+interest_id, true);
+                    xmlhttp.send();
             }
+        }
+
+        function checkMe(val) {
+            alert(val);
         }
 
 </script >

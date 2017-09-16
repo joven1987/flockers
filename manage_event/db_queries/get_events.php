@@ -16,10 +16,14 @@ function get_interest_data($interest_id, $db) {
         $get_interest_data->bindParam(1, $value);
         $get_interest_data->execute();
         $interest_data = $get_interest_data->fetch(PDO::FETCH_OBJ);
-        $i_name .= $interest_data->interest_name . ', ';
+        $i_name .= $interest_data->interest_name . ' | ';
     }
 
     return $i_name;
+}
+
+function get_interest_id($interest_id, $db) {
+
 }
 ?>
 
