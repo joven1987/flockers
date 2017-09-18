@@ -1,7 +1,19 @@
 <?php
+session_start();
+$_SESSION['user_id'] = '1';
+$user_id = $_SESSION['user_id'];
 require '../db_connection.php';
 if (isset($_GET['event_id'])) {
     $event_id = $_GET['event_id'];
+
+    if (isset($_GET['notify'])) {
+        $seen_status = 1;
+        $update_notify_status = $db->prepare("UPDATE `event_user_notification` SET `seen_status`=? WHERE `event_id`=? AND `user_id`=?");
+        $update_notify_status->bindParam(1, $seen_status);
+        $update_notify_status->bindParam(2, $event_id);
+        $update_notify_status->bindParam(3, $user_id);
+        $update_notify_status->execute();
+    }
 
     $query = $db->prepare("SELECT * FROM `event` WHERE `event_id`=?");
     $query->bindParam(1, $event_id);
@@ -60,22 +72,7 @@ if (isset($_GET['event_id'])) {
         <!-- page content -->
         <div class="right_col" role="main"style="/*height: 676px !important;*/">
             <div class="row">
-                <div class="col-md-8" id="event_content">
-                    <div class="col-md-12" >
-                        <div class="x_panel" >
-                            <div class="x_content" >
-                                <div class="col-md-12 col-lg-12 col-sm-12">
-                                    <div class="img-container">
-                                        <img src="../landing_page/images/icon/logo.png" alt="" style="height: 350px; width: 100%; z-index:123; background-color: #0072bc;">
-                                    </div>
-                                    <div class="clearfix">
-
-                                    </div>
-                                    dsfds
-                                </div>
-                            </div >
-                        </div >
-                    </div >
+                <div class="col-md-8" id="event_details_content">
 
                 </div>
                 <div class="col-md-4">
@@ -93,15 +90,6 @@ if (isset($_GET['event_id'])) {
 </div >
 </div>
 <!-- /page content -->
-
-<!-- footer content -->
-<!--<footer >
-    <div class="pull-right" >
-        Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com" >Colorlib</a >
-    </div >
-    <div class="clearfix" ></div >
-</footer >-->
-<!-- /footer content -->
 </div>
 </div>
 
@@ -146,5 +134,42 @@ if (isset($_GET['event_id'])) {
 <!-- Custom Theme Scripts -->
 <script src="../build/js/custom.min.js" ></script >
 </body >
+
+<script >
+//    var event_id = <?php //echo $_GET['event_id'];?>//;
+    var event_id = '59badcbce2878';
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if(this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText);
+            console.log(data);
+            var event_details_content =
+                ['<div class="col-md-12" >',
+                    '<div class="x_panel" >',
+                    '<div class="x_content" >',
+                    '<div class="col-md-12 col-lg-12 col-sm-12">',
+                    '<div class="img-container">',
+                    '<img src="../landing_page/images/icon/logo.png" alt="" style="height: 350px; width: 100%; z-index:123; background-color: #0072bc;">',
+                    '</div>',
+                    '<div class="clearfix">',
+                    '</div>',
+                    '<hr >',
+                    '<h4>',
+                    'Description',
+                    '</h4>'
+                    +data[0]["event_desc"]+
+                    '<hr >',
+                    '</div>',
+                    '</div >',
+                    '</div >',
+                    '</div >'].join('');
+
+            $('#event_details_content').append(event_details_content);
+        }
+    };
+    xmlhttp.open("GET", "php/event_details_request.php?event_id="+event_id, true);
+    xmlhttp.send()
+
+</script >
 </html >
 

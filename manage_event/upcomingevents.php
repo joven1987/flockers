@@ -131,7 +131,7 @@ require '../db_connection.php';
               var event_title = data[i]['event_title'];
               var venue = data[i]["address"];
               var e_date = new Date(data[i]["event_date"]);
-              var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday',];
+              /*var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday',];*/
               var days = ['Jan. ', 'Feb. ', 'Mar. ', 'Apr. ', 'May ', 'June ', 'Jul', 'Aug. ', 'Sept. ', 'Oct. ', 'Nov. ', 'Dec. '];
               var event_date = days[e_date.getMonth()];
               event_date += e_date.getDate();

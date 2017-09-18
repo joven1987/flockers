@@ -100,12 +100,12 @@ $i_id = $_SESSION['user_interest_id'];
                 <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown"
                    aria-expanded="false" >
                     <i class="fa fa-bullhorn" ></i >
-                    <span class="badge bg-green" ><?php echo count_notification($db, $i_id, 1);?></span >
+                    <span class="badge bg-green" ><?php $count_notify = count_notification($db, $i_id, 1); echo $count_notify>0 ? $count_notify: '';?></span >
 <!--                    <input type="hidden" id="event_ids" value='--><?php //$count = count_notification($db, $i_id, 0); echo $count;?><!--' />-->
                     <?php $count = count_notification($db, $i_id, 0);?>
                 </a >
                 <ul id="menu1" class="dropdown-menu list-unstyled msg_list notification" role="menu" >
-                    <?php echo get_event_details($db, $count);?>
+                    <?php echo $count_notify>0 ? get_event_details($db, $count): '';?>
                 </ul >
             </li >
         </ul >
