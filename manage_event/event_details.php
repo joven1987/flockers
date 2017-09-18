@@ -1,5 +1,17 @@
 <?php
 require '../db_connection.php';
+if (isset($_GET['event_id'])) {
+    $event_id = $_GET['event_id'];
+
+    $query = $db->prepare("SELECT * FROM `event` WHERE `event_id`=?");
+    $query->bindParam(1, $event_id);
+    $query->execute();
+
+
+
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en" >
@@ -49,12 +61,28 @@ require '../db_connection.php';
         <div class="right_col" role="main"style="/*height: 676px !important;*/">
             <div class="row">
                 <div class="col-md-8" id="event_content">
+                    <div class="col-md-12" >
+                        <div class="x_panel" >
+                            <div class="x_content" >
+                                <div class="col-md-12 col-lg-12 col-sm-12">
+                                    <div class="img-container">
+                                        <img src="../landing_page/images/icon/logo.png" alt="" style="height: 350px; width: 100%; z-index:123; background-color: #0072bc;">
+                                    </div>
+                                    <div class="clearfix">
+
+                                    </div>
+                                    dsfds
+                                </div>
+                            </div >
+                        </div >
+                    </div >
 
                 </div>
                 <div class="col-md-4">
                     <div class="x_panel">
                         <div class="x_content" style="height: 500px;">
-                            <h3>Right side bar content</h3>
+                            <h3>Participants</h3>
+                            <hr >
                         </div>
                     </div>
                 </div>
@@ -117,70 +145,6 @@ require '../db_connection.php';
 
 <!-- Custom Theme Scripts -->
 <script src="../build/js/custom.min.js" ></script >
-<?php require '../includes/footer.php';?>
-<script >
-
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function () {
-      if(this.readyState == 4 && this.status == 200) {
-          var data = JSON.parse(this.responseText);
-          var i = 0;
-          while (i < data.length) {
-              var reg_fee = Number(data[i]['reg_fee']) ? '₱ '+Number(data[i]['reg_fee']).toFixed(2) : 'Free';
-              var button_val = data[i]['event_id'];
-              var event_title = data[i]['event_title'];
-              var venue = data[i]["address"];
-              var e_date = new Date(data[i]["event_date"]);
-              var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday',];
-              var days = ['Jan. ', 'Feb. ', 'Mar. ', 'Apr. ', 'May ', 'June ', 'Jul', 'Aug. ', 'Sept. ', 'Oct. ', 'Nov. ', 'Dec. '];
-              var event_date = days[e_date.getMonth()];
-              event_date += e_date.getDate();
-              event_date += ', ' + e_date.getFullYear();
-              var app = ['<div class="col-md-12">',
-                  '<div class="x_panel">',
-                  '<div class="x_content" style="display: block;">',
-                  '<div class="col-md-7 col-lg-7 col-sm-6">',
-                  '<div class="img-container">',
-                  '<img src="../landing_page/images/icon/logo.png" alt="" style="height: 80px; width: 100%; z-index:123; background-color: #0072bc;">',
-                  '</div>',
-                  '<div style="float: left;">',
-                  '<h5>'
-                  +reg_fee+
-                  '</h5>',
-                  '</div>',
-                  '</div>',
-                  '<div class="col-md-5 col-lg-5 col-sm-6">',
-                  '<div>'
-                  +event_date+
-                  '</div>',
-                  '<h4>'
-                    +event_title+
-                  '</h4>',
-                  '<div>'
-                  +venue+
-                  '</div>',
-                  '</div>',
-                  '<div style="float: right; margin-top: 10px;">',
-                  '<a href=event_details.php?event_id='+button_val+' value="" type="button" class="btn btn-sm btn-success">',
-                  'I\'m Interested',
-                  '</a>',
-                  '</div>',
-                  '<div class="clearfix"></div>',
-                  '</div>',
-                  '</div>',
-                  '</div>'].join('');
-
-              $('#event_content').append(app);
-              i++;
-          }
-//          console.log(data);
-      }
-    };
-    xmlhttp.open("GET", "get_events.php", true);
-    xmlhttp.send();
-
-</script >
-
-
 </body >
 </html >
+

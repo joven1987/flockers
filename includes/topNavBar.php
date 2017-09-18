@@ -1,3 +1,10 @@
+<?php
+//session_start();
+require '../db_connection.php';
+require '../notification/count_notification.php';
+$_SESSION['user_interest_id'] = '3,13';
+$i_id = $_SESSION['user_interest_id'];
+?>
 <div class="nav_menu" >
     <nav >
         <div class="nav toggle" >
@@ -87,6 +94,18 @@
                             </a >
                         </div >
                     </li >
+                </ul >
+            </li >
+            <li role="presentation" class="dropdown" >
+                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown"
+                   aria-expanded="false" >
+                    <i class="fa fa-bullhorn" ></i >
+                    <span class="badge bg-green" ><?php echo count_notification($db, $i_id, 1);?></span >
+<!--                    <input type="hidden" id="event_ids" value='--><?php //$count = count_notification($db, $i_id, 0); echo $count;?><!--' />-->
+                    <?php $count = count_notification($db, $i_id, 0);?>
+                </a >
+                <ul id="menu1" class="dropdown-menu list-unstyled msg_list notification" role="menu" >
+                    <?php echo get_event_details($db, $count);?>
                 </ul >
             </li >
         </ul >

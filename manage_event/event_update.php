@@ -117,7 +117,7 @@ if (isset($_GET['event_id'])) {
         $i_name = '';
 
         while ($row = $get_interest_data->fetch(PDO::FETCH_OBJ)) {
-            $i_name .= '<button onclick="addMe(this.value)" value="' . $row->id . '">' . $row->interest_name . '</button>';
+            $i_name .= '<button class="btn btn-sm btn-success" onclick="addMe(this.value)" value="' . $row->id . '">' . $row->interest_name . '</button>';
 
         }
         echo $i_name;
