@@ -19,9 +19,7 @@ if (isset($_GET['event_id'])) {
     $query->bindParam(1, $event_id);
     $query->execute();
 
-
-
-}
+}else exit();
 
 
 ?>
@@ -77,7 +75,7 @@ if (isset($_GET['event_id'])) {
                 </div>
                 <div class="col-md-4">
                     <div class="x_panel">
-                        <div class="x_content" style="height: 500px;">
+                        <div class="x_content" style="height: 500px;" id="right_side_bar_content">
                             <h3>Participants</h3>
                             <hr >
                         </div>
@@ -136,8 +134,7 @@ if (isset($_GET['event_id'])) {
 </body >
 
 <script >
-//    var event_id = <?php //echo $_GET['event_id'];?>//;
-    var event_id = '59badcbce2878';
+    var event_id = "<?php echo $_GET['event_id'];?>";
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if(this.readyState == 4 && this.status == 200) {
@@ -165,6 +162,8 @@ if (isset($_GET['event_id'])) {
                     '</div >'].join('');
 
             $('#event_details_content').append(event_details_content);
+            var join_button = '<a href="order_slip.php?even_id='+event_id+'" type="button" class="btn btn-sm btn-warning">JOIN US</a>';
+            $('#right_side_bar_content').append(join_button);
         }
     };
     xmlhttp.open("GET", "php/event_details_request.php?event_id="+event_id, true);
