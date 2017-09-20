@@ -1,0 +1,319 @@
+
+
+
+.checkbox-label {
+    
+    margin: 0;
+}
+
+
+
+.checkbox-input {
+  display: none;
+}
+
+.checkbox-label, .checkbox-text, .checkbox-text--description {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.checkbox-label {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+ 
+  letter-spacing: 1px;
+  font-family: Caviar;
+  color: white;
+  padding: 0 40px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 400;
+ height: 168px; -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0;
+  border: 1px solid #d9d9d9;
+
+  box-shadow: inset 0 0 0 0 green;
+}
+
+.checkbox-label:hover{
+  -webkit-transform: scale(1.08);
+  -ms-transform: scale(1.08);
+  transform: scale(1.08);
+  border-color:  transparent;
+   
+    background-size: 100%;
+  color:  white;
+    box-shadow:  inset 0 0 0 0 transparent,  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+
+}
+
+
+
+.checkbox-label:before {
+  content: "";
+  position: absolute;
+  top: 80%;
+  right: -23px;
+  width: 40px;
+  height: 40px;
+  opacity: 0;
+  background-color: transparent;
+  background-image: url(ck.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 150px;
+  border-radius: 50%;
+  -webkit-transform: translate(0%, -50%);
+  transform: translate(0%, -50%);
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+ 
+}
+
+.checkbox-text--title {
+ 
+  padding-top: 8px;
+  padding-bottom: 0;
+  font-size: 15px;
+	text-align: center;
+	font-family: 'Oswald', sans-serif;
+	 
+}
+
+
+.checkbox-input:checked + .checkbox-label {
+  border-color: white;
+  box-shadow: inset 0 -12px 0 0 white, 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color:  white;
+    background-image: none;
+
+}
+
+
+
+
+
+
+.checkbox-input:checked + .checkbox-label:before {
+  top: 0;
+  opacity: 1;
+}
+.checkbox-input:checked + .checkbox-label .checkbox-text {
+  -webkit-transform: translate(0, -5.5px);
+  transform: translate(0, -5.5px);
+
+}
+.checkbox-input:checked + .checkbox-label .checkbox-text--description {
+  border-color: white;
+}
+.checkbox-input:checked + .checkbox-label .checkbox-text--description .un {
+  display: inline-block;
+}
+
+@media screen and (min-width: 540px) {
+  .checkbox-label {
+    width: 250px;
+    margin: 0;
+  }
+}
+
+
+
+.pad{
+	text-align: center;
+	padding-bottom: 3%;
+}
+
+
+
+.carousel-control-next {
+  
+    width: 8%;
+    
+}
+
+
+.carousel-control-prev{
+	width: 8%;
+}
+
+
+/* INTEREST */
+.sports{
+	 background-image:url('assets/img/portfolio/categories/sports2.jpg') ;
+	   background-size: 100%;
+	   width: 100%;
+	   border: none;
+	    
+	  background-position: center;
+}
+
+
+.sports:hover{
+	 background-image:url('assets/img/portfolio/categories/sports.jpg') ;
+	   background-size: 100%;
+	 
+	   width: 100%;
+	   border: none;
+	
+	  background-position: center;
+	   -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+    box-shadow:  inset 0 0 0 0 transparent,  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.checkbox-input:checked + .sports {
+  border-color: none;
+  box-shadow: inset 0 -12px 0 0 white, 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color:  white;
+    background-image:url('assets/img/portfolio/categories/sports.jpg') ;
+	   background-size: 100%;
+	  
+	   width: 100%;
+	   border: none;
+	  
+	  background-position: center;
+
+}
+
+
+
+
+
+/****tech*****/
+
+
+.tech{
+	 background-image:url('assets/img/portfolio/categories/tech.jpg') ;
+	   background-size: 100%;
+	  
+	   width: 100%;
+	   border: none;
+	   
+	  background-position: center;
+}
+
+
+.tech:hover{
+	 background-image:url('assets/img/portfolio/categories/sports.jpg') ;
+	   background-size: 100%;
+	  
+	   width: 100%;
+	   border: none;
+	 
+	  background-position: center;
+	   -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+    box-shadow:  inset 0 0 0 0 transparent,  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.checkbox-input:checked + .tech {
+  border-color: none;
+  box-shadow: inset 0 -12px 0 0 white, 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color:  white;
+    background-image:url('assets/img/portfolio/categories/tech.jpg') ;
+	   background-size: 100%;
+	  
+	   width: 100%;
+	   border: none;
+	  
+	  background-position: center;
+
+}
+
+
+
+
+/****photography*****/
+
+
+.photography{
+	 background-image:url('assets/img/portfolio/categories/photography.jpg') ;
+	   background-size: 100%;
+	  
+	   width: 100%;
+	   border: none;
+	
+	  background-position: center;
+}
+
+
+.photography:hover{
+	 background-image:url('assets/img/portfolio/categories/sports.jpg') ;
+	   background-size: 100%;
+	  
+	   width: 100%;
+	   border: none;
+	
+	  background-position: center;
+	   -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+    box-shadow:  inset 0 0 0 0 transparent,  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.checkbox-input:checked + .photography {
+  border-color: none;
+  box-shadow: inset 0 -12px 0 0 white, 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color:  white;
+    background-image:url('assets/img/portfolio/categories/photography.jpg') ;
+	   background-size: 100%;
+	 
+	   width: 100%;
+	   border: none;
+	  
+	  background-position: center;
+
+}
+
+
+
+
+/****photography*****/
+
+
+.music{
+	 background-image:url('assets/img/portfolio/categories/music.jpg') ;
+	   background-size: 100%;
+	
+	   width: 100%;
+	   border: none;
+	  
+	  background-position: center;
+}
+
+
+.music:hover{
+	 background-image:url('assets/img/portfolio/categories/sports.jpg') ;
+	   background-size: 100%;
+	 
+	   width: 100%;
+	   border: none;
+	 
+	  background-position: center;
+	   -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+    box-shadow:  inset 0 0 0 0 transparent,  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.checkbox-input:checked + .music {
+  border-color: none;
+  box-shadow: inset 0 -12px 0 0 white, 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color:  white;
+    background-image:url('assets/img/portfolio/categories/sports.jpg') ;
+	   background-size: 100%;
+	  
+	   width: 100%;
+	   border: none;
+	  
+	  background-position: center;
+
+}

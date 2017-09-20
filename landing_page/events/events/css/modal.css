@@ -1,0 +1,102 @@
+.modal-content {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background-color: white
+    background-clip: padding-box;
+    border: none;
+    border-radius: 0;
+    outline: 0;
+	height: 400px;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+
+.modal-header {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: none;
+}
+
+#username{
+	width: 75%;
+	margin: auto;
+	padding-top: 13px;
+	padding-bottom: 9px;
+	border-bottom: 2px solid #0072bc;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-radius: 0;
+	font-family: 'Raleway', sans-serif;
+	color: #0072bc;
+	font-weight: 500;
+	padding-left: 1px;
+}
+
+#pw{
+	width: 75%;
+	margin: auto;
+	padding-top: 13px;
+	padding-bottom: 9px;
+	border-bottom: 2px solid #0072bc;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-radius: 0;
+	font-family: 'Raleway', sans-serif;
+	color: #0072bc;
+	font-weight: 500;
+	padding-left: 1px;
+}
+
+
+#logintext{
+	font-family: 'Raleway', sans-serif;
+	color: #0072bc;
+	font-weight: 300;
+	font-size: 20px;
+	text-align: center;
+	padding-bottom: 1%;
+}
+
+.modal-footer {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    padding: 15px;
+    border-top: none;
+}
+
+
+#textfont ::-webkit-input-placeholder {
+  color: #0072bc;
+}
+#textfont :-moz-placeholder {
+  color: #0072bc;
+}
+#textfont ::-moz-placeholder {
+  color: #0072bc;
+}
+#textfont :-ms-input-placeholder {
+  color: #0072bc;
+}
+
+#login{
+	background-color: #0072bc;
+}
+
+
+
+
+

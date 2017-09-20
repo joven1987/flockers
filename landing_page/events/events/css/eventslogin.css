@@ -1,0 +1,346 @@
+.modal-content {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background-color: white
+    background-clip: padding-box;
+    border: none;
+    border-radius: 0;
+    outline: 0;
+	height: 430px;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+
+.modal-header {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 0px;
+    border-bottom: none;
+}
+
+#username{
+	width: 75%;
+	margin: auto;
+	padding-top: 13px;
+	padding-bottom: 9px;
+	border-bottom: 2px solid #0072bc;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-radius: 0;
+	font-family: 'Raleway', sans-serif;
+	color: #0072bc;
+	font-weight: 500;
+	padding-left: 1px;
+}
+
+#pw{
+	width: 75%;
+	margin: auto;
+	padding-top: 13px;
+	padding-bottom: 9px;
+	border-bottom: 2px solid #0072bc;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-radius: 0;
+	font-family: 'Raleway', sans-serif;
+	color: #0072bc;
+	font-weight: 500;
+	padding-left: 1px;
+}
+
+
+#logintext{
+	font-family: 'Raleway', sans-serif;
+	color: #0072bc;
+	font-weight: 300;
+	font-size: 20px;
+	text-align: center;
+	padding-bottom: 2.3%;
+}
+
+.modal-footer {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    padding: 15px;
+    border-top: none;
+}
+
+
+#textfont ::-webkit-input-placeholder {
+  color: #0072bc;
+}
+#textfont :-moz-placeholder {
+  color: #0072bc;
+}
+#textfont ::-moz-placeholder {
+  color: #0072bc;
+}
+#textfont :-ms-input-placeholder {
+  color: #0072bc;
+}
+
+#btnsignin{
+	background-color: #0072bc;
+	width: 28%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border: 2px solid #0072bc;
+	border-radius: 0px;
+	cursor: pointer;
+	outline: none;
+	box-shadow: none;
+	color: white;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	
+	
+}
+
+#btnsignin:hover{
+	background-color: #0072bc;
+	width: 28%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border: 2px solid #0072bc;
+	border-radius: 0px;
+	cursor: pointer;
+	outline: none;
+	box-shadow: none;
+	color: white;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	 
+  
+	
+	
+}
+
+
+
+#btnreg{
+	background-color: transparent;
+	width: 28%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border: 2px solid #0072bc;
+	border-radius: 0px;
+	cursor: pointer;
+	outline: none;
+	box-shadow: none;
+	color: #0072bc;
+	margin-right: 5px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	
+	
+}
+
+
+
+#btnreg:hover{
+	background-color: transparent;
+	width: 28%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border: 2px solid #0072bc;
+	border-radius: 0px;
+	cursor: pointer;
+	outline: none;
+	box-shadow: none;
+	color: #0072bc;
+	margin-right: 5px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+   
+    
+
+	
+	
+}
+
+.logicon{
+	width: 5%; opacity: 1; padding-right: 5px; cursor: pointer;
+}
+
+
+
+.inner-addon { 
+    position: relative; 
+}
+
+/* style icon */
+.inner-addon .fa {
+  position: absolute;
+  padding: 17px;
+  pointer-events: none;
+  color: #0072bc;
+}
+
+/* align icon */
+.left-addon .fa  { left:  0px;}
+.right-addon .fa { right: 48px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+
+
+#closebtn{
+	
+    background-color: transparent;
+    border: none;
+    outline: none;
+    box-shadow: shadow;
+    color: #0072bc;
+	cursor: pointer;
+	
+
+}
+
+
+
+
+  
+
+  #signin{
+	font-family: 'Raleway', sans-serif;
+	color: #0072bc;
+	font-weight: 300;
+	font-size: 24px;
+	text-align: center;
+	padding-bottom: %;
+}
+
+
+.modal-footer {
+    
+    padding: 20px;
+  
+}
+
+
+
+
+
+/****REGISTER******/
+
+
+
+
+#regfont{
+	padding-bottom: 2.3%;
+	box-shadow: none;
+	outline: none;
+	color: #0072bc;
+}
+
+
+#regdiv ::-webkit-input-placeholder {
+  color: #0072bc;
+  font-weight: 300;
+}
+#regdiv :-moz-placeholder {
+  color: #0072bc;
+  font-weight: 300;
+}
+#regdiv ::-moz-placeholder {
+  color: #0072bc;
+  font-weight: 300;
+}
+#regdiv :-ms-input-placeholder {
+  color: #0072bc;
+  font-weight: 300;
+}
+
+
+#regtext{
+	width: 75%;
+	margin: auto;
+	padding-top: 13px;
+	padding-bottom: 2%;
+	border-bottom: 2px solid #0072bc;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-radius: 0;
+	font-family: 'Raleway', sans-serif;
+	color: #0072bc;
+	font-weight: 500;
+	padding-left: 1px;
+}
+
+.registration{
+	  position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background-color: white background-clip: padding-box;
+    border: none;
+    border-radius: 0;
+    outline: 0;
+    height: 550px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+
+
+#btnsignup{
+	background-color: #0072bc;
+	width: 28%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border: 2px solid #0072bc;
+	border-radius: 30px;
+	cursor: pointer;
+	outline: none;
+	box-shadow: none;
+	color: white;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	
+	
+	
+}
+
+
+
+#btnlogin{
+	background-color: transparent;
+	width: 28%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border: 2px solid #0072bc;
+	border-radius: 30px;
+	cursor: pointer;
+	outline: none;
+	box-shadow: none;
+	color: #0072bc;
+	margin-right: 20px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	
+	
+}
+
+
+.regicon{
+	width: 3%; opacity: 1; padding-right: 5px; cursor: pointer;
+}
+
+
+
