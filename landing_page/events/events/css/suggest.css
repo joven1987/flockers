@@ -1,0 +1,50 @@
+.event-title{color: #0072bc;
+    font-size: 15px;
+    font-family: 'Raleway', sans-serif;
+padding-bottom: 0px;}
+
+
+.paid{
+	background-color: #0072bc;
+    border: 1px solid #0072bc;
+    color: white;
+    font-size: 14px;
+    border-radius: 3px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif;
+    width: 80px;
+    margin-top: -3px;
+}
+
+
+text.eventd {
+    color: #0072bc;
+    font-size: 13px;
+    padding-left: 5px;
+    font-family: 'Raleway', sans-serif;
+}
+
+
+.portfolio-item {
+    margin-bottom: 30px;
+}
+
+
+.card1{
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	border: 0px;
+	border-radius: 0;
+}
+
+
+.card-img-top {
+    width: 100%;
+   border-radius: 0;
+}
+
+
+
+
+

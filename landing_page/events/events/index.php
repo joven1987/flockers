@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php require 'db_connection.php';
+require 'get_time.php';
+?>
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Flockers | Events</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+
+   <link rel="stylesheet" type="text/css" href="css/design.css">
+   <link rel="stylesheet" type="text/css" href="css/eventslogin.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/modalstyle.css">-->
+   <link rel="stylesheet" media="screen" href="vendor/fonts/font-awesome/font-awesome.min.css" />
+   <link href="https://fonts.googleapis.com/css?family=Raleway:500" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet"> 
+   <link href="https://fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Raleway:900" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Raleway:800" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Raleway:300,800" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Raleway:200,800" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+
+ 
+ 
+  
+  
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark  fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+		<img src="images/icon/logo.png" style=" max-height: 45px; max-width: 195px; opacity: 1; position: absolute; top:10px; image-rendering: crisp-edges; "></img>
+		</a>
+		
+		<form class="form-inline topfind" >
+		<input class="form-control " type="text" placeholder="Search for events" id="topsearch"></input>
+		</form>
+		
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto navtext">
+            <li class="nav-item">
+              <a class="nav-link" href="#" >HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#register" style="outline: none; box-shadow: none;">REGISTER</a>
+            </li>
+            <li class="nav-item">
+              <button type="button" id="create" class="btn create" data-toggle="modal" data-target="#login" style="outline: none;">CREATE EVENTS</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+	
+	<!---MODAL LOGIN-->
+	
+	
+	 <div class="modal fade" id="login" style="background-image:url('images/bg/back.jpg'); width: 100%; height: 100%; ">
+  <div class="modal-dialog" role="document" style="padding-top: 5%;">
+    <div class="modal-content">
+      <div class="modal-header">
+	  
+    <!-- class="close" data-dismiss="modal" aria-label="Close"-->
+	 
+		<div class="container">
+		<div class="row" style="padding-left: 100%;">
+        <button type="button" id="closebtn" class="align-right" data-dismiss="modal" aria-label="Close">
+		<i class="fa fa-minus" aria-hidden="true"></i>
+        </button>
+		</div>
+		</div>
+		
+      </div>
+      <div class="modal-body">
+	  
+		
+	    <img src="images/icon/icon.png" style="max-width: 250px; opacity: 1; margin: auto;  display: block; padding-bottom: 3%; "></img>
+        
+		
+		<form>
+		
+		<h2 id="logintext"  > Hi there, Sign in to Flockers </h2>
+		
+		
+		
+ 
+  
+  <div class="inner-addon right-addon" id="textfont">
+    <i class="fa fa-user" aria-hidden="true" ></i>
+    <input type="text" class="form-control" id="username" placeholder="Email"/>
+</div>
+
+<div class="inner-addon right-addon" id="textfont" style="padding-top: 3.5%;">
+    <i class="fa fa-lock" aria-hidden="true"></i>
+    <input type="password" class="form-control" id="pw" placeholder="Password"/>
+</div>
+  
+  <div class="row">
+  <div class="col-md-12 text-center" style="padding-top: 9%;"> 
+	 <button id="btnreg" name="singlebutton" class="btn" data-toggle="modal" data-target="#register"><span>Register</span></button> 
+	 <button id="btnsignin" name="singlebutton" class="btn">Sign In</button> 
+	 
+  </div>
+  </div>
+  
+</form>
+
+	
+
+
+      </div>
+      <div class="modal-footer">
+       
+	   <div class="container" style="text-align:center;">
+	   <img src="images/icon/socialcon/fb.svg" class="logicon"></img>
+	   <img src="images/icon/socialcon/twitter.svg" class="logicon"></img>
+	   <img src="images/icon/socialcon/gp.svg" class="logicon"></img>
+	   
+	   </div>
+	   
+
+	   
+      </div>
+    </div>
+  </div>
+</div>
+ 
+ 
+	
+	<!---END--->
+	
+	
+	
+	
+	
+	
+	
+	<!---MODAL REGISTER-->
+
+	
+ <div class="modal fade" id="register" role="dialog" style="background-image:url('images/bg/back.jpg'); width: 100%; height: 100%; padding-top: 2%; ">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content registration">
+        <div class="modal-header">
+		
+          <div class="container" style="padding-top: 1px;">
+		<div class="row" style="padding-left: 100%;">
+        <button type="button" id="closebtn" class="align-right" data-dismiss="modal" aria-label="Close">
+		<i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+		</div>
+		</div>
+         
+        </div>
+        <div class="modal-body">
+		
+		 <img src="images/icon/icon.png" style="max-width: 250px; opacity: 1; margin: auto;  display: block; padding-bottom: 1.3%; "></img>
+		 
+		 
+    <form class="col-md-12" id="regdiv" action="register.php" method="post">
+		
+		<h2 id="logintext" > Hi there, New to Flockers? </h2>
+		
+  
+  <div class="row">
+  <div class="inner-addon right-addon col-md-6" id="regfont">
+    <i class="fa fa-user" aria-hidden="true" ></i>
+    <input type="text" class="form-control" name="first_name"  id="regtext" placeholder="Firstname"/>
+	</div>
+
+<div class="inner-addon right-addon col-md-6" id="regfont" >
+  <i class="fa fa-phone" aria-hidden="true"></i>
+    <input type="number" class="form-control"  name="mobile_no" id="regtext"placeholder="Mobile No"/>
+</div>
+
+
+
+  <div class="inner-addon right-addon col-md-6" id="regfont">
+    <i class="fa fa-user" aria-hidden="true" ></i>
+    <input type="text" class="form-control"  name="middle_name" id="regtext" placeholder="Middlename"/>
+</div>
+
+<div class="inner-addon right-addon col-md-6" id="regfont" >
+  <i class="fa fa-money" aria-hidden="true"></i>
+    <input type="email" class="form-control" name="paypal" id="regtext" placeholder="Paypal ID (Optional)"/>
+</div>
+
+
+
+  <div class="inner-addon right-addon col-md-6" id="regfont">
+    <i class="fa fa-user" aria-hidden="true" ></i>
+    <input type="text" class="form-control" name="last_name" id="regtext"  placeholder="Lastname"/>
+</div>
+
+<div class="inner-addon right-addon col-md-6" id="regfont" >
+    <i class="fa fa-lock" aria-hidden="true"></i>
+    <input type="password" class="form-control" name="password" id="regtext" placeholder="Password"/>
+</div>
+
+
+
+  <div class="inner-addon right-addon col-md-6" id="regfont">
+    <i class="fa fa-envelope" aria-hidden="true"></i>
+    <input type="email" class="form-control" name="email_add" id="regtext" placeholder="Email"/>
+</div>
+
+<div class="inner-addon right-addon col-md-6" id="regfont" >
+    <i class="fa fa-lock" aria-hidden="true"></i>
+    <input type="password" class="form-control" name="cpassword" id="regtext" placeholder="Repeat Password"/>
+</div>
+
+  </div>
+  
+  
+  <div class="row">
+  <div class="col-md-12 text-center" style="padding-top: 5%;"> 
+	 <button id="btnlogin" name="singlebutton" class="btn" data-toggle="modal" data-target="#register"><span>Sign in</span></button> 
+	 <button type="submit" id="btnsignup" name="register" class="btn">Register</button> 
+	 
+  </div>
+  </div>
+  
+</form> 
+
+        </div>
+        <div class="modal-footer">
+         
+		  <div class="container" style="text-align:center;">
+	   <img src="images/icon/socialcon/fb.svg" class="regicon"></img>
+	   <img src="images/icon/socialcon/twitter.svg" class="regicon"></img>
+	   <img src="images/icon/socialcon/gp.svg" class="regicon"></img>
+	   
+	   </div>
+		 
+		 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+	
+	<!---END--->
+	
+	
+	
+	
+	
+<div id="map"></div>
+    <script>
+      function initMap() {
+        var uluru = {lat: 10.3251540, lng: 123.9537480};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANi-e-bnWFOAd9HtT_6Podg12042Pf2yA&callback=initMap">
+    </script>
+	
+	
+	
+	
+	
+	
+	<!---
+	
+	<div id="map"></div>
+    <script>
+      function initMap() {
+        // Styles a map in night mode.
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 10.3251540, lng: 123.9537480},
+          zoom: 15,
+          styles: [
+            {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+            {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+            {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+            {
+              featureType: 'administrative.locality',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
+            },
+            {
+              featureType: 'poi',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'geometry',
+              stylers: [{color: '#263c3f'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#6b9a76'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry',
+              stylers: [{color: '#38414e'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#212a37'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#9ca5b3'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry',
+              stylers: [{color: '#746855'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#1f2835'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#f3d19c'}]
+            },
+            {
+              featureType: 'transit',
+              elementType: 'geometry',
+              stylers: [{color: '#2f3948'}]
+            },
+            {
+              featureType: 'transit.station',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'geometry',
+              stylers: [{color: '#17263c'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#515c6d'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.stroke',
+              stylers: [{color: '#17263c'}]
+            }
+          ]
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANi-e-bnWFOAd9HtT_6Podg12042Pf2yA&callback=initMap"
+    async defer></script>-->
+	
+	
+	
+	
+
+	
+	
+    <!-- Page Content -->
+    <div class="container" style="padding-top: 27%;">
+	
+	<div class="navstyle">
+	<nav class="navbar navbar-light bg-faded search">
+
+	<div class="col-md-12" >
+		<h4 class="col-md-12 searchtitle">Experience your next event</h4>
+	</div>
+	
+	<div class="row">
+  <form class="form-inline" id="textcolor">
+  	
+    <!---<input class="form-control mr-sm-2 searchbar" type="text" placeholder="All Events"style="color: #0072bc;"></input>-->
+	
+	<div class="dropdown col-md-3" style="border-right: 1px solid white;">
+    <button class="btn btn-primary " type="button" data-toggle="dropdown">CATEGORIES
+    <span><i class="fa fa-angle-down" aria-hidden="true" style="font-size:18px;"></i></span></button>
+    <ul class="dropdown-menu">
+		<li class="hover"><a href="#" class="aleft"><b>ALL CATEGORIES</b></a></li>
+      <li class="hover"><a href="#" class="aleft">Sports</a></li>
+      <li class="hover"><a href="#" class="aleft">Health</a></li>
+      <li  class="hover"><a href="#" class="aleft">Film</a></li>
+	   <li  class="hover"><a href="#" class="aleft">Arts</a></li>
+      <li  class="hover"><a href="Tech.html" class="aleft">Technology</a></li>
+	  <li  class="hover"><a href="#" class="aleft">Dance</a></li>
+	  <li class="hover"><a href="#" class="aleft">Photography</a></li>
+	  <li  class="hover"><a href="#" class="aleft">Music</a></li>
+	  <li  class="hover"><a href="eSports.html" class="aleft">eSports</a></li>
+      
+    </ul>
+  </div>
+  
+  <div class="dropdown col-md-3" style="border-right: 1px solid white;">
+    <button class="btn btn-primary" type="button" data-toggle="dropdown">EVENT TYPE
+     <span><i class="fa fa-angle-down" aria-hidden="true" style="font-size:18px;"></i></span></button>
+    <ul class="dropdown-menu">
+		<li class="hover"><a href="#" class="aleft"><b>ALL EVENT TYPES</b></a></li>
+      <li class="hover"><a href="#" class="aleft">Expo</a></li>
+      <li class="hover"><a href="#" class="aleft">Seminar</a></li>
+      <li  class="hover"><a href="#" class="aleft">Class</a></li>
+	   <li  class="hover"><a href="#" class="aleft">Conference</a></li>
+      <li  class="hover"><a href="#" class="aleft">Tournament</a></li>
+	  <li  class="hover"><a href="#" class="aleft">Convention</a></li>
+	  <li class="hover"><a href="#" class="aleft">Meetup</a></li>
+	  
+      
+    </ul>
+  </div>
+  
+  <div class="dropdown col-md-3" style="border-right: 1px solid white;">
+    <button class="btn btn-primary" type="button" data-toggle="dropdown">DATE
+     <span><i class="fa fa-angle-down" aria-hidden="true" style="font-size:18px;"></i></span></button>
+  <ul class="dropdown-menu">
+		<li class="hover"><a href="#" class="aleft"><b>ALL DATES</b></a></li>
+      <li class="hover"><a href="#" class="aleft">Today</a></li>
+      <li class="hover"><a href="#" class="aleft">Tommorow</a></li>
+      <li  class="hover"><a href="#" class="aleft">This Week</a></li>
+	   <li  class="hover"><a href="#" class="aleft">This Weekend</a></li>
+      <li  class="hover"><a href="#" class="aleft">Next Week</a></li>
+	  <li  class="hover"><a href="#" class="aleft">This Month</a></li>
+	  <li class="hover"><a href="#" class="aleft">Custom Date</a></li>
+	  
+      
+    </ul>
+  </div>
+  
+  <div class="dropdown col-md-3">
+    <button class="btn btn-primary " type="button" data-toggle="dropdown">PRICE
+     <span><i class="fa fa-angle-down" aria-hidden="true" style="font-size:18px;"></i></span></button>
+   <ul class="dropdown-menu">
+		<li class="hover"><a href="#" class="aleft"><b>ALL PRICES</b></a></li>
+      <li class="hover"><a href="#" class="aleft">Free</a></li>
+      <li class="hover"><a href="#" class="aleft">Paid</a></li>
+      
+	  
+      
+    </ul>
+  </div>
+	
+    <!--<button class="btn btn-outline-success my-2 my-sm-0 find" type="submit">Search</button>--->
+	
+
+
+  </form>
+  </div>
+  
+ 
+
+</nav>
+</div>
+
+      <!-- Page Heading -->
+      
+<!--.row-->
+      <div class="row" style="padding-top: 4%;" id="events_list">
+	  
+        </div>
+        </div>
+		
+		<!---
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="images/events/ev2.jpg" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title title">
+               <b>Drupal Camp Cebu</b>
+			     <button class="pull-right viewmore" type="button" >₱400-900</button>
+              </h4>
+             
+						
+								<h4><img src="images/icon/calendar.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">SAT, AUG 26 AT 1:00PM</text>
+                                </h4>
+								
+								
+								<h5 ><img src="images/icon/placeholder.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">Cebu Trade Hall, Cebu City</text>
+                                </h5>
+								
+								 <h5 ><img src="images/icon/clock.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">4:30-8:00PM</text>
+                                </h5>
+								
+								<h5 ><img src="images/icon/team.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">300 Join</text>
+                                </h5>
+					
+								<div class="tags">
+								<button type="button" class="con">#Camp</button>
+								<button type="button" class="con">#Cebu</button>
+								<button type="button" class="con">#Tech</button>
+								<button type="button" class="con">#Drupal</button>
+								<img class="pull-right" src="images/icon/bookmark.svg" alt="SAVE" style="width:8%;cursor: pointer;">
+								</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="images/events/ev3.jpg" alt=""></a>
+             <div class="card-body">
+              <h4 class="card-title title">
+               <b>Charged Movement Cebu</b>
+			   <button class="pull-right viewmore" type="button" >₱400-900</button>
+              </h4>
+             
+						
+								<h4><img src="images/icon/calendar.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">SAT, AUG 26 AT 1:00PM</text>
+                                </h4>
+								
+								
+								<h5 ><img src="images/icon/placeholder.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">Cebu Trade Hall, Cebu City</text>
+                                </h5>
+								
+								 <h5 ><img src="images/icon/clock.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">4:30-8:00PM</text>
+                                </h5>
+								
+								<h5 ><img src="images/icon/team.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">300 Joined</text>
+                                </h5>
+								
+								<div class="tags">
+								<button type="button" class="con">#Business</button>
+								<button type="button" class="con">#Enterpreneur</button>
+								<button type="button" class="con">#Event</button>
+								<img class="pull-right" src="images/icon/bookmark.svg" alt="SAVE" style="width:8%;cursor: pointer;">
+								
+								</div>
+					
+			 
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="images/events/ev4.jpg" alt=""></a>
+           <div class="card-body">
+              <h4 class="card-title title">
+               <b>Study in Australia Cebu</b>
+			   <button class="pull-right viewmore" type="button" >FREE</button>
+              </h4>
+             
+						
+								<h4><img src="images/icon/calendar.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">September 10, 2017</text>
+                                </h4>
+								
+								
+								<h5 ><img src="images/icon/placeholder.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">AMS Global Cebu Offices</text>
+                                </h5>
+								
+								 <h5 ><img src="images/icon/clock.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">4:30-8:00PM</text>
+                                </h5>
+								
+								<h5 ><img src="images/icon/team.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">300 Joined</text>
+                                </h5>
+								
+								<div class="tags">
+								<button type="button" class="con">#Study</button>
+								<button type="button" class="con">#Foreign</button>
+								<button type="button" class="con">#Cebu</button>
+								<img class="pull-right" src="images/icon/bookmark.svg" alt="SAVE" style="width:8%;cursor: pointer;">
+								</div>
+			 
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="images/events/ev5.jpg" alt=""></a>
+		<div class="card-body">
+              <h4 class="card-title title">
+               <b>Cebu Forex Trading</b>
+			   <button class="pull-right viewmore" type="button" >₱500</button>
+              </h4>
+             
+						
+								<h4><img src="images/icon/calendar.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">SAT, AUG 26 AT 1:00PM</text>
+                                </h4>
+								
+								
+								<h5 ><img src="images/icon/placeholder.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">Waterfornt Cebu Hotel, Lahug</text>
+                                </h5>
+								
+								 <h5 ><img src="images/icon/clock.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">4:30-8:00PM</text>
+                                </h5>
+								
+								<h5 ><img src="images/icon/team.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">300 Joined</text>
+                                </h5>
+								
+								<div class="tags">
+								<button type="button" class="con">#Trading</button>
+								<button type="button" class="con">#Business</button>
+								<button type="button" class="con">#Cebu</button>
+								<img class="pull-right" src="images/icon/bookmark.svg" alt="SAVE" style="width:8%;cursor: pointer;">
+								</div>
+			 
+					
+			 
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="images/events/ev6.jpg" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title title">
+               <b>Backpack CEO Cebu</b>
+			   <button class="pull-right viewmore" type="button" >FREE</button>
+              </h4>
+             
+						
+								<h4><img src="images/icon/calendar.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">SAT, AUG 26 AT 1:00PM</text>
+                                </h4>
+								
+								
+								<h5 ><img src="images/icon/placeholder.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">Cebu Trade Hall, Cebu City</text>
+                                </h5>
+								
+								 <h5 ><img src="images/icon/clock.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">4:30-8:00PM</text>
+                                </h5>
+								
+								<h5 ><img src="images/icon/team.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">300 Joined</text>
+                                </h5>
+								
+								<div class="tags">
+								<button type="button" class="con">#Trading</button>
+								<button type="button" class="con">#Business</button>
+								<button type="button" class="con">#Cebu</button>
+								<img class="pull-right" src="images/icon/bookmark.svg" alt="SAVE" style="width:8%;cursor: pointer;">
+								</div>
+					
+			 
+            </div>
+          </div>
+        </div>
+		    <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="images/events/ev3.jpg" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title title">
+               <b>Charged Movement Cebu</b>
+			   <button class="pull-right viewmore" type="button" >₱400-900</button>
+              </h4>
+             
+						
+								<h4><img src="images/icon/calendar.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">SAT, AUG 26 AT 1:00PM</text>
+                                </h4>
+								
+								
+								<h5 ><img src="images/icon/placeholder.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">Cebu Trade Hall, Cebu City</text>
+                                </h5>
+								
+								 <h5 ><img src="images/icon/clock.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">4:30-8:00PM</text>
+                                </h5>
+								
+								<h5 ><img src="images/icon/team.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">300 Joined</text>
+                                </h5>
+								
+								<div class="tags">
+								<button type="button" class="con">#Business</button>
+								<button type="button" class="con">#Enterpreneur</button>
+								<button type="button" class="con">#Event</button>
+								<img class="pull-right" src="images/icon/bookmark.svg" alt="SAVE" style="width:8%;cursor: pointer;">
+								
+								</div>
+					
+			 
+            </div>
+          </div>
+        </div>
+		  <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="images/events/ev2.jpg" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title title">
+               <b>Drupal Camp Cebu</b>
+			     <button class="pull-right viewmore" type="button" >₱400-900</button>
+              </h4>
+             
+						
+								<h4><img src="images/icon/calendar.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">SAT, AUG 26 AT 1:00PM</text>
+                                </h4>
+								
+								
+								<h5 ><img src="images/icon/placeholder.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">Cebu Trade Hall, Cebu City</text>
+                                </h5>
+								
+								 <h5 ><img src="images/icon/clock.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">4:30-8:00PM</text>
+                                </h5>
+								
+								<h5 ><img src="images/icon/team.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">300 Join</text>
+                                </h5>
+					
+								<div class="tags">
+								<button type="button" class="con">#Camp</button>
+								<button type="button" class="con">#Cebu</button>
+								<button type="button" class="con">#Tech</button>
+								<button type="button" class="con">#Drupal</button>
+								<img class="pull-right" src="images/icon/bookmark.svg" alt="SAVE" style="width:8%;cursor: pointer;">
+								</div>
+            </div>
+          </div>
+        </div>
+		    <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="images/events/ev1.jpg" alt=""></a>
+           <div class="card-body">
+              <h4 class="card-title title">
+               <b>Cebu Property Expo</b>
+			   <button class="pull-right viewmore" type="button" >FREE</button>
+              </h4>
+             
+						
+								<h4><img src="images/icon/calendar.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">October 6-8, 2017</text>
+                                </h4>
+								
+								
+								<h5 ><img src="images/icon/placeholder.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">Cebu Trade Hall, Cebu City</text>
+                                </h5>
+								
+								 <h5 ><img src="images/icon/clock.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">4:30-8:00PM</text>
+                                </h5>
+								
+								<h5 ><img src="images/icon/team.svg" alt="" style="width: 6.5%;">
+								<text class="eventd">300 Join</text>
+                                </h5>
+								
+								<div class="tags">
+								<button type="button" class="con">#Conference</button>
+								<button type="button" class="con">#Cebu</button>
+								<button type="button" class="con">#Expo</button>
+								<img class="pull-right" src="images/icon/bookmark.svg" alt="SAVE" style="width:8%;cursor: pointer;">
+								</div>
+			 
+            </div>
+          </div>
+        </div>
+      </div>-->
+      <!-- /.row -->
+
+      <!-- Pagination -->
+     <!-- <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>-->
+    <!-- /.container -->
+	
+	
+    <!-- Footer -->
+    <footer class="foot">
+      <div class="container">
+	  
+	  <div class="row ftfont">
+			<div class="col-md-3" >
+			<label class="flab" >Use Flockers<label>
+			<text class="ft1">How it works</text><br>
+			<text class="ft1">For large and Complex Events</text><br>
+			<text class="ft1">Pricing</text><br>
+			<text class="ft1">Community Guidelines</text><br>
+			<text class="ft1">Event Organizing Resources</text><br>
+			<text class="ft1">Sitemap</text><br>
+			</div>
+			<div class="col-md-3">
+			<label class="flab" >Plan Events<label>
+			<text class="ft1">Flockers Reviews</text><br>
+			<text class="ft1">Sell Tickets</text><br>
+			<text class="ft1">Event Management and Planning</text><br>
+			<text class="ft1">Online Event Registration</text><br>
+			<text class="ft1">Online RSVP</text><br>
+			<text class="ft1">Venu Booking and Management</text><br>
+			</div>
+			<div class="col-md-3">
+			
+			<text class="ft1">Lapu-Lapu Events</text><br>
+			<text class="ft1">Mandaue Events</text><br>
+			<text class="ft1">Cebu Events</text><br>
+			<text class="ft1">Liloan Events</text><br>
+			<text class="ft1">Mabolo Events</text><br>
+			<text class="ft1">Talisay Events</text><br>
+			</div>
+			<div class="col-md-3">
+			<label class="flab" >Connect With Us<label>
+			<img src="images/icon/email.svg" style="width: 7%;"></img><text class="ft4">Contact Support</text><br>
+			<img src="images/icon/email.svg" style="width: 7%;"></img><text class="ft4">Contact Sale</text><br>
+			<img src="images/icon/fb.svg" style="width: 7%;"></img><text class="ft4">Facebook</text><br>
+			<img src="images/icon/twitter.svg" style="width: 7%;"></img><text class="ft4">Twitter</text><br>
+			<img src="images/icon/linkedin.svg" style="width: 7%;"><text class="ft4">LinkedIn</text><br>
+			<img src="images/icon/gplus.svg" style="width: 7%;"><text class="ft4">Google+</text><br>
+			
+			</div>
+		</div>
+		
+		
+		
+		<div class="row ftfont2">
+			<div class="col-md-2"><p>HOME</p></div>
+			<div class="col-md-2"><p>EVENTS</p></div>
+			<div class="col-md-2"><p>CATEGORIES</p></div>
+			<div class="col-md-2"><p>PRICING</p></div>
+			<div class="col-md-2"><p>ABOUT</p></div>
+			<div class="col-md-2"><p>CONTACT</p></div>
+		</div>
+      </div>
+     
+    </footer>
+	
+	
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	
+	<script>
+		  
+		  var xmlhttp = new XMLHttpRequest();
+		  xmlhttp.onreadystatechange = function() {
+			if(this.readyState == 4 && this.status == 200) {
+				var data = JSON.parse(this.responseText);
+				var i = 0;
+				while (i < data.length) {
+					
+					var reg_fee = data[i]["reg_fee"]? '₱'+data[i]["reg_fee"]: "Free";
+					var event_title = data[i]["event_title"];
+					var event_id = data[i]["event_id"];
+					var banner = data[i]["cover_photo_link"];
+					var month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+					var e_date = new Date(data[i]["event_date"]);
+					var event_date = month[e_date.getMonth()];
+					event_date += ' ' + e_date.getDate();
+					event_date += ', ' + e_date.getFullYear();
+					var location = data[i]["address"];
+					//var time = data[i]["event_start_time"] + ' - ' +data[i]["event_end_time"];
+					//var time = <?php echo '10:20:30'?>;
+					//var time = t.getHours();
+
+					var tm = data[i]["event_id"];
+					console.log(data[i]["event_id"]);
+	var event_container = ['<div class="col-lg-4 col-sm-6 portfolio-item">',
+						  '<div class="card h-100">',
+							'<a href="event-details.php?event_id='+event_id+'">',
+							'<img class="card-img-top" src="images/events/ev1.jpg" alt=""></a>',
+							'<div class="card-body">',
+							'<h4 class="card-title title">',
+							'<b>',
+							'<a href="event-details.php?event_id='+event_id+'">'
+							+event_title+
+							'</a>',
+							'</b>',
+							'<button class="pull-right viewmore" type="button" >'
+							+reg_fee+
+							'</button>',
+							'</h4>',
+							'<h4>',
+							'<img src="images/icon/calendar.svg" alt="" style="width: 6.5%;">',
+							'<text class="eventd">'
+							+event_date+
+							'</text>',
+                            '</h4>',	
+							'<h5 >',
+							'<img src="images/icon/placeholder.svg" alt="" style="width: 6.5%;">',
+							'<text class="eventd">'
+							+location+
+							'</text>',
+                            '</h5>',
+							'<h5 >',
+							'<img src="images/icon/clock.svg" alt="" style="width: 6.5%;">',
+							'<text class="eventd">',
+							data[i]['start_time'],
+							'</text>',
+                            '</h5>',	
+							'<h5 >',
+							'<img src="images/icon/team.svg" alt="" style="width: 6.5%;">',
+							'<text class="eventd">300 Join</text>',
+                            '</h5>',	
+							'<div class="tags">',
+							'<button type="button" class="con">#Conference</button>',
+							'<button type="button" class="con">#Cebu</button>',
+							'<button type="button" class="con">#Expo</button>',
+							'<img class="pull-right" src="images/icon/bookmark.svg" alt="SAVE" style="width:8%;cursor: pointer;">',
+							'</div>',
+							'</div>',
+							'</div>'].join('');
+		  $('#events_list').append(event_container);
+		  i++;
+				}
+				console.log(data);
+			}  
+		  };
+		  xmlhttp.open("GET", "get_events.php", true);
+		  xmlhttp.send();
+		  
+		  
+	</script>
+
+  </body>
+
+</html>
