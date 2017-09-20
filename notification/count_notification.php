@@ -1,12 +1,4 @@
 <?php
-session_name();
-/*require '../db_connection.php';
-$ie_id = '1,9';
-echo count_notification($db, $ie_id, 0);*/
-
-$_SESSION['user_id'] = 1;
-
-
 function count_notification($db, $ie_id, $return_condition) {
     $query = $db->prepare("SELECT * FROM `event`");
     $query->execute();
@@ -103,6 +95,4 @@ function get_event_details($db, $ie_id) {
     return $return_txt;
 
 }
-
-//}
 ?>

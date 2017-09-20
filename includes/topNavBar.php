@@ -1,8 +1,6 @@
 <?php
-//session_start();
-require '../db_connection.php';
 require '../notification/count_notification.php';
-$_SESSION['user_interest_id'] = '3,13';
+$user_id = $_SESSION['user_id'];
 $i_id = $_SESSION['user_interest_id'];
 ?>
 <div class="nav_menu" >
@@ -27,7 +25,7 @@ $i_id = $_SESSION['user_interest_id'];
                         </a >
                     </li >
                     <li ><a href="javascript:;" >Help</a ></li >
-                    <li ><a href="login.html" ><i class="fa fa-sign-out pull-right" ></i > Log Out</a ></li >
+                    <li ><a href="../logout.php" ><i class="fa fa-sign-out pull-right" ></i >Log Out</a ></li >
                 </ul >
             </li >
 

@@ -1,7 +1,5 @@
 <?php
 session_start();
-$_SESSION['user_id'] = '1';
-$user_id = $_SESSION['user_id'];
 require '../db_connection.php';
 if (isset($_GET['event_id'])) {
     $event_id = $_GET['event_id'];
@@ -58,7 +56,7 @@ if (isset($_GET['event_id'])) {
 <div class="container body" >
     <div class="main_container" >
         <div class="col-md-3 left_col" >
-            <?php require "../includes/sideBarMenu.html"; ?>
+            <?php require "../includes/sideBarMenu.php"; ?>
         </div >
 
         <!-- top navigation -->

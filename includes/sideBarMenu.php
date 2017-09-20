@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <div class="left_col scroll-view">
     <div class="navbar nav_title" style="border: 0;">
         <a href="upcomingevents.php" class="site_title"><span><img src="../landing_page/images/icon/logo.png" alt="" style="max-height: 45px;max-width: 190px;opacity: 1;top:8px;"></span></a>
@@ -43,7 +46,7 @@
                 <li><a><i class="fa fa-envelope"></i> Messages <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="../manage_message/groupmessage.php">Group Message(s)</a></li>
-                        <li><a href="../manage_message/privatemessage.php">Private Message(s)</a></li>
+                        <li><a href="../manage_message/message_main.php">Private Message(s)</a></li>
                     </ul>
                 </li>
                 <li><a><i class="fa fa-group"></i> My Groups <span class="fa fa-chevron-down"></span></a>
@@ -55,25 +58,5 @@
                 </li>
             </ul>
         </div>
-
-
     </div>
-    <!-- /sidebar menu -->
-
-    <!-- /menu footer buttons -->
-    <!--<div class="sidebar-footer hidden-small">
-        <a data-toggle="tooltip" data-placement="top" title="Settings">
-            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-        </a>
-        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-        </a>
-        <a data-toggle="tooltip" data-placement="top" title="Lock">
-            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-        </a>
-        <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-        </a>
-    </div>-->
-    <!-- /menu footer buttons -->
 </div>

@@ -1,7 +1,35 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
-<?php require 'db_connection.php';
+
+<?php
+require 'db_connection.php';
 require 'get_time.php';
+
+if (isset($_POST['singlebutton'])) {
+    $user_email = $_POST['user_email'];
+    $user_password = $_POST['user_password'];
+
+    $query = $db->prepare("SELECT * FROM `users` WHERE `email_add`=? AND `password`=?");
+    $query->bindParam(1,$user_email);
+    $query->bindParam(2, $user_password);
+    $query->execute();
+    if($query->rowCount() == 1) {
+        $row = $query->fetch(PDO:: FETCH_OBJ);
+        $_SESSION['user_id'] = $row->id;
+        $_SESSION['user_interest_id'] = $row->interests_id;
+        $_SESSION['email_add'] = $row->email_add;
+
+        $login_status_set = 1;
+        $login_status = $db->prepare("UPDATE `users` SET `login_status`=? WHERE `id`=?");
+        $login_status->bindParam(1, $login_status_set);
+        $login_status->bindParam(2, $_SESSION['user_id']);
+        $login_status->execute();
+        header("location: ../../../manage_event/upcomingevents.php");
+    }
+}
 ?>
   <head>
 
@@ -98,22 +126,22 @@ require 'get_time.php';
 	    <img src="images/icon/icon.png" style="max-width: 250px; opacity: 1; margin: auto;  display: block; padding-bottom: 3%; "></img>
         
 		
-		<form>
+		<form action="index.php" method="post">
 		
 		<h2 id="logintext"  > Hi there, Sign in to Flockers </h2>
-		
-		
-		
- 
-  
+
+
+
+
+
   <div class="inner-addon right-addon" id="textfont">
     <i class="fa fa-user" aria-hidden="true" ></i>
-    <input type="text" class="form-control" id="username" placeholder="Email"/>
+    <input type="email" class="form-control" id="username" name="user_email" placeholder="Email"/>
 </div>
 
 <div class="inner-addon right-addon" id="textfont" style="padding-top: 3.5%;">
     <i class="fa fa-lock" aria-hidden="true"></i>
-    <input type="password" class="form-control" id="pw" placeholder="Password"/>
+    <input type="password" class="form-control" name="user_password" id="pw" placeholder="Password"/>
 </div>
   
   <div class="row">
