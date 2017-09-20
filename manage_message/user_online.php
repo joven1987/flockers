@@ -28,7 +28,7 @@ if (isset($_GET['users'])) {
     }
 }*/
 
-if (isset($_GET['to_user_id'])) {
+if (isset($_GET['mess_id'])) {
     $to_user_id = $_GET['to_user_id'];
     $last_message_id = $_GET['mess_id'];
     $query1 = $db->prepare("SELECT * FROM `personal_message` WHERE (`from_user_id`=? AND `to_user_id`=? AND `id`>?) OR (`from_user_id`=? AND `to_user_id`=? AND `id`>?) ORDER BY `id` ASC");

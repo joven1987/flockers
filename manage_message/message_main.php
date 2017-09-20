@@ -74,7 +74,7 @@ require '../db_connection.php';
                             <br>
                             <h4 id="recipient" style="text-transform: capitalize;"><?php echo (isset( $_GET['recipient_name'])) ? $_GET['recipient_name'] : '';?></h4>
                             <div class="dropzone dz-clickable">
-                                <div class="dz-default dz-message" style="overflow-y: scroll; max-height: 300px;" id="conversation">
+                                <div class="dz-default dz-message" style="overflow-x: hidden; overflow-y: scroll; max-height: 300px;" id="conversation">
                                 </div>
                             </div>
                             <div class="col-md-12" style="margin-top: 10px;">
@@ -202,10 +202,15 @@ get_message(mess_id);
                     $('#conversation').animate({scrollTop: $('#conversation').prop('scrollHeight')});
                     mess_id_2 = data[i-1]["id"];
                     if (mess_id != mess_id_2) {
-                        setInterval(function () {
+                        setTimeout(function () {
                             get_message(mess_id_2);
                         }, 1000);
                     }
+                    /*for empty conversation*/
+                }else if(this.responseText == 'no message'){
+                        setTimeout(function () {
+                            get_message(mess_id_2);
+                        }, 3000);
                 }
             }
         };
@@ -213,10 +218,10 @@ get_message(mess_id);
         xmlhttpMessage.send();
     }
 
-
-function update_message(mess_id) {
+/*update_message();
+function update_message() {
     var xmlhttpMessage = new XMLHttpRequest();
-    var send_this = '?last_message_id='+mess_id+ '&&to_user_id='+to_user_id;
+    var send_this = '?mess_id=0&&to_user_id='+to_user_id;
     xmlhttpMessage.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText != 'no message') {
@@ -237,7 +242,7 @@ function update_message(mess_id) {
     xmlhttpMessage.open("GET", "user_online.php"+send_this, true);
     xmlhttpMessage.send();
 
-}
+}*/
 
 $('#type_message').on('keyup', function () {
     var type_message = $('#type_message').val();
@@ -249,16 +254,18 @@ $('#type_message').on('keyup', function () {
 });
 function send_this() {
     var type_message = $('#type_message').val();
-   var xmlhttp = new XMLHttpRequest();
-   var send_this = '?send=true&&to_user_id='+to_user_id+'&&message='+type_message;
-   xmlhttp.onreadystatechange = function () {
-     if (this.readyState == 4 && this.status == 200) {
-        $('#type_message').val(null);
-        $('#send').prop('disabled', 'true');
-     }
-   };
-   xmlhttp.open("GET", "message_send.php"+send_this, true);
-   xmlhttp.send();
+    if (type_message != '') {
+        var xmlhttp = new XMLHttpRequest();
+        var send_this = '?send=true&&to_user_id=' + to_user_id + '&&message=' + type_message;
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                $('#type_message').val(null);
+                $('#send').prop('disabled', 'true');
+            }
+        };
+        xmlhttp.open("GET", "message_send.php" + send_this, true);
+        xmlhttp.send();
+    }
 }
 
 function append_message(user_id, message) {
@@ -292,6 +299,8 @@ function append_message(user_id, message) {
                 if (space > 1) {
                     evt.preventDefault();
                 }
+            }else if(evt.keyCode == 13){
+                send_this();
             }else {
                 space = 0;
             }
