@@ -37,14 +37,14 @@ require '../db_connection.php';
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" >
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.style.css" rel="stylesheet" >
+    <link href="../build/css/custom.min.css" rel="stylesheet" >
 </head >
 
 <body class="nav-md" >
 <div class="container body" >
     <div class="main_container" >
         <div class="col-md-3 left_col" >
-            <?php require "../includes/sideBarMenu.html"; ?>
+            <?php require "../includes/sideBarMenu.php"; ?>
         </div >
 
         <!-- top navigation -->

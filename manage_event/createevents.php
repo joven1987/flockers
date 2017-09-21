@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
@@ -7,8 +7,6 @@ if (!isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
 }
 ?>
-=======
->>>>>>> 61071409fb3932b0c10d6e974d358a0991a565df
 <!DOCTYPE html>
 <html lang="en" >
 <head >
@@ -46,7 +44,7 @@ if (!isset($_SESSION['user_id'])) {
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" >
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min1.css" rel="stylesheet" />
+    <link href="../build/css/custom.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../src/style.css" />
 
 
@@ -62,7 +60,7 @@ if (!isset($_SESSION['user_id'])) {
 <div class="container body" >
     <div class="main_container" >
         <div class="col-md-3 left_col" >
-           <?php require "../includes/sideBarMenu.html";?>
+           <?php require "../includes/sideBarMenu.php";?>
         </div >
 
         <!-- top navigation -->

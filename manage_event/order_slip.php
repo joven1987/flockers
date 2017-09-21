@@ -1,8 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
 <?php
-
-<<<<<<< HEAD
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("location: ../landing_page/events/events/");
+}else {
+    $user_id = $_SESSION['user_id'];
+    $event_id = $_GET['event_id'];
+}
+?>
     <title >Flockers |</title >
-
+<head>
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" >
     <!-- Font Awesome -->
@@ -317,7 +325,3 @@
 
 </script >
 </html >
-=======
->>>>>>> 61071409fb3932b0c10d6e974d358a0991a565df
-
-?>
