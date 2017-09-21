@@ -1,22 +1,6 @@
 <?php
-session_start();
-require '../db_connection.php';
-if(!isset($_SESSION['user_id'])) {
-    header("location: ../landing_page/events/events/");
-}else {
-    $user_id = $_SESSION['user_id'];
-    $event_id = $_GET['event_id'];
-}
-?>
-<!DOCTYPE html>
-<html lang="en" >
-<head >
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-    <meta name="viewport" content="width=device-width, initial-scale=1" >
 
+<<<<<<< HEAD
     <title >Flockers |</title >
 
     <!-- Bootstrap -->
@@ -333,4 +317,7 @@ if(!isset($_SESSION['user_id'])) {
 
 </script >
 </html >
+=======
+>>>>>>> 61071409fb3932b0c10d6e974d358a0991a565df
 
+?>
