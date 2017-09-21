@@ -1,11 +1,5 @@
 <?php
-session_start();
 require '../db_connection.php';
-if(!isset($_SESSION['user_id']))
-header("location: ../landing_page/events/events/");
-
-echo '<script>console.log("'.$_SESSION['user_id'].'");</script>';
-
 ?>
 <!DOCTYPE html>
 <html lang="en" >
@@ -26,6 +20,14 @@ echo '<script>console.log("'.$_SESSION['user_id'].'");</script>';
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet" >
     <!-- iCheck -->
     <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet" >
+	
+	<!-- FONTS -->
+   <link href="https://fonts.googleapis.com/css?family=Raleway:500" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet"> 
+   <link href="https://fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Raleway:900" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Raleway:800" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
 
     <!-- bootstrap-progressbar -->
     <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" >
@@ -35,14 +37,14 @@ echo '<script>console.log("'.$_SESSION['user_id'].'");</script>';
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" >
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet" >
+    <link href="../build/css/custom.min.style.css" rel="stylesheet" >
 </head >
 
 <body class="nav-md" >
 <div class="container body" >
     <div class="main_container" >
         <div class="col-md-3 left_col" >
-            <?php require "../includes/sideBarMenu.php"; ?>
+            <?php require "../includes/sideBarMenu.html"; ?>
         </div >
 
         <!-- top navigation -->
@@ -54,12 +56,12 @@ echo '<script>console.log("'.$_SESSION['user_id'].'");</script>';
         <!-- page content -->
         <div class="right_col" role="main"style="/*height: 676px !important;*/">
             <div class="row">
-                <div class="col-md-7 col-sm-7 col-xs-12" id="event_content">
+                <div class="col-md-8" id="event_content" style="padding-top: 1%;">
 
                 </div>
-                <div class="col-md-5 col-sm-5 col-xs-12">
+                <div class="col-md-4" style="padding-top: 1%;">
                     <div class="x_panel">
-                        <div class="x_content" style="height: 500px;">
+                        <div class="x_content" style="height: 500px; ">
                             <h3>Right side bar content</h3>
                         </div>
                     </div>
@@ -69,7 +71,7 @@ echo '<script>console.log("'.$_SESSION['user_id'].'");</script>';
         </div >
     </div >
 </div >
-<!--</div>-->
+</div>
 <!-- /page content -->
 
 <!-- footer content -->
@@ -80,8 +82,8 @@ echo '<script>console.log("'.$_SESSION['user_id'].'");</script>';
     <div class="clearfix" ></div >
 </footer >-->
 <!-- /footer content -->
-<!--</div>-->
-<!--</div>-->
+</div>
+</div>
 
 <!-- jQuery -->
 <script src="../vendors/jquery/dist/jquery.min.js" ></script >
@@ -123,38 +125,36 @@ echo '<script>console.log("'.$_SESSION['user_id'].'");</script>';
 
 <!-- Custom Theme Scripts -->
 <script src="../build/js/custom.min.js" ></script >
+<?php require '../includes/footer.php';?>
 <script >
-    var user_id = "<?php echo $_SESSION['user_id'];?>";
+
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
       if(this.readyState == 4 && this.status == 200) {
           var data = JSON.parse(this.responseText);
           var i = 0;
           while (i < data.length) {
-              var reg_fee = Number(data[i]['reg_fee']) ? '₱ '+Number(data[i]['reg_fee']).toFixed(2) : 'Free';
+              var reg_fee = Number(data[i]['reg_fee']) ? '₱ '+Number(data[i]['reg_fee']).toFixed(2) : 'FREE';
               var button_val = data[i]['event_id'];
               var event_title = data[i]['event_title'];
               var venue = data[i]["address"];
               var e_date = new Date(data[i]["event_date"]);
               /*var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday',];*/
-              var days = ['Jan. ', 'Feb. ', 'Mar. ', 'Apr. ', 'May ', 'June ', 'Jul', 'Aug. ', 'Sept. ', 'Oct. ', 'Nov. ', 'Dec. '];
+              var days = ['January ', 'February ', 'March ', 'April ', 'May ', 'June ', 'July', 'August ', 'September ', 'October ', 'November ', 'December '];
               var event_date = days[e_date.getMonth()];
               event_date += e_date.getDate();
               event_date += ', ' + e_date.getFullYear();
               var app = ['<div class="col-md-12">',
-                  '<div class="x_panel">',
+                  '<div class="x_panel shadow">',
                   '<div class="x_content" style="display: block;">',
                   '<div class="col-md-7 col-lg-7 col-sm-6">',
                   '<div class="img-container">',
-                  '<img src="../landing_page/images/icon/logo.png" alt="" style="height: 80px; width: 100%; z-index:123; background-color: #0072bc;">',
+                  '<img src="../landing_page/images/imagebanner.jpg" alt="" style="height: 160px; width: 100%; z-index:123; background-color: #0072bc;">',
                   '</div>',
                   '<div style="float: left;">',
-                  '<h5>'
-                  +reg_fee+
-                  '</h5>',
                   '</div>',
                   '</div>',
-                  '<div class="col-md-5 col-lg-5 col-sm-6">',
+                  '<div class="col-md-3 col-lg-3 col-sm-12" id="description" style="padding-left: 0px;padding-top: 15px;">',
                   '<div>'
                   +event_date+
                   '</div>',
@@ -165,9 +165,14 @@ echo '<script>console.log("'.$_SESSION['user_id'].'");</script>';
                   +venue+
                   '</div>',
                   '</div>',
-                  '<div style="float: right; margin-top: 10px;">',
-                  '<a href=event_details.php?event_id='+button_val+' type="button" class="btn btn-sm btn-success">',
-                  'I\'m Interested',
+				  '<div style="float:left; margin-top: 7px; ">',
+				  '<h5>'
+                  +reg_fee+
+                  '</h5>',
+				  '</div>',
+                  '<div style="float: left; margin-top: 65px;">',
+                  '<a href=event_details.php?event_id='+button_val+' value="" type="button" class="btn btn-sm btn-success" id="interested">',
+                  'VIEW MORE',
                   '</a>',
                   '</div>',
                   '<div class="clearfix"></div>',

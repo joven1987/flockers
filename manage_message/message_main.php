@@ -1,6 +1,6 @@
 <?php
-require '../db_connection.php';
 session_start();
+require '../db_connection.php';
 ?>
 
 <style >
@@ -48,7 +48,7 @@ session_start();
 <div class="container body" >
     <div class="main_container" >
         <div class="col-md-3 left_col" >
-            <?php require "../includes/sideBarMenu.php"; ?>
+            <?php require "../includes/sideBarMenu.html"; ?>
         </div >
 
         <!-- top navigation -->
@@ -151,7 +151,7 @@ session_start();
 //$(document).ready(function () {
 
 
-    var to_user_id = "<?php echo isset($_GET['recipient_user_id']) ? $_GET['recipient_user_id']: '';?>";
+    var to_user_id = "<?php echo $_GET['recipient_user_id'];?>";
     var my_user_id = "<?php echo $_SESSION['user_id'];?>";
 
     var xmlhttp = new XMLHttpRequest();
@@ -160,7 +160,6 @@ session_start();
           var data = JSON.parse(this.responseText);
           var status ='';
           var i = 0;
-          console.log(data);
           while (i < data.length) {
               var recipient_user_id = data[i]["id"];
               var recipient_name = data[i]["first_name"] + ' ' +data[i]["last_name"];
@@ -211,13 +210,39 @@ get_message(mess_id);
                 }else if(this.responseText == 'no message'){
                         setTimeout(function () {
                             get_message(mess_id_2);
-                        }, 1000);
+                        }, 3000);
                 }
             }
         };
         xmlhttpMessage.open("GET", "user_online.php" + send_this, true);
         xmlhttpMessage.send();
     }
+
+/*update_message();
+function update_message() {
+    var xmlhttpMessage = new XMLHttpRequest();
+    var send_this = '?mess_id=0&&to_user_id='+to_user_id;
+    xmlhttpMessage.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.responseText != 'no message') {
+                var data = JSON.parse(this.responseText);
+                console.log(data);
+                var i = 0;
+                while (i < data.length) {
+                    var message = data[i]["message"];
+                    var user_id = data[i]["from_user_id"];
+                    append_message(user_id, message);
+                    i++;
+                }
+                $('#conversation').animate({scrollTop: $('#conversation').prop('scrollHeight')});
+            }
+
+        }
+    };
+    xmlhttpMessage.open("GET", "user_online.php"+send_this, true);
+    xmlhttpMessage.send();
+
+}*/
 
 $('#type_message').on('keyup', function () {
     var type_message = $('#type_message').val();

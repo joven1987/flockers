@@ -1,26 +1,21 @@
 <?php
-
+//session_start();
+require '../db_connection.php';
 require '../notification/count_notification.php';
-require  '../db_connection.php';
-$user_id = $_SESSION['user_id'];
+$_SESSION['user_interest_id'] = '3,13';
 $i_id = $_SESSION['user_interest_id'];
 ?>
-<style >
-    ul.nav.child_menu {
-        background-color: #0072bc !important;
-        }
-</style >
 <div class="nav_menu" >
     <nav >
         <div class="nav toggle" >
-            <a id="menu_toggle" ><i class="fa fa-bars" ></i ></a >
+            <a id="menu_toggle" ><i class="fa fa-bars" style="color:white;"></i ></a >
         </div >
 
         <ul class="nav navbar-nav navbar-right" >
             <li class="" >
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
                    aria-expanded="false" >
-                    <img src="../images/user.jpg" alt="" ><?php echo isset($_SESSION['first_name']) ? ($_SESSION['first_name']) .' '. $_SESSION['last_name'] : '';?>
+                    <img src="../images/user.jpg" alt="" >Joven Novo
                     <span class=" fa fa-angle-down" ></span >
                 </a >
                 <ul class="dropdown-menu dropdown-usermenu pull-right" >
@@ -32,7 +27,7 @@ $i_id = $_SESSION['user_interest_id'];
                         </a >
                     </li >
                     <li ><a href="javascript:;" >Help</a ></li >
-                    <li ><a href="../logout.php" ><i class="fa fa-sign-out pull-right" ></i >Log Out</a ></li >
+                    <li ><a href="login.html" ><i class="fa fa-sign-out pull-right" ></i > Log Out</a ></li >
                 </ul >
             </li >
 
@@ -40,7 +35,7 @@ $i_id = $_SESSION['user_interest_id'];
                 <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown"
                    aria-expanded="false" >
                     <i class="fa fa-envelope-o" ></i >
-                    <span class="badge bg-green" >6</span >
+                    <span class="badge bg-white" >6</span >
                 </a >
                 <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu" >
                     <li >
@@ -104,8 +99,9 @@ $i_id = $_SESSION['user_interest_id'];
             <li role="presentation" class="dropdown" >
                 <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown"
                    aria-expanded="false" >
-                    <i class="fa fa-bullhorn" ></i >
-                    <span class="badge bg-green" ><?php $count_notify = count_notification($db, $i_id, 1); echo $count_notify>0 ? $count_notify: '';?></span >
+                   <i class="fa fa-bell-o" aria-hidden="true"></i>
+                    <span class="badge bg-white" ><?php $count_notify = count_notification($db, $i_id, 1); echo $count_notify>0 ? $count_notify: '';?></span >
+<!--                    <input type="hidden" id="event_ids" value='--><?php //$count = count_notification($db, $i_id, 0); echo $count;?><!--' />-->
                     <?php $count = count_notification($db, $i_id, 0);?>
                 </a >
                 <ul id="menu1" class="dropdown-menu list-unstyled msg_list notification" role="menu" >

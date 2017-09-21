@@ -29,7 +29,7 @@
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
-           <?php require "../includes/sideBarMenu.php";?>
+           <?php require "../includes/sideBarMenu.html";?>
             <!-- /sidebar menu -->
         </div>
 
