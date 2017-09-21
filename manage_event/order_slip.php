@@ -98,21 +98,34 @@ if(!isset($_SESSION['user_id'])) {
                             <table class="table table-bordered table-hover" id="table_info">
                                 <thead>
                                 <tr>
-                                    <th colspan="3" style="text-align: center">Group Name</th>
-                                    </tr>
+                                    <th colspan="2" style="text-align: center" id="group_name">Group Name</th>
+                                    <th id="total_members"></th>
+                                </tr>
                                 <tr>
-                                    <th width="30%">Name</th>
-                                    <th width="30%">Email</th>
-                                    <th width="10%">Actions</th>
+                                    <th width="40%">Name</th>
+                                    <th width="40%">Email</th>
+                                    <th width="20%">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody id="table_data">
                                 </tbody>
                                 </table>
                         </div>
+                        <form action="../paypal/payments.php" method="post" target="_blank" name="create_form">
+                            <input type="hidden" name="cmd" value="_xclick" />
+                            <input type="hidden" name="no_note" value="1" />
+                            <input type="hidden" name="lc" value="UK" />
+                            <input type="hidden" name="currency_code" value="PHP" />
+                            <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest" />
+                            <input type="hidden" name="first_name" value="Customer's First Name"  />
+                            <input type="hidden" name="last_name" value="Customer's Last Name"  />
+                            <input type="hidden" name="payer_email" value="jovennovo2015@gmail.com"  />
+                            <input type="hidden" name="item_number" value="123456" />
+                            <input type="hidden"  name="amount" value="1000" />
                             <div class="x_content" id="order_slip_button" style="display: none;">
-                                <button class="btn btn-lg btn-info" onclick="enroll_group()" style="float: right;">Get an order slip for this group</button>
+                                <button type="submit" class="btn btn-lg btn-info" id="reg" style="float: right;">Get an order slip for this group</button>
                             </div>
+                        </form>
                     </div>
 
                 </div>
@@ -170,8 +183,35 @@ if(!isset($_SESSION['user_id'])) {
 </body >
 
 <script >
+    $(document).ready(function () {
+        $(window).bind("beforeunload",function(event) {
+            if(error === true)
+            return "You have some unsaved changes";
+        });
+    });
 
+    function enroll_group(val) {
+        console.log(val);
 
+        /*$.ajax({
+            type: "POST",
+            url: "../paypal/payments.php",
+            data: {no_note: 1,
+                        lc:"UK",
+                        currency_code: "PHP",
+                        bn:"PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest",
+                        first_name: 'Joven',
+                        last_name: 'Novo',
+                        payer_email: 'jovennovo2015@gmail.com',
+                        event_id: '123456',
+                        request: 'paypal'
+                   },
+            success: function(responseText) {
+                alert();
+            }
+        });*/
+    }
+    var error = false;
     /*display*/
     var order_start = "<?php echo isset($_GET['order_start']) ? $_GET['order_start'] : '';?>";
     var order_type= "<?php echo isset($_GET['order_type']) ? $_GET['order_type'] : '';?>";
@@ -194,6 +234,7 @@ if(!isset($_SESSION['user_id'])) {
 
     var count = 0;
     $('#get_groups').on('click', function () {
+        error = true;
         if (count == 0) {
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function () {
@@ -230,32 +271,46 @@ if(!isset($_SESSION['user_id'])) {
     var count_data = 0;
     var group_id = 0;
 
-    function reg_group(val) {
 
+    function reg_group(val) {
+        error = true;
         var xmlhttp = new XMLHttpRequest();
         var send_this = '?reg_group=true&&group_id=' + val;
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 var data = JSON.parse(this.responseText);
+                var group_name = data[0]["group_name"];
+                var total_members = 0;
                 var temp_td = null;
                 var i = 0;
-                var temp_td_2 = [];
+                var table_data = [];
                 while (i < data.length) {
                     var name = data[i]["first_name"] + ' ' + data[i]["last_name"];
                     var email = data[i]["email_add"];
-                    temp_td +='<tr><td>' + name +
-                                '</td><td>' + email +
-                                '</td><td style="text-align: center">'+
-                                '<button class="btn btn-danger btn-xs"><i class="fa fa-minus"></i></button></td></tr>';
-
-
+                    temp_td =  ['<tr>',
+                                '<td>'
+                                + name +
+                                '</td>',
+                                '<td>'
+                                + email +
+                                '</td>',
+                                '<td style="text-align: center">',
+                                '<button class="btn btn-danger btn-xs" title="remove this member">',
+                                '<i class="fa fa-minus">',
+                                '</i>',
+                                '</button>',
+                                '</td>',
+                                '</tr>'].join('');
+                    table_data.push(temp_td);
                     i++;
-                }temp_td_2.push(temp_td);
-                var final_td = temp_td_2.join('');
+                    total_members++;
+                }table_data.join('');
+                $('#reg').attr('value',selected_group_id);
+                $('#total_members').html(total_members +' member(s)');
+                $('#table_info').find('#group_name').html(group_name);
                 $('#table_data').empty();
-                $('#table_data').append(final_td);
+                $('#table_data').append(table_data);
                 $('#order_slip_button').show();
-
             }
         }; xmlhttp.open("GET", "db_queries/get_my_group.php" + send_this, true);
         xmlhttp.send();
@@ -263,9 +318,7 @@ if(!isset($_SESSION['user_id'])) {
     }
 
 
-function enroll_group() {
-    console.log(selected_group_id);
-}
+
 
     $(document).ready(function () {
 
@@ -274,9 +327,10 @@ function enroll_group() {
         });
 
         $('.close, #cancel_custo_modal').on('click', function () {
-//      $('#add_part_modal').css({display: 'none'});
+
         });
     });
+
 </script >
 </html >
 

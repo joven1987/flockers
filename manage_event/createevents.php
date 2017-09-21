@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("location: ../landing_page/events/events/");
+}else {
+    $user_id = $_SESSION['user_id'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" >
