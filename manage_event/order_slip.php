@@ -121,7 +121,6 @@ if (!isset($_SESSION['user_id'])) {
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div >
@@ -212,7 +211,7 @@ if (!isset($_SESSION['user_id'])) {
     var event_id= "<?php echo $_GET['event_id'];?>";
     var user_id= "<?php echo $_SESSION['user_id'];?>";
     var selected_group_id = 0;
-
+    
     var xml = $.ajax({
         type: "POST",
         url: "db_queries/get_events.php",
