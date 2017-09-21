@@ -2,14 +2,19 @@
 require '../db_connection.php';
 
 // PayPal settings
-$get_e_id = uniqid();
-$get_amount = isset($_REQUEST['subscribe']) ? $_REQUEST['subscribe'] * 500 : $_REQUEST['amount'];
+
+
 //$item_name = isset($_REQUEST['']);
-$item_name = 'join event';
-$paypal_email = 'buyer_facilitator@gmail.com';
-$return_url = 'http://localhost/flockers_final_final/flockers/manage_event/myevents.php?event_id='.$get_e_id. '&amount=' .$get_amount;
-$cancel_url = 'http://localhost/flockers_final_final/flockers/paypal/payment-cancelled.php?event_id='.$get_e_id.'&amount=' .$get_amount;
-$notify_url = 'http://localhost/flockers_final_final/flockers/paypal/payments.php';
+
+
+    $event_id = $_REQUEST['event_id'];
+    $get_amount =  $_REQUEST['subscribe'] * 500 ;
+    $get_e_id = uniqid();
+    $paypal_email = 'buyer_facilitator@gmail.com';
+    $return_url = 'http://localhost/flockers_final_final/flockers/manage_event/myevents.php?event_id='.$get_e_id. '&amount=' .$get_amount;
+    $cancel_url = 'http://localhost/flockers_final_final/flockers/paypal/payment-cancelled.php?event_id='.$get_e_id.'&amount=' .$get_amount;
+    $notify_url = 'http://localhost/flockers_final_final/flockers/paypal/payments.php';
+
 
 /*$item_name = 'Test Item';
 $item_amount = $_REQUEST['subscribe'];*/

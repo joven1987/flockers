@@ -162,7 +162,7 @@ if (isset($_GET['event_id'])) {
                     '</div >'].join('');
 
             $('#event_details_content').append(event_details_content);
-            var join_button = '<a href="order_slip.php?even_id='+event_id+'" type="button" class="btn btn-sm btn-warning">JOIN US</a>';
+            var join_button = '<a href="order_slip.php?event_id='+event_id+'" type="button" class="btn btn-sm btn-warning">JOIN US</a>';
             $('#right_side_bar_content').append(join_button);
         }
     };

@@ -221,8 +221,8 @@ if (!isset($_SESSION['user_id'])) {
                                                             <!--<h2 class="StepTitle">Step 4 Content</h2>-->
                                                             <p>
                                                                 Admission Type: <br><br><br>
-                                                                <input type="radio" id="free"    name="admission" onclick="admission_type(this.value)" value="1"/>Free<br><br>
-                                                                <input type="radio" id="premium" name="admission" onclick="admission_type(this.value)" value="2"/>Premium
+                                                                <input type="radio" id="free"    name="admission" onclick="admission_type(this.value)" value="1" />Free<br><br>
+                                                                <input type="radio" id="premium" name="admission" onclick="admission_type(this.value)" value="2" />Premium
                                                                 <span id="prem"></span>
                                                             </p>
                                                         </div>
@@ -282,7 +282,7 @@ if (!isset($_SESSION['user_id'])) {
                                                                 <div class="col-md-8 col-sm-8 col-xs-12">
                                                                     <div class="x_panel">
                                                                         <div id="preview"></div>
-                                                                        <button type="submit" name="checkout" class="btn btn-lg btn-dark">Check Out</button >
+                                                                            <button type="submit" name="checkout" value="create_event" class="btn btn-lg btn-dark">Check Out</button >
                                                                     </div>
                                                                 </div>
                                                             </div>

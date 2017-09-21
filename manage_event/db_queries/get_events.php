@@ -1,4 +1,5 @@
 <?php
+require "../../db_connection.php";
 function get_event_data($event_id, $db) {
     $get_event_data = $db->prepare("SELECT * FROM `event` WHERE `event_id`=?");
     $get_event_data->bindParam(1, $event_id);
@@ -24,6 +25,15 @@ function get_interest_data($interest_id, $db) {
 
 function get_interest_id($interest_id, $db) {
 
+}
+
+if (isset($_POST['request']) == 'event_id') {
+    $event_id = $_POST['event_id'];
+    $get_event_data = $db->prepare("SELECT * FROM `event` WHERE `event_id`=?");
+    $get_event_data->bindParam(1, $event_id);
+    $get_event_data->execute();
+    $event_data = $get_event_data->fetch(PDO::FETCH_OBJ);
+    echo json_encode($event_data);
 }
 ?>
 

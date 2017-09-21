@@ -103,19 +103,21 @@ if (!isset($_SESSION['user_id'])) {
                                 </tbody>
                                 </table>
                         </div>
-                        <form action="../paypal/payments.php" method="post" target="_blank" name="create_form">
+                        <form action="../paypal/payments2.php" method="post" target="_blank" name="create_form">
                             <input type="hidden" name="cmd" value="_xclick" />
                             <input type="hidden" name="no_note" value="1" />
-                            <input type="hidden" name="lc" value="UK" />
-                            <input type="hidden" name="currency_code" value="PHP" />
+                            <input type="hidden" name="lc" value="PHP" />
+                            <input type="hidden" name="currency_code" value="GBP" />
                             <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest" />
                             <input type="hidden" name="first_name" value="Customer's First Name"  />
                             <input type="hidden" name="last_name" value="Customer's Last Name"  />
-                            <input type="hidden" name="payer_email" value="jovennovo2015@gmail.com"  />
+                            <input type="hidden" name="payer_email" value="customer@example.com"  />
                             <input type="hidden" name="item_number" value="123456" />
-                            <input type="hidden"  name="amount" value="1000" />
+                            <input type="hidden" name="event_id" />
+                            <input type="hidden"  name="amount" />
+                            <input type="hidden"  name="total_members" />
                             <div class="x_content" id="order_slip_button" style="display: none;">
-                                <button type="submit" class="btn btn-lg btn-info" id="reg" style="float: right;">Get an order slip for this group</button>
+                                <button type="submit" name="checkout" value="reg_event" class="btn btn-lg btn-info" id="reg" style="float: right;">Get an order slip for this group</button>
                             </div>
                         </form>
                     </div>
@@ -211,6 +213,21 @@ if (!isset($_SESSION['user_id'])) {
     var user_id= "<?php echo $_SESSION['user_id'];?>";
     var selected_group_id = 0;
 
+    var xml = $.ajax({
+        type: "POST",
+        url: "db_queries/get_events.php",
+        data: {
+            event_id: event_id,
+            request: 'event_id'
+        },
+        success: function(text) {
+            var txt = JSON.parse(text);
+            $('[name="event_id"]').attr("value", txt.event_id);
+            $('[name="amount"]').attr("value", txt.reg_fee);
+
+
+        }
+    });
 
     var button_content = $('.bulk_content');
         if(order_start != true) {
@@ -297,18 +314,35 @@ if (!isset($_SESSION['user_id'])) {
                     i++;
                     total_members++;
                 }table_data.join('');
+
                 $('#reg').attr('value',selected_group_id);
                 $('#total_members').html(total_members +' member(s)');
                 $('#table_info').find('#group_name').html(group_name);
                 $('#table_data').empty();
                 $('#table_data').append(table_data);
                 $('#order_slip_button').show();
+                $('[name="total_members"]').attr('value', total_members);
+
+                console.log($('[name="total_members"]').val());
+                console.log($('[name="event_id"]').val());
+                console.log($('[name="amount"]').val());
             }
         }; xmlhttp.open("GET", "db_queries/get_my_group.php" + send_this, true);
         xmlhttp.send();
         selected_group_id = val;
     }
 
+
+
+    /*.done(function() {
+        alert(text);
+    })
+        .fail(function() {
+            alert( "error" );
+        })
+        .always(function() {
+            alert( "finished" );
+        });*/
 
 
 
