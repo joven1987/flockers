@@ -75,7 +75,7 @@ if (isset($_REQUEST['event_id'], $_REQUEST['amount'])) {
 <div class="container body">
     <div class="main_container">
         <div class="col-md-3 left_col">
-            <?php require "../includes/sideBarMenu.php";?>
+            <?php require "../includes/sideBarMenu.html";?>
         </div>
 
         <!-- top navigation -->
@@ -200,7 +200,7 @@ if (isset($_REQUEST['event_id'], $_REQUEST['amount'])) {
                                 <div class="x_panel">
                                     <div class="x_title">
                                         <?php require 'db_queries/get_events.php'; ?>
-                                        <h3><?php $event_data = get_event_data($_REQUEST['event_id'], $db); echo $event_data->event_title; ?></h3>
+                                        <h3>Preview of <?php $event_data = get_event_data($_REQUEST['event_id'], $db); echo $event_data->event_title; ?></h3>
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="x_content">

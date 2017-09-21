@@ -42,6 +42,8 @@ if (isset($_GET['event_id'])) {
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet" >
     <!-- iCheck -->
     <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet" >
+	
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
 
     <!-- bootstrap-progressbar -->
     <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" >
@@ -51,14 +53,14 @@ if (isset($_GET['event_id'])) {
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" >
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet" >
+    <link href="../build/css/custom.min.style.css" rel="stylesheet" >
 </head >
 
 <body class="nav-md" >
 <div class="container body" >
     <div class="main_container" >
         <div class="col-md-3 left_col" >
-            <?php require "../includes/sideBarMenu.php"; ?>
+            <?php require "../includes/sideBarMenu.html"; ?>
         </div >
 
         <!-- top navigation -->
@@ -162,7 +164,7 @@ if (isset($_GET['event_id'])) {
                     '</div >'].join('');
 
             $('#event_details_content').append(event_details_content);
-            var join_button = '<a href="order_slip.php?event_id='+event_id+'" type="button" class="btn btn-sm btn-warning">JOIN US</a>';
+            var join_button = '<a href="order_slip.php?even_id='+event_id+'" type="button" class="btn btn-sm btn-warning">JOIN US</a>';
             $('#right_side_bar_content').append(join_button);
         }
     };

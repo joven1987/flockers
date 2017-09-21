@@ -1,12 +1,3 @@
-
-<?php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    header("location: ../landing_page/events/events/");
-}else {
-    $user_id = $_SESSION['user_id'];
-}
-?>
 <!DOCTYPE html>
 <html lang="en" >
 <head >
@@ -44,7 +35,7 @@ if (!isset($_SESSION['user_id'])) {
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" >
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet" />
+    <link href="../build/css/custom.min.style.css" rel="stylesheet" />
     <link rel="stylesheet" href="../src/style.css" />
 
 
@@ -103,7 +94,7 @@ if (!isset($_SESSION['user_id'])) {
                                                             <li>
                                                                 <a href="#step-1">
                                                                     <span class="step_no">1</span>
-                                                                    <span class="step_descr">
+                                                                    <span class="step_descr" style="color: #03a9f5;">
 
                                         <!--Get the address name and the latitude and longitude of the venue-->
                                             <input type="hidden" id="city" name="city" />
@@ -117,7 +108,7 @@ if (!isset($_SESSION['user_id'])) {
                                                             <li>
                                                                 <a href="#step-2">
                                                                     <span class="step_no">2</span>
-                                                                    <span class="step_descr">
+                                                                    <span class="step_descr" style="color: #03a9f5;">
                                               <small>Meetup topic</small>
                                           </span>
                                                                 </a>
@@ -125,7 +116,7 @@ if (!isset($_SESSION['user_id'])) {
                                                             <li>
                                                                 <a href="#step-3">
                                                                     <span class="step_no">3</span>
-                                                                    <span class="step_descr">
+                                                                    <span class="step_descr" style="color: #03a9f5;">
                                               <small>Meetup description</small>
                                           </span>
                                                                 </a>
@@ -133,7 +124,7 @@ if (!isset($_SESSION['user_id'])) {
                                                             <li>
                                                                 <a href="#step-4">
                                                                     <span class="step_no">4</span>
-                                                                    <span class="step_descr">
+                                                                    <span class="step_descr" style="color: #03a9f5;">
                                               <small>Admission</small>
                                           </span>
                                                                 </a>
@@ -141,7 +132,7 @@ if (!isset($_SESSION['user_id'])) {
                                                             <li>
                                                                 <a href="#step-5">
                                                                     <span class="step_no">5</span>
-                                                                    <span class="step_descr">
+                                                                    <span class="step_descr" style="color: #03a9f5;">
                                               <small>Terms and Agreement</small>
                                           </span>
                                                                 </a>
@@ -149,7 +140,7 @@ if (!isset($_SESSION['user_id'])) {
                                                             <li>
                                                                 <a href="#step-6">
                                                                     <span class="step_no">6</span>
-                                                                    <span class="step_descr">
+                                                                    <span class="step_descr" style="color: #03a9f5;">
                                               <small>Subscription</small>
                                           </span>
                                                                 </a>
@@ -175,13 +166,13 @@ if (!isset($_SESSION['user_id'])) {
 																				padding-top: 5px;
 																				padding-bottom: 8px;
 																				font-family: 'Quicksand', sans-serif;
-																				border-radius: 15px;"
+																				border-radius: 5px;"
                                                                                id="change_location" >Change Location
                                                                         </small >
                                                                     </i>
                                                                 </h4 >
                                                             </div >
-                                                            <div id="map_holder" style="width: 100%; height: 300px; margin-top: -2px !important; box-shadow: 0px -1px 44px -18px rgba(0,0,0,0.75); " >
+                                                            <div id="map_holder" style="width: 100%; height: 300px; margin-top: -7px !important; box-shadow: 0px -1px 44px -18px rgba(0,0,0,0.75); " >
 
                                                             </div >
 <!--                                                            </form>-->
@@ -200,7 +191,7 @@ if (!isset($_SESSION['user_id'])) {
                                                         <div id="step-3">
                                                             <h2 class="StepTitle"></h2>
                                                             <p>
-                                                                What will be your event will be?
+                                                                What will be your event will be?<br />
                                                                 <input type="text" id="event_name" name="event_name" placeholder="Name your event" autofocus/>
                                                             </p>
                                                             <p>
@@ -220,17 +211,23 @@ if (!isset($_SESSION['user_id'])) {
                                                         <div id="step-4">
                                                             <!--<h2 class="StepTitle">Step 4 Content</h2>-->
                                                             <p>
-                                                                Admission Type: <br><br><br>
-                                                                <input type="radio" id="free"    name="admission" onclick="admission_type(this.value)" value="1" />Free<br><br>
-                                                                <input type="radio" id="premium" name="admission" onclick="admission_type(this.value)" value="2" />Premium
+                                                                Admission Type: <br><br>
+																
+																
+                                                                <input type="radio" id="free"    name="admission" onclick="admission_type(this.value)" value="1"/>Free<br /><br />
+																
+																
+															
+                                                                <input type="radio" id="premium" name="admission" onclick="admission_type(this.value)" value="2"/>Premium
+																
                                                                 <span id="prem"></span>
+																
                                                             </p>
                                                         </div>
                                                         <div id="step-5">
-                                                            <h2 class="StepTitle">Terms and condition</h2>
-                                                            <p>Terms and conditions
-                                                            </p>
-                                                            <p style="width: 100%; height: 300px;">
+															<h2 class="StepTitle" style="font-family: 'Quicksand', sans-serif; font-weight: 500; color: #03a9f5;">Terms and condition</h2>
+                                                            
+                                                            <p style="width: 100%; height: 300px; text-align: justify;">
                                                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
                                                                 in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                                                             </p>
@@ -282,7 +279,7 @@ if (!isset($_SESSION['user_id'])) {
                                                                 <div class="col-md-8 col-sm-8 col-xs-12">
                                                                     <div class="x_panel">
                                                                         <div id="preview"></div>
-                                                                            <button type="submit" name="checkout" value="create_event" class="btn btn-lg btn-dark">Check Out</button >
+                                                                        <button type="submit" name="checkout" class="btn btn-lg btn-dark">Check Out</button >
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -290,7 +287,7 @@ if (!isset($_SESSION['user_id'])) {
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4 col-sm-4 col-xs-12">
-                                                            <div class="x_panel" style="font-family: 'Quicksand', sans-serif; color:  #34495E; font-size: 15px; font-weight: 500;">
+                                                            <div class="x_panel" style="font-family: 'Quicksand', sans-serif; color:  #03a9f5; font-size: 15px; font-weight: 500;">
                                                                 Preview Details
                                                             </div>
                                                         </div>

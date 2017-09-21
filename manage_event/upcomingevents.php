@@ -37,7 +37,7 @@ require '../db_connection.php';
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" >
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet" >
+    <link href="../build/css/custom.min.style.css" rel="stylesheet" >
 </head >
 
 <body class="nav-md" >
@@ -165,7 +165,7 @@ require '../db_connection.php';
                   +venue+
                   '</div>',
                   '</div>',
-				  '<div style="float:left; margin-top: 7px; ">',
+				  '<div style="float:left; color: #03a9f5; margin-top: 7px; ">',
 				  '<h5>'
                   +reg_fee+
                   '</h5>',
