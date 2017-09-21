@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php     require '../db_connection.php';?>
+<?php
+session_start();
+require '../db_connection.php';?>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->

@@ -89,49 +89,7 @@
 <input type="hidden" name="event_id" value="<?php echo $_GET['event_id'];?>" />
 <div class="row my-4" id="row_1">
 </div>
-	
-  
-	 
-      <!--<div class="row my-4">
-        <div class="col-md-8 col-sm-8 col-xs-12" >
-          <img class="img-fluid" src="images/Tech/techevent1.jpg" alt="">
-        </div>
 
-	   
-        <div class="col-md-4 col-sm-4 col-xs-12 details">
-		
-		
-		<div class="row">
-			<div class="col-md-6 calendar">
-				<h4 class="event-month">NOV</h4>
-				<?php //require "function.php";?>
-				<?php //$event_data = get_event_data($_GET['event_id']);?>
-				<h4 class="event-day"><?php //echo $event_data->event_date; ?>20</h4>
-			</div>
-			<div class="col-md-6 price">
-				<h4 class="pull-right price_container">FREE</h4>
-			</div>
-		</div>
-		
-		
-		
-		
-          <h2 id="eventtitle" >Hackaton Cebu Conference 2017 "Hackaton for Missions"</h2>
-          <h3 id="organizer">by Hack Cebu Society</h3>
-          
-		 <div class="row">
-		  <button type="button" class="btn" id="join" >JOIN EVENT</button>
-		 </div>
-        </div>
-     
-      </div>-->
-    
-	
- 
-	 
-	 
-	 
-	 
 	 <div class="card card-outline-secondary my-4 description">
 			
 			

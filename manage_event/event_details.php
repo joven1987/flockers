@@ -3,6 +3,7 @@ session_start();
 require '../db_connection.php';
 if (isset($_GET['event_id'])) {
     $event_id = $_GET['event_id'];
+    $user_id = $_SESSION['user_id'];
 
     if (isset($_GET['notify'])) {
         $seen_status = 1;
@@ -84,10 +85,10 @@ if (isset($_GET['event_id'])) {
         </div >
     </div >
 </div >
+<!--</div>
+<!-- /page content
 </div>
-<!-- /page content -->
-</div>
-</div>
+</div>-->
 
 <!-- jQuery -->
 <script src="../vendors/jquery/dist/jquery.min.js" ></script >
@@ -160,7 +161,7 @@ if (isset($_GET['event_id'])) {
                     '</div >'].join('');
 
             $('#event_details_content').append(event_details_content);
-            var join_button = '<a href="order_slip.php?even_id='+event_id+'" type="button" class="btn btn-sm btn-warning">JOIN US</a>';
+            var join_button = '<a href="order_slip.php?order_start=true&&event_id='+event_id+'" type="button" class="btn btn-sm btn-warning">JOIN US</a>';
             $('#right_side_bar_content').append(join_button);
         }
     };

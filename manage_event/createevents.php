@@ -37,12 +37,7 @@
 
 
 </head >
-<style >
-    #step-1, #step-2, #step-3, #step-4, #step-5,#step-6 {
-        width: 100% !important;
-        height: 300px !important;
-        }
-</style >
+
 
 <body class="nav-md" >
 <div class="container body" >

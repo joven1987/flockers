@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 ?>
 <div class="left_col scroll-view">
     <div class="navbar nav_title" style="border: 0;">
@@ -15,7 +15,7 @@ session_start();
         </div>
         <div class="profile_info">
             <span>Welcome,</span>
-            <h2>Joven Novo</h2>
+            <h2><?php echo isset($_SESSION['first_name']) ? ($_SESSION['first_name']) .' '. $_SESSION['last_name'] : '';?></h2>
         </div>
     </div>
     <!-- /menu profile quick info -->

@@ -1,5 +1,11 @@
 <?php
+session_start();
 require '../db_connection.php';
+if(!isset($_SESSION['user_id']))
+header("location: ../landing_page/events/events/");
+
+echo '<script>console.log("'.$_SESSION['user_id'].'");</script>';
+
 ?>
 <!DOCTYPE html>
 <html lang="en" >
@@ -48,10 +54,10 @@ require '../db_connection.php';
         <!-- page content -->
         <div class="right_col" role="main"style="/*height: 676px !important;*/">
             <div class="row">
-                <div class="col-md-8" id="event_content">
+                <div class="col-md-7 col-sm-7 col-xs-12" id="event_content">
 
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-5 col-sm-5 col-xs-12">
                     <div class="x_panel">
                         <div class="x_content" style="height: 500px;">
                             <h3>Right side bar content</h3>
@@ -63,7 +69,7 @@ require '../db_connection.php';
         </div >
     </div >
 </div >
-</div>
+<!--</div>-->
 <!-- /page content -->
 
 <!-- footer content -->
@@ -74,8 +80,8 @@ require '../db_connection.php';
     <div class="clearfix" ></div >
 </footer >-->
 <!-- /footer content -->
-</div>
-</div>
+<!--</div>-->
+<!--</div>-->
 
 <!-- jQuery -->
 <script src="../vendors/jquery/dist/jquery.min.js" ></script >
@@ -118,7 +124,7 @@ require '../db_connection.php';
 <!-- Custom Theme Scripts -->
 <script src="../build/js/custom.min.js" ></script >
 <script >
-
+    var user_id = "<?php echo $_SESSION['user_id'];?>";
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
       if(this.readyState == 4 && this.status == 200) {
@@ -160,7 +166,7 @@ require '../db_connection.php';
                   '</div>',
                   '</div>',
                   '<div style="float: right; margin-top: 10px;">',
-                  '<a href=event_details.php?event_id='+button_val+' value="" type="button" class="btn btn-sm btn-success">',
+                  '<a href=event_details.php?event_id='+button_val+' type="button" class="btn btn-sm btn-success">',
                   'I\'m Interested',
                   '</a>',
                   '</div>',

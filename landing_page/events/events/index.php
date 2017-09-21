@@ -8,7 +8,7 @@ session_start();
 require 'db_connection.php';
 require 'get_time.php';
 
-if (isset($_POST['singlebutton'])) {
+if (isset($_POST['login'])) {
     $user_email = $_POST['user_email'];
     $user_password = $_POST['user_password'];
 
@@ -16,11 +16,14 @@ if (isset($_POST['singlebutton'])) {
     $query->bindParam(1,$user_email);
     $query->bindParam(2, $user_password);
     $query->execute();
-    if($query->rowCount() == 1) {
+    if($query->rowCount() > 0) {
         $row = $query->fetch(PDO:: FETCH_OBJ);
         $_SESSION['user_id'] = $row->id;
         $_SESSION['user_interest_id'] = $row->interests_id;
         $_SESSION['email_add'] = $row->email_add;
+        $_SESSION['first_name'] = $row->first_name;
+        $_SESSION['last_name'] = $row->last_name;
+        echo '<script>console.log("'.$_SESSION['user_id'].'");</script>';
 
         $login_status_set = 1;
         $login_status = $db->prepare("UPDATE `users` SET `login_status`=? WHERE `id`=?");
@@ -70,11 +73,11 @@ if (isset($_POST['singlebutton'])) {
     <nav class="navbar navbar-expand-lg navbar-dark  fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">
-		<img src="images/icon/logo.png" style=" max-height: 45px; max-width: 195px; opacity: 1; position: absolute; top:10px; image-rendering: crisp-edges; "></img>
+		<img src="images/icon/logo.png" style=" max-height: 45px; max-width: 195px; opacity: 1; position: absolute; top:10px; image-rendering: crisp-edges; ">
 		</a>
 		
 		<form class="form-inline topfind" >
-		<input class="form-control " type="text" placeholder="Search for events" id="topsearch"></input>
+		<input class="form-control " type="text" placeholder="Search for events" id="topsearch">
 		</form>
 		
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -105,74 +108,50 @@ if (isset($_POST['singlebutton'])) {
 	
 	
 	 <div class="modal fade" id="login" style="background-image:url('images/bg/back.jpg'); width: 100%; height: 100%; ">
-  <div class="modal-dialog" role="document" style="padding-top: 5%;">
-    <div class="modal-content">
-      <div class="modal-header">
-	  
-    <!-- class="close" data-dismiss="modal" aria-label="Close"-->
-	 
-		<div class="container">
-		<div class="row" style="padding-left: 100%;">
-        <button type="button" id="closebtn" class="align-right" data-dismiss="modal" aria-label="Close">
-		<i class="fa fa-minus" aria-hidden="true"></i>
-        </button>
-		</div>
-		</div>
-		
+      <div class="modal-dialog" role="document" style="padding-top: 5%;">
+        <div class="modal-content">
+
+                    <div class="modal-header">
+                          <div class="container">
+                                <div class="row" style="padding-left: 100%;">
+                                    <button type="button" id="closebtn" class="align-right" data-dismiss="modal" aria-label="Close">
+                                        <i class="fa fa-minus" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                          </div>
+                    </div>
+                    <div class="modal-body">
+                        <img src="images/icon/icon.png" style="max-width: 250px; opacity: 1; margin: auto;  display: block; padding-bottom: 3%; " >
+                        <h2 id="logintext"  > Hi there, Sign in to Flockers </h2>
+                        <form action="index.php" method="post">
+                        <div class="inner-addon right-addon" id="textfont">
+                            <i class="fa fa-user" aria-hidden="true" ></i>
+                            <input type="email" class="form-control" id="username" name="user_email" placeholder="Email" />
+                        </div>
+                        <div class="inner-addon right-addon" id="textfont" style="padding-top: 3.5%;">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                            <input type="password" class="form-control" name="user_password" id="pw" placeholder="Password" />
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-center" style="padding-top: 9%;">
+                                <button id="btnsignin" name="login" class="btn">Sign In</button>
+            </form>
+                                <button id="btnreg" name="singlebutton" class="btn" data-toggle="modal" data-target="#register"><span>Register</span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container" style="text-align:center;">
+                            <img src="images/icon/socialcon/fb.svg" class="logicon">
+                            <img src="images/icon/socialcon/twitter.svg" class="logicon">
+                            <img src="images/icon/socialcon/gp.svg" class="logicon">
+                        </div>
+	                </div>
+
+        </div>
+        </div>
       </div>
-      <div class="modal-body">
-	  
-		
-	    <img src="images/icon/icon.png" style="max-width: 250px; opacity: 1; margin: auto;  display: block; padding-bottom: 3%; "></img>
-        
-		
-		<form action="index.php" method="post">
-		
-		<h2 id="logintext"  > Hi there, Sign in to Flockers </h2>
 
-
-
-
-
-  <div class="inner-addon right-addon" id="textfont">
-    <i class="fa fa-user" aria-hidden="true" ></i>
-    <input type="email" class="form-control" id="username" name="user_email" placeholder="Email"/>
-</div>
-
-<div class="inner-addon right-addon" id="textfont" style="padding-top: 3.5%;">
-    <i class="fa fa-lock" aria-hidden="true"></i>
-    <input type="password" class="form-control" name="user_password" id="pw" placeholder="Password"/>
-</div>
-  
-  <div class="row">
-  <div class="col-md-12 text-center" style="padding-top: 9%;"> 
-	 <button id="btnreg" name="singlebutton" class="btn" data-toggle="modal" data-target="#register"><span>Register</span></button> 
-	 <button id="btnsignin" name="singlebutton" class="btn">Sign In</button> 
-	 
-  </div>
-  </div>
-  
-</form>
-
-	
-
-
-      </div>
-      <div class="modal-footer">
-       
-	   <div class="container" style="text-align:center;">
-	   <img src="images/icon/socialcon/fb.svg" class="logicon"></img>
-	   <img src="images/icon/socialcon/twitter.svg" class="logicon"></img>
-	   <img src="images/icon/socialcon/gp.svg" class="logicon"></img>
-	   
-	   </div>
-	   
-
-	   
-      </div>
-    </div>
-  </div>
-</div>
  
  
 	
@@ -203,7 +182,7 @@ if (isset($_POST['singlebutton'])) {
         </div>
         <div class="modal-body">
 		
-		 <img src="images/icon/icon.png" style="max-width: 250px; opacity: 1; margin: auto;  display: block; padding-bottom: 1.3%; "></img>
+		 <img src="images/icon/icon.png" style="max-width: 250px; opacity: 1; margin: auto;  display: block; padding-bottom: 1.3%; ">
 		 
 		 
     <form class="col-md-12" id="regdiv" action="register.php" method="post">
@@ -275,9 +254,9 @@ if (isset($_POST['singlebutton'])) {
         <div class="modal-footer">
          
 		  <div class="container" style="text-align:center;">
-	   <img src="images/icon/socialcon/fb.svg" class="regicon"></img>
-	   <img src="images/icon/socialcon/twitter.svg" class="regicon"></img>
-	   <img src="images/icon/socialcon/gp.svg" class="regicon"></img>
+	   <img src="images/icon/socialcon/fb.svg" class="regicon">
+	   <img src="images/icon/socialcon/twitter.svg" class="regicon">
+	   <img src="images/icon/socialcon/gp.svg" class="regicon">
 	   
 	   </div>
 		 
@@ -286,7 +265,7 @@ if (isset($_POST['singlebutton'])) {
       </div>
     </div>
   </div>
-</div>
+<!--</div>-->
  
 	
 	<!---END--->
@@ -431,8 +410,7 @@ if (isset($_POST['singlebutton'])) {
 	
 	<div class="row">
   <form class="form-inline" id="textcolor">
-  	
-    <!---<input class="form-control mr-sm-2 searchbar" type="text" placeholder="All Events"style="color: #0072bc;"></input>-->
+
 	
 	<div class="dropdown col-md-3" style="border-right: 1px solid white;">
     <button class="btn btn-primary " type="button" data-toggle="dropdown">CATEGORIES
@@ -443,11 +421,11 @@ if (isset($_POST['singlebutton'])) {
       <li class="hover"><a href="#" class="aleft">Health</a></li>
       <li  class="hover"><a href="#" class="aleft">Film</a></li>
 	   <li  class="hover"><a href="#" class="aleft">Arts</a></li>
-      <li  class="hover"><a href="Tech.html" class="aleft">Technology</a></li>
+      <li  class="hover"><a href="#" class="aleft">Technology</a></li>
 	  <li  class="hover"><a href="#" class="aleft">Dance</a></li>
 	  <li class="hover"><a href="#" class="aleft">Photography</a></li>
 	  <li  class="hover"><a href="#" class="aleft">Music</a></li>
-	  <li  class="hover"><a href="eSports.html" class="aleft">eSports</a></li>
+	  <li  class="hover"><a href="#" class="aleft">eSports</a></li>
       
     </ul>
   </div>
@@ -889,13 +867,13 @@ if (isset($_POST['singlebutton'])) {
 			</div>
 			<div class="col-md-3">
 			<label class="flab" >Connect With Us<label>
-			<img src="images/icon/email.svg" style="width: 7%;"></img><text class="ft4">Contact Support</text><br>
-			<img src="images/icon/email.svg" style="width: 7%;"></img><text class="ft4">Contact Sale</text><br>
-			<img src="images/icon/fb.svg" style="width: 7%;"></img><text class="ft4">Facebook</text><br>
-			<img src="images/icon/twitter.svg" style="width: 7%;"></img><text class="ft4">Twitter</text><br>
+			<img src="images/icon/email.svg" style="width: 7%;"><text class="ft4">Contact Support</text><br>
+			<img src="images/icon/email.svg" style="width: 7%;"><text class="ft4">Contact Sale</text><br>
+			<img src="images/icon/fb.svg" style="width: 7%;"><text class="ft4">Facebook</text><br>
+			<img src="images/icon/twitter.svg" style="width: 7%;"><text class="ft4">Twitter</text><br>
 			<img src="images/icon/linkedin.svg" style="width: 7%;"><text class="ft4">LinkedIn</text><br>
 			<img src="images/icon/gplus.svg" style="width: 7%;"><text class="ft4">Google+</text><br>
-			
+
 			</div>
 		</div>
 		
@@ -909,7 +887,7 @@ if (isset($_POST['singlebutton'])) {
 			<div class="col-md-2"><p>ABOUT</p></div>
 			<div class="col-md-2"><p>CONTACT</p></div>
 		</div>
-      </div>
+<!--      </div>-->
      
     </footer>
 	
