@@ -1,4 +1,12 @@
 <?php
+session_name();
+/*require '../db_connection.php';
+$ie_id = '1,9';
+echo count_notification($db, $ie_id, 0);*/
+
+$_SESSION['user_id'] = 1;
+
+
 function count_notification($db, $ie_id, $return_condition) {
     $query = $db->prepare("SELECT * FROM `event`");
     $query->execute();
@@ -54,10 +62,10 @@ function set_seen_status_zero($db, $event_id) {
         $insert->execute();
         return 0;
     }else if($query->rowCount() == 1) {
-        $check_seen_status = $query->fetch(PDO::FETCH_OBJ);
-        if ($check_seen_status->seen_status == 0) {
+        $seen_status = $query->fetch(PDO::FETCH_OBJ);
+        if ($seen_status->seen_status == 0) {
             return 0;
-        }else if($check_seen_status->seen_status == 1) {
+        }else if($seen_status->seen_status == 1) {
             return 1;
         }
 
@@ -67,7 +75,6 @@ function set_seen_status_zero($db, $event_id) {
 
 <?php
 function get_event_details($db, $ie_id) {
-    $user_id = $_SESSION['user_id'];
     $e_id = str_replace('"', '', $ie_id);
     $event_id = explode(',', $e_id);
     $return_txt = '';
@@ -79,7 +86,7 @@ function get_event_details($db, $ie_id) {
 
         $return_txt .=
             '<li >' .
-            '<a href="../manage_event/event_details.php?notify=true&&event_id='.$row->event_id.'&&user_id='.$user_id.'">'.
+            '<a href="../manage_event/event_details.php?notify=true&&event_id='.$row->event_id.'">'.
             '<span class="image"><img src="../images/img.jpg"  /></span >' .
             '<span >' .
             '<span >' .
@@ -96,4 +103,6 @@ function get_event_details($db, $ie_id) {
     return $return_txt;
 
 }
+
+//}
 ?>

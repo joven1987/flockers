@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en" >
 <head >
@@ -26,6 +23,9 @@ session_start();
 
     <!-- Switchery -->
     <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+	
+	<!-- FONT -->
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
 
     <!-- bootstrap-progressbar -->
     <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" >
@@ -35,18 +35,23 @@ session_start();
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" >
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet" />
+    <link href="../build/css/custom.min1.css" rel="stylesheet" />
     <link rel="stylesheet" href="../src/style.css" />
 
 
 </head >
-
+<style >
+    #step-1, #step-2, #step-3, #step-4, #step-5,#step-6 {
+        width: 100% !important;
+        height: 300px !important;
+        }
+</style >
 
 <body class="nav-md" >
 <div class="container body" >
     <div class="main_container" >
         <div class="col-md-3 left_col" >
-           <?php require "../includes/sideBarMenu.php";?>
+           <?php require "../includes/sideBarMenu.html";?>
         </div >
 
         <!-- top navigation -->
@@ -56,7 +61,7 @@ session_start();
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main" >
+        <div class="right_col" role="main" style="background-color: white; min-height: 500px;">
             <div class="row" >
                 <div class="col-md-12 col-sm-12 col-xs-12" >
                     <div class="dashboard_graph" >
@@ -77,7 +82,7 @@ session_start();
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="x_panel">
                                                 <div class="x_title">
-                                                    <h2>Create your event</h2>
+                                                    <h2><b>Hello there,</b> Let's start creating your events</h2>
                                                     <div class="clearfix"></div>
                                                 </div>
                                                 <div class="x_content">
@@ -145,17 +150,29 @@ session_start();
                                                             <div class="x_panel">
                                                         <div id="step-1">
 <!--                                                            <form class="form-horizontal form-label-left">-->
-                                                            <div id="location_holder" style="position: relative;">
-                                                                <h4 >Where do you want to meet with other flockers?<br />
-                                                                    <i >
+                                                            <div id="location_holder" style="position: relative; ">
+                                                                <div id="toptext">Where do you want to meet with other Flockers?<br />
+																</div>
+																<h4>
+                                                                    <i>
                                                                         <small id="place_holder" ></small >&nbsp;&nbsp;
-                                                                        <small style="text-decoration: underline; cursor: pointer; color: blue;"
-                                                                               id="change_location" >change
+                                                                        <small style="text-decoration: none;
+																				cursor: pointer;
+																				color: white;
+																				background-color: #03a9f5;
+																				padding-left: 8px;
+																				border: none;
+																				padding-right: 13px;
+																				padding-top: 5px;
+																				padding-bottom: 8px;
+																				font-family: 'Quicksand', sans-serif;
+																				border-radius: 15px;"
+                                                                               id="change_location" >Change Location
                                                                         </small >
-                                                                    </i >
+                                                                    </i>
                                                                 </h4 >
                                                             </div >
-                                                            <div id="map_holder" style="width: 100%; height: 300px;" >
+                                                            <div id="map_holder" style="width: 100%; height: 300px; margin-top: -2px !important; box-shadow: 0px -1px 44px -18px rgba(0,0,0,0.75); " >
 
                                                             </div >
 <!--                                                            </form>-->
@@ -164,7 +181,7 @@ session_start();
                                                         <div id="step-2">
                                                             <h2 class="StepTitle"></h2>
                                                             <p >
-                                                                What would be your event be about?
+                                                                What would be your event be about?<br />
                                                                 <input type="text" id="topics" onkeydown="get_topics(this.value)" placeholder="Search for a topic" autofocus/>
                                                             </p>
                                                             <p id="topic_list"style="width: 100%; height: 300px;">
@@ -264,8 +281,8 @@ session_start();
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4 col-sm-4 col-xs-12">
-                                                            <div class="x_panel">
-                                                                preview details
+                                                            <div class="x_panel" style="font-family: 'Quicksand', sans-serif; color:  #34495E; font-size: 15px; font-weight: 500;">
+                                                                Preview Details
                                                             </div>
                                                         </div>
                                                     </div>
@@ -286,12 +303,7 @@ session_start();
 <!-- /page content -->
 
 <!-- footer content -->
-<footer >
-    <div class="pull-right" >
-        Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com" >Colorlib</a >
-    </div >
-    <div class="clearfix" ></div >
-</footer >
+
 <!-- /footer content -->
 </div>
 </div>
@@ -454,15 +466,97 @@ $(document).ready(function () {
 
         jQuery("#change_location").click(function () {
             jQuery("#location_holder h4 i").css({display: "none"});
-            jQuery("#location_holder h4").append("<input type='search' autocomplete='on' onfocus='searchPlace()' runat='server' size='50' style='width: 50%;' id='search_new_place' name='venue' autofocus/>");
+            jQuery("#location_holder h4").append("<input type='search'  autocomplete='on' onfocus='searchPlace()' runat='server' size='50' style='width: 55%; ' id='search_new_place' name='venue' autofocus/>");
         });
 
 
 //google map
         function initAutoComplete() {
             var map = new google.maps.Map(document.getElementById('map_holder'), {
-                center: {lat: 10.3156, lng: 123.8854},
-                zoom: 15,
+                center: {lat: 10.325154, lng: 123.95374800000002},
+                zoom: 3,
+				
+		styles: [
+            {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+            {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+            {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+            {
+              featureType: 'administrative.locality',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
+            },
+            {
+              featureType: 'poi',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'geometry',
+              stylers: [{color: '#263c3f'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#6b9a76'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry',
+              stylers: [{color: '#38414e'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#212a37'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#9ca5b3'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry',
+              stylers: [{color: '#746855'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#1f2835'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#f3d19c'}]
+            },
+            {
+              featureType: 'transit',
+              elementType: 'geometry',
+              stylers: [{color: '#2f3948'}]
+            },
+            {
+              featureType: 'transit.station',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'geometry',
+              stylers: [{color: '#17263c'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#515c6d'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.stroke',
+              stylers: [{color: '#17263c'}]
+            }
+          ],
+				
                 mapTyped: 'roadmap'
             });
 
