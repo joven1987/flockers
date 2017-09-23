@@ -24,7 +24,7 @@ include_once('./db_connection/connection_PDO.php');
                 if($count > 0)  
                 {  
                      $_SESSION["username"] = $_POST["username"];  
-                     header("location:login_success.php");  
+                     header("location:login");
                 }  
                 else  
                 {  

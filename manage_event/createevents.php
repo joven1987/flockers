@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" >
 <head >
@@ -10,7 +13,7 @@
     <title >Flockers</title >
     <!--ckeditor-->
     <script src="../ckeditor/ckeditor.js"></script>
-    <link rel="../ckeditor/samples/stylesheet" href="sample.css">
+<!--<link rel="../ckeditor/samples/stylesheet" href="sample.css">-->
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" >

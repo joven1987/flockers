@@ -1,6 +1,6 @@
     <?php
 
-include_once('./db_connection/connection_PDO.php');
+include_once('db_connection.php');
 
     if(isset($_POST['register'])){
 
@@ -28,7 +28,7 @@ include_once('./db_connection/connection_PDO.php');
 
         if($password == $cpassword)
         {
-            $query = $dbConnection->prepare("INSERT INTO users(`password`,`first_name`,`middle_name`,`last_name`,
+            $query = $db->prepare("INSERT INTO users(`password`,`first_name`,`middle_name`,`last_name`,
 				`mobile_no`,`email_add`,`paypal`,`date_registered`)
 				VALUES( :password, :first_name, :middle_name, :last_name, :mobile_no, :email_add, :paypal, :date_registered)");
           

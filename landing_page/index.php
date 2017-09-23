@@ -1782,15 +1782,15 @@ opacity: 1;"></img>
 	 <div class="row">
 	   <div class="col-md-4" id="bb">
 	   <div class="col-md-4" style="padding-top: 15%;">
-	    <img src="images/icon/social/fb.png" style=" padding-bottom: 3%; width: 35%; opacity: 1;"></img>
+	    <img src="images/icon/social/fb.png" style=" padding-bottom: 3%; width: 35%; opacity: 1;" />
 	   </div>
 	   
 	   <div class="col-md-4" style="padding-top: 15%;">
-	    <img src="images/icon/social/blog.png" style=" padding-bottom: 3%; width: 35%; opacity: 1;"></img>
+	    <img src="images/icon/social/blog.png" style=" padding-bottom: 3%; width: 35%; opacity: 1;" />
 	   </div>
 	   
 	   <div class="col-md-4" style="padding-top: 15%;">
-	    <img src="images/icon/social/gp.png" style=" padding-bottom: 3%; width: 35%; opacity: 1;"></img>
+	    <img src="images/icon/social/gp.png" style=" padding-bottom: 3%; width: 35%; opacity: 1;" />
 	   </div>
 	   
 	   </div>
@@ -1844,8 +1844,8 @@ opacity: 1;"></img>
         <script src="assets/js/smooth-scroll.js"></script>
         <script src="assets/js/lightbox.min.js"></script>
         <script src="assets/js/main.js"></script>
-		<script src="js/jquery-1.7.1.min.js"></script>
-		<script src="js/bootstrap.js"></script>
+		<!--<script src="js/jquery-1.7.1.min.js"></script>
+		<script src="js/bootstrap.js"></script>-->
 
 
     </body>

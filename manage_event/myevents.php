@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php     require '../db_connection.php';?>
@@ -75,7 +78,7 @@ if (isset($_REQUEST['event_id'], $_REQUEST['amount'])) {
 <div class="container body">
     <div class="main_container">
         <div class="col-md-3 left_col">
-            <?php require "../includes/sideBarMenu.html";?>
+            <?php require "../includes/sideBarMenu.php";?>
         </div>
 
         <!-- top navigation -->

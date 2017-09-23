@@ -1,5 +1,5 @@
 <?php
-require "../../db_connection.php";
+require "db_connection.php";
 function get_event_data($event_id, $db) {
     $get_event_data = $db->prepare("SELECT * FROM `event` WHERE `event_id`=?");
     $get_event_data->bindParam(1, $event_id);

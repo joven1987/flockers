@@ -11,7 +11,6 @@ require '../db_connection.php';
     $get_amount =  $_REQUEST['subscribe'] * 500 ;
     $get_e_id = uniqid();
     $paypal_email = 'buyer_facilitator@gmail.com';
-    $return_url = 'http://localhost/flockers_final_final/flockers/manage_event/myevents.php?event_id='.$get_e_id. '&amount=' .$get_amount;
     $cancel_url = 'http://localhost/flockers_final_final/flockers/paypal/payment-cancelled.php?event_id='.$get_e_id.'&amount=' .$get_amount;
     $notify_url = 'http://localhost/flockers_final_final/flockers/paypal/payments.php';
 
@@ -42,6 +41,7 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])){
 		$admission = $_REQUEST['admission_fee'];
 		$amount= $get_amount;
 		$event_duration = $_REQUEST['subscribe'];
+        $return_url = 'http://localhost/flockers_final_final/flockers/manage_event/myevents.php?event_id='.$get_e_id. '&amount=' .$get_amount;
 
 		$trans_date = date("Y-m-d h:i:s");
         $expiry_date = expiry_date($event_duration);

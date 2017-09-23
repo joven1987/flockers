@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -185,24 +188,6 @@ if (!isset($_SESSION['user_id'])) {
 
     function enroll_group(val) {
         console.log(val);
-
-        /*$.ajax({
-            type: "POST",
-            url: "../paypal/payments.php",
-            data: {no_note: 1,
-                        lc:"UK",
-                        currency_code: "PHP",
-                        bn:"PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest",
-                        first_name: 'Joven',
-                        last_name: 'Novo',
-                        payer_email: 'jovennovo2015@gmail.com',
-                        event_id: '123456',
-                        request: 'paypal'
-                   },
-            success: function(responseText) {
-                alert();
-            }
-        });*/
     }
     var error = false;
     /*display*/

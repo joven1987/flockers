@@ -1,5 +1,4 @@
 <?php
-//session_start();
 require '../db_connection.php';
 require '../notification/count_notification.php';
 $_SESSION['user_interest_id'] = '3,13';
@@ -15,7 +14,7 @@ $i_id = $_SESSION['user_interest_id'];
             <li class="" >
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
                    aria-expanded="false" >
-                    <img src="../images/user.jpg" alt="" >Joven Novo
+                    <img src="../images/user.jpg" alt="" ><?php echo $_SESSION['first_name'];?>
                     <span class=" fa fa-angle-down" ></span >
                 </a >
                 <ul class="dropdown-menu dropdown-usermenu pull-right" >
@@ -27,7 +26,7 @@ $i_id = $_SESSION['user_interest_id'];
                         </a >
                     </li >
                     <li ><a href="javascript:;" >Help</a ></li >
-                    <li ><a href="login.html" ><i class="fa fa-sign-out pull-right" ></i > Log Out</a ></li >
+                    <li ><a href="../logout.php" ><i class="fa fa-sign-out pull-right" ></i > Log Out</a ></li >
                 </ul >
             </li >
 
